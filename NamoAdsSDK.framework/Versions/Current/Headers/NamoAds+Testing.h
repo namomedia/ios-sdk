@@ -1,10 +1,10 @@
 //
 // NamoAds+Testing.h
-// NamoAds iOS SDK
+// NamoMedia Ads SDK
 //
 // Copyright (c) 2013 NamoMedia. All rights reserved.
 //
-// This category defines additional methods for testing and debugging the NamoAds SDK.
+// This category defines additional methods for testing and debugging the SDK.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,6 +13,6 @@
 @interface NamoAds (Testing)
 
 // Debugging method for setting an ad server URL. You do not need to set this URL for normal
-// use of the NamoMedia Ads SDK.
+// use of the SDK.
 + (void)setAdServerUrl:(NSString *)url;
 @end

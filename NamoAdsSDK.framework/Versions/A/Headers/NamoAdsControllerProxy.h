@@ -1,6 +1,6 @@
 //
 // NamoAdsControllerProxy.h
-// NamoAds iOS SDK
+// NamoMedia Ads SDK
 //
 // Copyright (c) 2013 NamoMedia. All rights reserved.
 //

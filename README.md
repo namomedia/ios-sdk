@@ -9,10 +9,10 @@ Integration steps:
 
         git clone https://github.com/namomedia/ios-sdk.git
 
-2. Drag and drop `NamoAdsSDK.framework` to `Frameworks` group. Check the box where you need to copy the files the project.
+2. Drag and drop `NamoAdsSDK.framework` to `Frameworks` group.
 
 
-3. Add the following frameworks if not already included: `ImageIO, AdSupport, SystemConfiguration, CoreTelephony, UIKit, Foundation, CoreGraphics`
+3. Add the following frameworks if they are not already included: `ImageIO, AdSupport, SystemConfiguration, CoreTelephony, UIKit, Foundation, CoreGraphics`
 
 
 4. Initialize the SDK.
@@ -22,128 +22,113 @@ Integration steps:
 
   Include the relevant header file:
 
-        // Namo Media start
-        #import <NamoAdsSDK/NamoAds.h>
-        // Namo Media end
+        #import <NamoAdsSDK/NamoAdsSDK.h>
     
 
-  For every time the app launches (we recomend the folowing method)
+  Initialize the SDK when the application launches:
 
-        (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+        (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-  Initialize the SDK:
-
-        // Namo Media start
-        [NamoAds startWithAppId:<your app id>];
-        // Namo Media end
+          [NamoAds startWithAppId:<your app id>];
+          
+        }
 
   Where `<your app id>` is a string that represents the application ID you have registered with Namo Media.
 
+5. Include Ads in your stream
 
-5. Implement the NamoAdCellProvider protocol.
-
-  The TableViewController that is integrating the ads needs to implement NamoAdCellProvider protocol. In the header file for your TableViewController add the header file:
-
-        // Namo Media start
+  Create Ads Proxy and use it as your delegate and data source. Have your `TableViewController` implement `NamoAdCellProvider` protocol.
+        
         #import <NamoAdsSDK/NamoAdsSDK.h>
-        // Namo Media end
+        
+        // declare a strong reference to NamoAdsControllerProxy object
+        @property(nonatomic, strong) NamoAdsControllerProxy *adsProxy;
 
-  Add the following protocol to be implemented by the TableViewController: `NamoAdCellProvider` as a protocol implemented by this controller. In the `.m` file implement the following methods:
 
-        // Namo Media start
+        -(void)ViewDidLoad {
 
+          self.adsProxy = [NamoAds proxyForController:self adCellProvider:self];
+
+          // Let the adsProxy handle cell interactions. It uses the delegate methods
+          // defined in tableView for content rows and defines interactions for the ad rows.
+          self.tableView.delegate = self.adsProxy;
+
+          // Let the adsProxy be the data source for the tableView. It uses dataSource
+          // methods from this tableView for content rows and ads data from Namo Media
+          // ad servers to display get the relevant advertising content.
+          self.tableView.dataSource = self.adsProxy;
+        }
+  
+
+        -(void)viewWillAppear:(BOOL)animated {
+          // Request the ads
+          [self.adsProxy requestAdsWithTargeting:nil];
+        }
+        
+        #pragma mark - NamoAdCellProvider
+        
+        // @required
+        // Should return a custom cell identifier for caching your 
+        // cells. The SDK uses the standard
+        // UITableViewCell mechanism for reusing cells.
+        - (NSString *)customAdCellIdentifier {
+          // Return custom identifier for your ad cell
+        }
+
+5. Customize the look of your Ad Cell (Optional)
+
+  To customize the look of your ad cell you need to implement the optional methods in NamoAdCellProvider in the relevant TableViewController. There are 3 common ways of doing this.
+  
         #pragma mark - NamoAdCellProvider
 
-        // Returns the cell identifier to use when reusing cells. The SDK uses the default
-        // UITableView caching mechanism for caching cells.
-        - (NSString *)adCellIdentifier {
-        return <the same table view cell identifier>;
+        // @optional
+        // Implement this method to return a completely custom ad 
+        // cell. Your cell should be initialized with
+        // the given identifier. If you simply wish to customize 
+        // your layout, use layoutAdCell instead of implementing 
+        // this method.
+        - (NamoAdCell *)createCustomAdCell:(NSString *)identifier {
+          // Implement this method if making a custom ad cell
         }
 
-        // Returns a newly allocated and initialized ad cell.
-        // Called if the table view is unable to return a cached cell.
-        - (UITableViewCell *)createAdCell {
-        // return an instance of special Ad cell if there is one
-        // else, return an instance of the cell used to display the content
+        // Implement this method to customize the height of your 
+        // table view cell. Default is NamoAdCellDefaultHeight.
+        - (CGFloat)adCellHeight {
+          // Implement to specify custom height
         }
 
-        // You must implement this method to fill the ad cell with ad content.
-        // Use the binder messages fillCellContent and bindCellInteractions to
-        // fill your native ad format to setup interactive behaviors.
-        - (void)shouldFillAdCell:(UITableViewCell *)tableViewCell
-                usingBinder:(NamoAdContentBinder *)binder {
-        // provide the UITableViewCell fields for the binder to fill in
-        // bind the click, expand target with callbacks
-        // e.g.
-        //     [binder bindClickTarget:cell.feedImageView callback:^(NSURL *url) {
-        //       [self openUrl:url];
-        //       return YES;
-        //     }];
-        //     [binder bindExpandTarget:cell callback:^(BOOL expand, BOOL animate) {
-        //       [binder performDefaultExpand:expand withAnimations:animate];
-        //       cell.isExpanded = expand;
-        //       return YES;
-        //     }];
+        // Implement this method to customize the height of your 
+        // cell when expanded. This only applies to cells which 
+        // support expansion. Default is NamoAdCellDefaultExpandedHeight.
+        - (CGFloat)adCellExpandedHeight {
+          // Implement to specify custom expanded height
         }
 
-        // Returns the height of the table view cell.
-        - (CGFloat)adCellHeight;
-
-        // For expandable ad cells returns the height of the table view cell when expanded.
-        - (CGFloat)expandedAdCellHeight;
-
-        // Namo Media end
-
-6. Create Ads Proxy and assign the delegate and data source to it.
-
-  Add a private property
-
-        // Namo Media start
-        @property(nonatomic, strong) NamoAdsControllerProxy *adsProxy;
-        // Namo Media end
-
-   to the current `TableViewController`. In `viewDidLoad` add
-
-        // Namo Media start
-        self.adsProxy = [NamoAds proxyForController:self adCellProvider:self];
-
-        // Let the adsProxy handle cell interactions. It uses the delegate methods
-        // defined in tableView for content rows and defines interactions for the ad rows.
-        self.tableView.delegate = self.adsProxy;
-
-        // Let the adsProxy be the data source for the tableView. It uses dataSource
-        // methods from this tableView for content rows and ads data from Namo Media
-        // ad servers to display get the relevant advertising content.
-        self.tableView.dataSource = self.adsProxy;
-        // Namo Media end
-
-7. Request the ads
-
-  In `viewWillAppear` add
-
-        // TODO(tural) add targeting info
-        [self.adsProxy requestAdsWithTargeting:nil];
-
-8. Special cases to handle the expand properly.
-
-  Add a property to the header file for Ad cell (i.e. the content cell is using the same cell) a property to remember the expanded state:
-
-        // Namo Media start
-        @property(nonatomic, assign) BOOL isExpanded;
-        // Namo Media end
-
-  In `NamoAdCellProvider` make sure to set that property for the cell when expand event happens. In `bindExpandTarget`:
-   
-        // Namo Media start
-        <cell>.isExpanded = expand;
-        // Namo Media end
-
-  In `layoutSubviews`, add the following code right after `[super layoutSubviews]` to handle the expand properly:
-
-        // Namo Media start
-        if (self.isExpanded) {
-          [self.feedImageView setContentMode:UIViewContentModeScaleAspectFill];
-          return;
+        // Implement this method to return the placeholder image 
+        // for all ad image views while downloading from the server.
+        - (UIImage *)placeHolderImage {
+          // Implement to specify custom placeholder image
         }
-        [self.feedImageView setContentMode:<previous aspect>];
-        // Namo Media end
+
+        // Implement this method to customize the layout of an ad cell. 
+        // See NamoAdCell.h for methods you can use to customize your cell.
+        // One common pattern is to change the layout for the 
+        // UIView properties of the NamoAdCell. You can also set 
+        // supportsExpansion to allow the cell to expand when clicked.
+        - (void)layoutAdCell:(NamoAdCell *)cell {
+          // Implement this method if need to customize the
+          // layout of NamoAdCell.
+        }
+
+        // Implement this method to customize an ad cell based on 
+        // the content of the ad.
+        - (void)fillAdCell:(NamoAdCell *)cell withAdContent:(NamoAd *)ad {
+          // Implement to customize the content of the ad cell.
+        }
+
+  a. Use layoutAdCell method to customize the layout of the cell without having to create a custom cell.
+  
+  b. Use a custom xib file.
+  Set the xib class to be NamoAdCell (or your own class that derives from NamoAdCell).
+  
+  c. Extend NamoAdCell to create a custom cell.

@@ -1,6 +1,6 @@
 //
 // NamoAdsController.h
-// NamoAds iOS SDK
+// NamoMedia Ads SDK
 //
 // Copyright (c) 2013 NamoMedia. All rights reserved.
 //
@@ -10,7 +10,6 @@
 // - Requests ads from the NamoMedia servers
 // - Caches a small set of targeted ad responses for better performance
 // - Determines what index positions in your table should show ads based on your configuration
-// - Handles messages from a NamoAdItemDelegate to handle user interactions with ad cells
 // - Records user interactions such as clicks and impressions and logs this information to
 //   NamoMedia servers.
 //
@@ -18,18 +17,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "NamoAdContentBinder.h"
-
 @class NamoBackendClient;
 @class NamoTargeting;
-@protocol NamoAdCellProvider;
+@protocol NamoAdCellCustomizer;
 
-@interface NamoAdsController : NSObject<NamoAdContentBinderDelegate>
+@interface NamoAdsController : NSObject
 
 // Initializes the controller with a table view and backend client.
 - (id)initWithTableView:(UITableView *)tableView
                 backend:(NamoBackendClient *)backend
-         adCellProvider:(id<NamoAdCellProvider>)provider;
+       adCellCustomizer:(id<NamoAdCellCustomizer>)customizer;
 
 // Returns the row position of a table view adjusted for ads that should appear in stream.
 - (NSUInteger)adjustedPosition:(NSUInteger)position;

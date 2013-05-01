@@ -1,6 +1,6 @@
 //
 // NamoAdsSDK.h
-// NamoAds iOS SDK
+// NamoMedia Ads SDK
 //
 // NamoAdsSDK.h is the NamoAds library header file. Import this file to import
 // all the public header files in SDK.
@@ -9,15 +9,15 @@
 //
 
 #ifndef __IPHONE_5_0
-#warning "The NamoAds SDK uses features only available in iOS SDK 5.0 and later."
+#warning "The NamoMedia Ads SDK uses features only available in iOS SDK 5.0 and later."
 #endif
 
 // Model
 #import "NamoAd.h"
 
 // View
-#import "NamoAdCellProvider.h"
-#import "NamoAdContentBinder.h"
+#import "NamoAdCellCustomizer.h"
+#import "NamoAdCell.h"
 
 // Controller
 #import "NamoAdsController.h"

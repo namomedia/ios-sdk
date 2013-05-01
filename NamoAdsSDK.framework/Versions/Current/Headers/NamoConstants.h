@@ -1,10 +1,10 @@
 //
 // NamoConstants.h
-// NamoAds iOS SDK
+// NamoMedia Ads SDK
 //
 // Copyright (c) 2013 NamoMedia. All rights reserved.
 //
-// NamoConstants defines global constants for the NamoAds SDK.
+// NamoConstants defines global constants for the SDK.
 //
 
 #import <Foundation/Foundation.h>
