@@ -13,8 +13,33 @@
 // Initializes the ad object using a dictionary of key value pairs.
 - (id)initWithDictionary:(NSDictionary *)data;
 
-// Returns the value for the given key.
-- (NSString *)valueForKey:(NSString *)key;
+// Returns the advertiser name.
+- (NSString *)advertiserName;
 
-// TODO(nassar): Provide named values.
+// Returns the advertiser logo url.
+- (NSString *)advertiserLogoUrl;
+
+// Returns the ad title.
+- (NSString *)title;
+
+// Returns the ad text.
+- (NSString *)text;
+
+// Returns the ad image url.
+- (NSString *)imageUrl;
+
+// Returns the click target text.
+- (NSString *)clickTargetText;
+
+// Returns the click target url.
+- (NSString *)clickTargetUrl;
+
+// Returns the url for tracking impressions.
+- (NSString *)impressionTrackingUrl;
+
+// Returns the url for tracking expands.
+- (NSString *)expandTrackingUrl;
+
+// Returns the url for tracking clicks.
+- (NSString *)clickTrackingUrl;
 @end

@@ -35,7 +35,7 @@
 - (NSUInteger)adjustedPosition:(NSUInteger)position;
 
 // Returns the index path of a table view adjusted for ads that should appear in stream.
-- (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath __unused;
 
 // Given an adjusted row position, returns the original position in the table view.
 - (NSUInteger)originalPosition:(NSUInteger)adjustedPosition;

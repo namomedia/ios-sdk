@@ -13,8 +13,11 @@
 #import <UIKit/UIKit.h>
 
 @class NamoAdItem;
+@class NamoAd;
 
-typedef BOOL(^NamoExpandCallbackBlock)(BOOL);
+// Callback for performing expansion. The first argument is the new expand state. The second
+// argument indicates whether to perform animations.
+typedef BOOL(^NamoExpandCallbackBlock)(BOOL, BOOL);
 
 typedef BOOL(^NamoClickCallbackBlock)(NSURL *);
 
@@ -81,24 +84,47 @@ typedef BOOL(^NamoClickCallbackBlock)(NSURL *);
             height:(CGFloat)height
     expandedHeight:(CGFloat)expandedHeight;
 
-// Fill the cell content using the minimal set of fields needed to display an ad.
-- (void)fillViewsUsingTitle:(UILabel *)titleLabel
-                       text:(UILabel *)textLabel
-                  mainImage:(UIImageView *)mainImage;
+// Returns the advertising content for this binder. While you should typically use
+// the fill methods to allow the SDK to track clicks and impressions on your views,
+// you can alternatively use this object to directly set your view content.
+- (NamoAd *)adContent;
+
+// Fills the given label with the ad title.
+- (void)fillAdTitleUsingView:(UILabel *)label;
+
+// Fills the given label with the ad text.
+- (void)fillAdTextUsingView:(UILabel *)label;
+
+// Fills the given view with the ad image.
+- (void)fillAdImageUsingView:(UIImageView *)imageView;
+
+// Fills the given label with the advertiser name.
+- (void)fillAdvertiserNameUsingView:(UILabel *)label;
+
+// Fills the given view with the advertiser logo.
+- (void)fillAdvertiserLogoUsingView:(UIImageView *)imageView;
+
+// Fills the given view with a friendly label to display for click text.
+- (void)fillClickLabelUsingView:(UILabel *)label;
+
+// A convenience method to fill the given views with the ad title, text, and image. These are
+// the minimal fields you should typically use when displaying an ad.
+- (void)fillRequiredViewsForAdTitle:(UILabel *)titleLabel
+                             adText:(UILabel *)textLabel
+                            adImage:(UIImageView *)imageView;
 
 // Fill the cell content using the entire set of available fields for displaying an ad.
-// Pas nil for fields you don't wish to bind.
-- (void)fillViewsUsingTitle:(UILabel *)titleLabel
-                       text:(UILabel *)textLabel
-                  mainImage:(UIImageView *)mainImage
+// Pas nil for fields you don't wish to fill.
+- (void)fillViewsForAdTitle:(UILabel *)titleLabel
+                     adText:(UILabel *)textLabel
+                    adImage:(UIImageView *)mainImage
              advertiserName:(UILabel *)advertiserNameLabel
-             advertiserLogo:(UIImageView *)advertiserLogoImage
+             advertiserLogo:(UIImageView *)advertiserLogoImageView
                  clickLabel:(UILabel *)clickLabel;
 
 // Binds the click target view. Tapping on the target or any child will perform a click
-// action. By default, clicking will open a new URL using UIApplication.openURL:url. If you
-// wish to perform a custom action when clicking pass a callback block and return a BOOL
-// indicating whether the click was successfully performed.
+// action. If you wish to perform a custom action when clicking pass a callback block
+// and return a BOOL indicating whether the click was successfully performed.
 - (void)bindClickTarget:(UIView *)target
                callback:(NamoClickCallbackBlock)callback;
 
@@ -107,13 +133,15 @@ typedef BOOL(^NamoClickCallbackBlock)(NSURL *);
 - (void)bindClickTarget:(UIView *)target;
 
 // Binds the click target view. Tapping on the target or any child will perform an expand
-// action. By default, expanding will animate the image to the bottom of the cell. If you
-// wish to perform a custom action when expanding pass a callback block and return a BOOL
-// indicating whether the expansion was successfully performed.
+// action. If you wish to perform a custom action when expanding pass a callback block
+// and return a BOOL indicating whether the expansion was successfully performed.
 - (void)bindExpandTarget:(UIView *)target
                 callback:(NamoExpandCallbackBlock)callback;
 
 // See bindExpandTarget:callback. This version uses the default expand behavior, which
 // animates the ad image view to the bottom of the cell.
 - (void)bindExpandTarget:(UIView *)target;
+
+// Run default expansion behavior for an ad cell.
+- (BOOL)performDefaultExpand:(BOOL)expand withAnimations:(BOOL)animate;
 @end
