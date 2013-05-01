@@ -37,7 +37,7 @@ Integration steps:
 
 5. Include Ads in your stream
 
-  Create Ads Proxy and use it as your delegate and data source. Have your `TableViewController` implement `NamoAdCellProvider` protocol.
+  Create Ads Proxy and use it as your delegate and data source. Have your `TableViewController` implement `NamoAdCellCustomizer` protocol.
         
         #import <NamoAdsSDK/NamoAdsSDK.h>
         
@@ -47,7 +47,7 @@ Integration steps:
 
         -(void)ViewDidLoad {
 
-          self.adsProxy = [NamoAds proxyForController:self adCellProvider:self];
+          self.adsProxy = [NamoAds proxyForController:self adCellCustomizer:self];
 
           // Let the adsProxy handle cell interactions. It uses the delegate methods
           // defined in tableView for content rows and defines interactions for the ad rows.
@@ -65,10 +65,10 @@ Integration steps:
           [self.adsProxy requestAdsWithTargeting:nil];
         }
         
-        #pragma mark - NamoAdCellProvider
+        #pragma mark - NamoAdCellCustomizer
         
         // @required
-        // Should return a custom cell identifier for caching your 
+        // Should return a custom cell identifier for caching your
         // cells. The SDK uses the standard
         // UITableViewCell mechanism for reusing cells.
         - (NSString *)customAdCellIdentifier {
@@ -77,9 +77,9 @@ Integration steps:
 
 5. Customize the look of your Ad Cell (Optional)
 
-  To customize the look of your ad cell you need to implement the optional methods in NamoAdCellProvider in the relevant TableViewController. There are 3 common ways of doing this.
+  To customize the look of your ad cell you need to implement the optional methods in NamoAdCellCustomizer in the relevant TableViewController.
   
-        #pragma mark - NamoAdCellProvider
+        #pragma mark - NamoAdCellCustomizer
 
         // @optional
         // Implement this method to return a completely custom ad 
@@ -125,6 +125,8 @@ Integration steps:
         - (void)fillAdCell:(NamoAdCell *)cell withAdContent:(NamoAd *)ad {
           // Implement to customize the content of the ad cell.
         }
+
+  There are 3 common ways of doing this.
 
   a. Use layoutAdCell method to customize the layout of the cell without having to create a custom cell.
   
