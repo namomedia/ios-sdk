@@ -45,7 +45,7 @@ Integration steps:
         @property(nonatomic, strong) NamoAdsControllerProxy *adsProxy;
 
 
-        -(void)ViewDidLoad {
+        -(void)viewDidLoad {
 
           self.adsProxy = [NamoAds proxyForController:self adCellCustomizer:self];
 
@@ -77,7 +77,7 @@ Integration steps:
 
 5. Customize the look of your Ad Cell (Optional)
 
-  To customize the look of your ad cell you need to implement the optional methods in NamoAdCellCustomizer in the relevant TableViewController.
+  To customize the look of your ad cell you need to implement the optional methods in `NamoAdCellCustomizer` in the relevant `TableViewController`.
   
         #pragma mark - NamoAdCellCustomizer
 
