@@ -23,3 +23,5 @@
 #import "NamoAdsController.h"
 #import "NamoAdsControllerProxy.h"
 #import "NamoAds.h"
+#import "NamoTargeting.h"
+#import "NamoWebViewController.h"

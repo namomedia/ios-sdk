@@ -21,11 +21,35 @@
 @class NamoTargeting;
 
 @interface NamoAdsControllerProxy : NSObject<UITableViewDataSource, UITableViewDelegate>
+// The number of items to show for each ad in this controller. Defaults to 5.
+@property(nonatomic, assign) NSUInteger itemToAdRatio;
 
 // Initializes the object as a proxy for the given table view controller and namo ads controller.
 - (id)initForController:(UITableViewController *)controller
            adController:(NamoAdsController *)adController;
 
+// Initialize the objet as a proxy for the given table view and namo ads controller as well as
+// data source and delegate.
+- (id)initWithTableView:(UITableView *)tableView
+    tableViewDatasource:(NSObject<UITableViewDataSource> *)aDataSource
+      tableViewDelegate:(NSObject<UITableViewDelegate> *)aDelegate
+           adController:(NamoAdsController *)adController;
+
 // Requests ads with the given targeting params. Pass nil to return ads with no targeting.
 - (void)requestAdsWithTargeting:(NamoTargeting *)targeting;
+
+// Use this to inform the controller that a row were inserted manually. This will update ad indices.
+- (void)insertRowsAtIndexPaths:(NSArray *)adjustedIndexPaths;
+
+// Use this to inform the controller that a rows were deleted manually. This will update ad indices.
+- (void)removeRowsAtIndexPaths:(NSArray *)adjustedIndexPaths;
+
+// Use this to inform the controller that a row was moved. This will update ad indices.
+- (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath;
+
+// Returns the index path of a table view adjusted for ads that should appear in stream.
+- (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath;
+
+// Given an adjusted index path, returns the original index path in the table view.
+- (NSIndexPath *)originalIndexPath:(NSIndexPath *)adjustedIndexPath;
 @end

@@ -62,6 +62,28 @@ extern CGFloat const NamoDefaultExpandedCellHeight;
 // The sponsored text label for this cell.
 @property(nonatomic, strong) IBOutlet UILabel *sponsoredText;
 
+// The click target for this cell. Tapping this target or any child will perform
+// a click action, typically browsing to an modal web page using an advertising link.
+// By default the entire cell is the click target - set this property to specify
+// a custom target.
+@property(nonatomic, strong) UIView *clickTarget;
+
+// A click callback, called when the user taps the click target. Set this callback if
+// you wish to process the click yourself rather than letting the default behavior occur
+// for clicking. You should return YES from this method in order to log a click action
+// to the server.
+@property(nonatomic, copy) NamoClickCallbackBlock clickCallback;
+
+// The expand target for this cell. If supports supportsExpansion is set to YES, tapping
+// the expand target or any child view will perform an expand action. By default the entire
+// cell is an expand target - set this property to specify a custom target.
+@property(nonatomic, strong) UIView *expandTarget;
+
+// An expand callback, called when the user taps the expand target. Set this callback if
+// you wish to customize the expand behavior rather than letting the default expansion occur.
+// You should return YES from this method in order to log an expand action to the server.
+@property(nonatomic, copy) NamoExpandCallbackBlock expandCallback;
+
 // The currently bound ad item for this binder.
 @property(nonatomic, strong) NamoAdItem *adItem;
 
@@ -91,30 +113,7 @@ extern CGFloat const NamoDefaultExpandedCellHeight;
 // custom ad binding.
 - (void)bindAdContent:(NamoAd *)adContent;
 
-// See bindClickTarget:callback. This version uses the default click behavior, which
-// opens the click url in a WebView.
-- (void)bindClickTarget:(UIView *)target;
-
-// Binds a click target view. Tapping on the target or any child will perform a click
-// action. By default the entire cell is a click target - use this method to override
-// that behavior. You may choose to perform click handling yourself, in which case
-// you can pass a callback that returns a BOOL indicating whether the click was
-// successfully performed.
-- (void)bindClickTarget:(UIView *)target
-               callback:(NamoClickCallbackBlock)callback;
-
-// See bindExpandTarget:callback. This version uses the default expand behavior, which
-// animates the ad image view to the bottom of the cell.
-- (void)bindExpandTarget:(UIView *)target;
-
-// Binds the expand target view. Tapping on the target or any child will perform an expand
-// action. By default the entire cell is an expand target - use this method to override that
-// behavior. You may choose to perform expansion handling yourself, in which case you can
-// can pass a BOOL indicating the expand was successfully performed.
-- (void)bindExpandTarget:(UIView *)target
-                callback:(NamoExpandCallbackBlock)callback;
-
 // Run default expansion behavior for an ad cell. Does nothing if expansion is
 // not enabled on this cell, or if the cell is already in the given expand state.
-- (BOOL)performExpand:(BOOL)expand shouldAnimate:(BOOL)animate;
+- (BOOL)performDefaultExpansion:(BOOL)expand shouldAnimate:(BOOL)animate;
 @end

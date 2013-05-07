@@ -38,4 +38,11 @@
 // to provide your own ad cell implementation.
 + (NamoAdsController *)adControllerForTableView:(UITableView *)tableView
                                adCellCustomizer:(id<NamoAdCellCustomizer>)customizer;
+
+// See proxyForController. Specify a customizer to customize how your ads look, or
+// to provide your own ad cell implementation.
++ (NamoAdsControllerProxy *)proxyForTableView:(UITableView *)tableView
+                                   dataSource:(id<UITableViewDataSource>)dataSource
+                                     delegate:(id<UITableViewDelegate>)delegate
+                             adCellCustomizer:(id<NamoAdCellCustomizer>)customizer;
 @end

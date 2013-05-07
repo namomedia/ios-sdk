@@ -22,6 +22,8 @@
 @protocol NamoAdCellCustomizer;
 
 @interface NamoAdsController : NSObject
+// The number of items to show for each ad in this controller. Defaults to 5.
+@property(nonatomic, assign) NSUInteger itemToAdRatio;
 
 // Initializes the controller with a table view and backend client.
 - (id)initWithTableView:(UITableView *)tableView
@@ -32,7 +34,7 @@
 - (NSUInteger)adjustedPosition:(NSUInteger)position;
 
 // Returns the index path of a table view adjusted for ads that should appear in stream.
-- (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath __unused;
+- (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath;
 
 // Given an adjusted row position, returns the original position in the table view.
 - (NSUInteger)originalPosition:(NSUInteger)adjustedPosition;
@@ -49,6 +51,23 @@
 // Returns the number of rows in the table view adjusted for ads that should appear in stream.
 - (NSInteger)adjustedNumberOfRows:(NSUInteger)numberOfRows;
 
+// Use this to inform the controller that a row were inserted manually. This will update ad indices.
+- (void)insertRowAtIndexPath:(NSIndexPath *)adjustedIndexPath;
+
+// Use this to inform the controller that a rows were deleted manually. This will update ad indices.
+- (void)removeRowAtIndexPath:(NSIndexPath *)adjustedIndexPath;
+
+// Use this to inform the controller that a row was moved. This will update ad indices.
+- (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath;
+
+// Returns the cell at this index path.
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 // Requests ads from the NamoMedia servers with targeting information.
 - (void)requestAdsWithTargeting:(NamoTargeting *)targeting;
+
+// Returns the height for the row at this index path.
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
