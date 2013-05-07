@@ -47,16 +47,19 @@ Integration steps:
 
         -(void)viewDidLoad {
 
-          self.adsProxy = [NamoAds proxyForController:self adCellCustomizer:self];
-
+          self.adsProxy = [NamoAds proxyForTableView:self.<your table view>
+                                  dataSource:self
+                                    delegate:self
+                            adCellCustomizer:self];
+                            
           // Let the adsProxy handle cell interactions. It uses the delegate methods
           // defined in tableView for content rows and defines interactions for the ad rows.
-          self.tableView.delegate = self.adsProxy;
-
+          someTableView.delegate = self.adsProxy;
+          
           // Let the adsProxy be the data source for the tableView. It uses dataSource
           // methods from this tableView for content rows and ads data from Namo Media
           // ad servers to display get the relevant advertising content.
-          self.tableView.dataSource = self.adsProxy;
+          someTableView.dataSource = self.adsProxy;
         }
   
 
@@ -75,7 +78,7 @@ Integration steps:
           // Return custom identifier for your ad cell
         }
 
-5. Customize the look of your Ad Cell (Optional)
+6. Customize the look of your Ad Cell (Optional)
 
   To customize the look of your ad cell you need to implement the optional methods in `NamoAdCellCustomizer` in the relevant `TableViewController`.
   
