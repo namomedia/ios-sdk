@@ -45,8 +45,6 @@ typedef void(^NamoAdsRequestCompletionBlock)(NSArray *ads, NSError *error);
 // An enumeration describing possible interaction types.
 typedef enum {
   NamoInteractionTypeView = 0,
-  NamoInteractionTypeExpand,
-  NamoInteractionTypeUnExpand,
   NamoInteractionTypeClick
 } InteractionType;
 

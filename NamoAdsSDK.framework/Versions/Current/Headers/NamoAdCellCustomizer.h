@@ -7,6 +7,9 @@
 // The NamoAdCellCustomizer class defines methods for customizing ad cells.
 //
 
+// TODO(nassar): Include some concept of ad type to allow differentiating between normal ads,
+// install ads, gallery ads, etc.
+
 #import <Foundation/Foundation.h>
 #import "NamoAdCell.h"
 
@@ -22,25 +25,19 @@
 // layoutAdCell instead of implementing this method.
 - (NamoAdCell *)createCustomAdCell:(NSString *)identifier;
 
-// Implement this method to customize the height of your table view cell. Default is
-// NamoAdCellDefaultHeight.
-- (CGFloat)adCellHeight;
-
-// Implement this method to customize the height of your cell when expanded. This only applies
-// to cells which support expansion. Default is NamoAdCellDefaultExpandedHeight.
-- (CGFloat)adCellExpandedHeight;
-
-// Implement this method to return the placeholder image for all ad image views while downloading
-// from the server.
-- (UIImage *)placeHolderImage;
-
-// Implement this method to customize the layout of an ad cell. See NamoAdCell.h for methods
-// you can use to customize your cell. One common pattern is to change the layout for the UIView
-// properties of the NamoAdCell. You can also set supportsExpansion to allow the cell to expand
-// when clicked.
+// Implement this method to customize the layout of an ad cell. One common pattern is to change the
+// layout for UIView properties defined by NamoAdCell. See NamoAdCellTemplates.h for methods
+// you can use to help with layout of your cell.
 - (void)layoutAdCell:(NamoAdCell *)cell;
 
 // Implement this method to customize an ad cell based on the content of the ad.
 - (void)fillAdCell:(NamoAdCell *)cell withAdContent:(NamoAd *)ad;
 
+// Implement this method to customize the height of your table view cell. Default is
+// NamoAdCellDefaultHeight.
+- (CGFloat)adCellHeight;
+
+// Implement this method to return the placeholder image for all ad image views while downloading
+// from the server.
+- (UIImage *)placeHolderImage;
 @end

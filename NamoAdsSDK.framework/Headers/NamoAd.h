@@ -37,9 +37,6 @@
 // Returns the url for tracking impressions.
 - (NSString *)impressionTrackingUrl;
 
-// Returns the url for tracking expands.
-- (NSString *)expandTrackingUrl;
-
 // Returns the url for tracking clicks.
 - (NSString *)clickTrackingUrl;
 @end

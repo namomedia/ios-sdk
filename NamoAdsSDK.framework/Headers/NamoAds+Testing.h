@@ -15,4 +15,7 @@
 // Debugging method for setting an ad server URL. You do not need to set this URL for normal
 // use of the SDK.
 + (void)setAdServerUrl:(NSString *)url;
+
+// Debugging for getting the ad server URL.
++ (NSString *)adServerUrl;
 @end

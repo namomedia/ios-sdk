@@ -25,9 +25,6 @@
 // Returns whether this ad item has been viewed in the current list context.
 @property(nonatomic, assign) BOOL hasBeenViewed;
 
-// Returns whether this ad item is in an expanded state
-@property(nonatomic, assign) BOOL isExpanded;
-
 // Initializes the object with an ad and a position.
 - (id)initWithAd:(NamoAd *)ad position:(NSUInteger)position;
 @end
