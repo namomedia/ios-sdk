@@ -12,8 +12,6 @@
 #warning "The NamoMedia Ads SDK uses features only available in iOS SDK 5.0 and later."
 #endif
 
-#import "NamoWebAdsHelper.h"
-
 // Model
 #import "NamoAd.h"
 
