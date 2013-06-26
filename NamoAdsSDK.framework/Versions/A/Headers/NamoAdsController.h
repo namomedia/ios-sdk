@@ -51,6 +51,10 @@
 // Returns the number of rows in the table view adjusted for ads that should appear in stream.
 - (NSInteger)adjustedNumberOfRows:(NSUInteger)numberOfRows;
 
+// Call this if you are changing the number of rows in your table and want to also update the
+// add positions. This also calls [tableView reloadData].
+- (void)reloadData;
+
 // Use this to inform the controller that a row were inserted manually. This will update ad indices.
 - (void)insertRowAtIndexPath:(NSIndexPath *)adjustedIndexPath;
 

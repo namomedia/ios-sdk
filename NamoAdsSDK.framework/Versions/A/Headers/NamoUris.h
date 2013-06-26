@@ -19,7 +19,9 @@ extern NSString *const NamoAdServerLocalUrl;
 
 // Required params
 extern NSString *const NamoParamAppId;
-extern NSString *const NamoParamDeviceId;
+extern NSString *const NamoParamMacAddressHash;
+extern NSString *const NamoParamAdvertisingId;
+extern NSString *const NamoParamTrackingEnabled;
 
 // Optional application level params
 extern NSString *const NamoParamBundleId;

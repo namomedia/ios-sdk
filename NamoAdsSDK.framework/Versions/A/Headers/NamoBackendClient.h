@@ -28,4 +28,9 @@
 - (void)sendInteractionWithUrl:(NSString *)url
                         viewId:(NSUInteger)viewId
                interactionType:(InteractionType)type;
+
+// Get device data in series of Javascript variable declarations in a string.
+// The string looks like: namo.advertisingIdentifier={ad_id};namo.trackingEnabled={bool} ...
+- (NSString *)getJavascriptString;
+
 @end

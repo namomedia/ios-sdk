@@ -13,30 +13,17 @@
 // Initializes the ad object using a dictionary of key value pairs.
 - (id)initWithDictionary:(NSDictionary *)data;
 
-// Returns the advertiser name.
-- (NSString *)advertiserName;
-
-// Returns the advertiser logo url.
-- (NSString *)advertiserLogoUrl;
-
-// Returns the ad title.
-- (NSString *)title;
-
-// Returns the ad text.
-- (NSString *)text;
-
-// Returns the ad image url.
-- (NSString *)imageUrl;
-
-// Returns the click target text.
-- (NSString *)clickTargetText;
-
-// Returns the click target url.
-- (NSString *)clickTargetUrl;
-
-// Returns the url for tracking impressions.
-- (NSString *)impressionTrackingUrl;
-
-// Returns the url for tracking clicks.
-- (NSString *)clickTrackingUrl;
+@property(nonatomic, strong) NSString *adId;
+@property(nonatomic, strong) NSString *adGroupId;
+@property(nonatomic, strong) NSString *campaignId;
+@property(nonatomic, strong) NSString *requestId;
+@property(nonatomic, strong) NSString *advertiserName;
+@property(nonatomic, strong) NSString *advertiserLogoUrl;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *text;
+@property(nonatomic, strong) NSString *imageUrl;
+@property(nonatomic, strong) NSString *clickTargetText;
+@property(nonatomic, strong) NSString *clickTargetUrl;
+@property(nonatomic, strong) NSString *impressionTrackingUrl;
+@property(nonatomic, strong) NSString *clickTrackingUrl;
 @end
