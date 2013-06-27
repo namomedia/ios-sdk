@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface NamoWebViewDelegate : NSObject<UIWebViewDelegate>
-- (NamoWebViewDelegate *)initWithAppId:(NSString *)appId;
 @end
