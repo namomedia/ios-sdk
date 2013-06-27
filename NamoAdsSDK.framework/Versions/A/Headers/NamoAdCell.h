@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 
 #import "NamoAd.h"
+
 @class NamoAdItem;
 @class NamoAdCell;
 

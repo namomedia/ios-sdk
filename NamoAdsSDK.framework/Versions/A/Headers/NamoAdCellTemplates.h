@@ -14,9 +14,9 @@
 @interface NamoAdCellTemplates : NSObject
 
 // Layout the default ad cell, which is a banner like ad with the image on the left.
-+ (void)layoutNormalTemplate:(NamoAdCell *) cell;
++ (void)layoutNormalTemplate:(NamoAdCell *)cell;
 
 // Layout the default ad cell, which is a banner like ad with the image on the left.
-+ (void)layoutInstallTemplate:(NamoAdCell *) cell;
++ (void)layoutInstallTemplate:(NamoAdCell *)cell;
 
 @end

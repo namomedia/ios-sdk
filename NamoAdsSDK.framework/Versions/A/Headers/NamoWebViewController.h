@@ -12,8 +12,8 @@
 
 
 @interface NamoWebViewController : UIViewController
-@property (retain,nonatomic) UIWebView *webView;
+@property(retain, nonatomic) UIWebView *webView;
 @property(nonatomic, copy) void (^dismissCallback)(NamoWebViewController *);
 
-- (id)initWithUrl:(NSURL*)url;
+- (id)initWithUrl:(NSURL *)url;
 @end

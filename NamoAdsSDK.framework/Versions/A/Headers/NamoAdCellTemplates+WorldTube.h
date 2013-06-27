@@ -17,10 +17,10 @@
 @interface NamoAdCellTemplates (WorldTube)
 
 // Layout the default ad cell, which is a banner like ad with the image on the left.
-+ (void)layoutWorldTubeNormalTemplate:(NamoAdCell *) cell;
++ (void)layoutWorldTubeNormalTemplate:(NamoAdCell *)cell;
 
 // Layout the default ad cell, which is a banner like ad with the image on the left.
-+ (void)layoutWorldTubeInstallTemplate:(NamoAdCell *) cell;
++ (void)layoutWorldTubeInstallTemplate:(NamoAdCell *)cell;
 
 @end
 
@@ -55,7 +55,8 @@
   advertiserName.minimumScaleFactor = 0.8;
 
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  cell.contentView.backgroundColor = [UIColor colorWithRed:0.237 green:0.354 blue:0.704 alpha:1.000];
+  cell.contentView.backgroundColor =
+      [UIColor colorWithRed:0.237 green:0.354 blue:0.704 alpha:1.000];
 }
 
 + (void)layoutWorldTubeInstallTemplate:(NamoAdCell *)cell {
@@ -84,7 +85,7 @@
   [cell addSubview:downloadImage];
 
   // Ad some constraints when the content changes.
-  cell.contentChangedBlock = ^(NamoAdCell * changedCell, NamoAd *ad) {
+  cell.contentChangedBlock = ^(NamoAdCell *changedCell, NamoAd *ad) {
     // Change install button width based on the text
     UIButton *button = changedCell.installButton;
     CGRect buttonFrame = button.frame;

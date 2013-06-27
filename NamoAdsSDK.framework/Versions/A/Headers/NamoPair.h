@@ -10,8 +10,8 @@
 #import <Foundation/Foundation.h>
 
 @interface NamoPair : NSObject
-@property (nonatomic, retain) id key;
-@property (nonatomic, retain) id value;
+@property(nonatomic, retain) id key;
+@property(nonatomic, retain) id value;
 
 // Initialize the pair with a key an value.
 - (id)initWithKey:(id)key value:(id)value;

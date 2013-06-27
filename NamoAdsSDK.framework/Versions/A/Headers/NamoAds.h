@@ -49,12 +49,12 @@
 
 // Injects the data needed for serving ads in a UIWebView context. This method should be called
 // within your UIWebViewDelegate's viewDidFinishLoad method.
-+ (void)injectDataToWebView:(UIWebView*)webView
-                  withAppId:(NSString *) appId;
++ (void)injectDataToWebView:(UIWebView *)webView
+                  withAppId:(NSString *)appId;
 
 // Allocates and initializes a UIWebViewDelegate that you can assign to your UIWebView's
 // delegate property. This delegate simply call [NamoAds injectDataToWebView: withAppId:]
 // in its viewDidFinishLoad method.
-+ (id<UIWebViewDelegate>)uiWebViewDelegate:(NSString *) appId;
++ (id<UIWebViewDelegate>)uiWebViewDelegate:(NSString *)appId;
 
 @end
