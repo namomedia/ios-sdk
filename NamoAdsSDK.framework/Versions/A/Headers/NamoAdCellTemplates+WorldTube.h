@@ -41,22 +41,25 @@
   adImage.contentMode = UIViewContentModeScaleAspectFill;
 
   UILabel *sponsoredText = cell.sponsoredText;
-  sponsoredText.hidden = YES;
+  sponsoredText.hidden = NO;
+  sponsoredText.frame = CGRectMake(127.0, 73.0, 160.0, 22.0);
+  sponsoredText.backgroundColor = [UIColor clearColor];
+  sponsoredText.textColor = [UIColor colorWithWhite:1.000 alpha:1.000];
+  [sponsoredText setFont:[UIFont boldSystemFontOfSize:13.0f]];
+  sponsoredText.adjustsFontSizeToFitWidth = YES;
+  sponsoredText.minimumScaleFactor = 0.8;
+  // Replace 'SPONSORED' with 'Ad'
+  sponsoredText.text = @"Ad";
 
-  UIImageView *advertiserLogo = cell.advertiserLogo;
-  advertiserLogo.frame = CGRectMake(127.0, 75.0, 19.0, 19.0);
+  // No advertiser logo for this format
+  cell.advertiserLogo.hidden = YES;
 
-  UILabel *advertiserName = cell.advertiserName;
-  advertiserName.frame = CGRectMake(152.0, 73.0, 160.0, 22.0);
-  advertiserName.backgroundColor = [UIColor clearColor];
-  advertiserName.textColor = [UIColor colorWithWhite:1.000 alpha:1.000];
-  [advertiserName setFont:[UIFont boldSystemFontOfSize:13.0f]];
-  advertiserName.adjustsFontSizeToFitWidth = YES;
-  advertiserName.minimumScaleFactor = 0.8;
+  // No advertiser name for this format
+  cell.advertiserName.hidden = YES;
 
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
   cell.contentView.backgroundColor =
-      [UIColor colorWithRed:0.237 green:0.354 blue:0.704 alpha:1.000];
+      [UIColor colorWithRed:0 green:0 blue:0 alpha:1.000];
 }
 
 + (void)layoutWorldTubeInstallTemplate:(NamoAdCell *)cell {
@@ -73,7 +76,7 @@
   UIImage *installImage = [[UIImage imageNamed:@"worldtube_button.png"]
       resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   [installButton setBackgroundImage:installImage forState:UIControlStateNormal];
-  [installButton setTitleColor:[UIColor colorWithRed:0.237 green:0.354 blue:0.704 alpha:1.0]
+  [installButton setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]
                       forState:UIControlStateNormal];
   cell.installButton = installButton;
   [cell addSubview:installButton];
