@@ -33,7 +33,7 @@
   adText.backgroundColor = [UIColor clearColor];
   adText.numberOfLines = 3;
   adText.textColor = [UIColor colorWithWhite:1.000 alpha:1.000];
-  [adText setFont:[UIFont boldSystemFontOfSize:15.0f]];
+  [adText setFont:[UIFont boldSystemFontOfSize:12.0f]];
 
   UIImageView *adImage = cell.adImage;
   adImage.frame = CGRectMake(0.0, 0.0, 119.0, 102.0);
@@ -42,10 +42,10 @@
 
   UILabel *sponsoredText = cell.sponsoredText;
   sponsoredText.hidden = NO;
-  sponsoredText.frame = CGRectMake(127.0, 73.0, 160.0, 22.0);
+  sponsoredText.frame = CGRectMake(127.0, 66.0, 160.0, 22.0);
   sponsoredText.backgroundColor = [UIColor clearColor];
   sponsoredText.textColor = [UIColor colorWithWhite:1.000 alpha:1.000];
-  [sponsoredText setFont:[UIFont boldSystemFontOfSize:13.0f]];
+  [sponsoredText setFont:[UIFont boldSystemFontOfSize:12.0f]];
   sponsoredText.adjustsFontSizeToFitWidth = YES;
   sponsoredText.minimumScaleFactor = 0.8;
   // Replace 'SPONSORED' with 'Ad'
@@ -59,7 +59,7 @@
 
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
   cell.contentView.backgroundColor =
-      [UIColor colorWithRed:0 green:0 blue:0 alpha:1.000];
+      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.000];
 }
 
 + (void)layoutWorldTubeInstallTemplate:(NamoAdCell *)cell {
@@ -72,7 +72,7 @@
   [cell.advertiserName setFont:[UIFont systemFontOfSize:13.0f]];
 
   UIButton *installButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  installButton.frame = CGRectMake(247.0, 71.0, 64.0, 24.0);
+  installButton.frame = CGRectMake(247.0, 58.0, 62.0, 24.0);
   UIImage *installImage = [[UIImage imageNamed:@"worldtube_button.png"]
       resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   [installButton setBackgroundImage:installImage forState:UIControlStateNormal];
