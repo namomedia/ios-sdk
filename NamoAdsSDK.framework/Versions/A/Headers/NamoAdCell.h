@@ -17,22 +17,14 @@
 @class NamoAdItem;
 @class NamoAdCell;
 
-// Callback for performing clicks. The URL is the target URL for an advertisement.
-typedef BOOL(^NamoClickCallbackBlock)(NSURL *);
+// Callback for when the cell performed layout.
+typedef void(^NamoLayoutChangedBlock)(NamoAdCell *);
 
-// Callback for adding layout constraints when ad content changes.
+// Callback for when the ad content changes.
 typedef void(^NamoAdContentChangedBlock)(NamoAdCell *, NamoAd *);
 
-// A delegate to support getting callbacks for various user interactions.
-@protocol NamoAdCellInteractionDelegate<NSObject>
-@required
-// Tells the delegate that the item was viewed for a significant period of time.
-- (void)mightBeImpression:(NamoAdCell *)cell;
-
-// Tells the delegate that the item was clicked.
-- (void)adItemWasClicked:(NamoAdItem *)adItem;
-@end
-
+// Callback for actions, suc as impressions and clicks.
+typedef void(^NamoActionBlock)(NamoAdCell *);
 
 extern CGFloat const NamoDefaultCellHeight;
 
@@ -68,24 +60,28 @@ extern CGFloat const NamoDefaultCellHeight;
 // a custom target.
 @property(nonatomic, strong) UIView *clickTarget;
 
-// A click callback, called when the user taps the click target. Set this callback if
-// you wish to process the click yourself rather than letting the default behavior occur
-// for clicking. You should return YES from this method in order to log a click action
-// to the server.
-@property(nonatomic, copy) NamoClickCallbackBlock clickCallback;
+// A callback when the ad layout changes. This block is reserved for use by the SDK. You
+// should typically use NamoAdCellCustomizer instead.
+@property(nonatomic, copy) NamoLayoutChangedBlock layoutChangedCallback;
 
 // The callback when the ad content changes. This block is reserved for use by the SDK. You
 // should typically use the NamoAdCellCustomizer instead.
-@property(nonatomic, copy) NamoAdContentChangedBlock contentChangedBlock;
+@property(nonatomic, copy) NamoAdContentChangedBlock contentChangedCallback;
+
+// An impression callback, called when the ad has been viewed for a significant period
+// of time.
+@property(nonatomic, copy) NamoActionBlock impressionCallback;
+
+// A click callback, called when the user taps the click target. Set this callback if
+// you wish to process the click yourself rather than letting the default behavior occur
+// for clicking.
+@property(nonatomic, copy) NamoActionBlock clickCallback;
 
 // The currently bound ad item for this binder.
 @property(nonatomic, strong) NamoAdItem *adItem;
 
 // A placeholder image for the cell.
 @property(nonatomic, strong) UIImage *placeHolderImage;
-
-// The callback delegate for interactions.
-@property(nonatomic, strong) id<NamoAdCellInteractionDelegate> interactionDelegate;
 
 // Designated initializer. Initializes the cell with an identifier.
 - (id)initWithIdentifier:(NSString *)identifier;

@@ -48,13 +48,13 @@
   [sponsoredText setFont:[UIFont boldSystemFontOfSize:12.0f]];
   sponsoredText.adjustsFontSizeToFitWidth = YES;
   sponsoredText.minimumScaleFactor = 0.8;
-  // Replace 'SPONSORED' with 'Ad'
+  // Replace 'SPONSORED' with 'Ad'.
   sponsoredText.text = @"Ad";
 
-  // No advertiser logo for this format
+  // No advertiser logo for this format.
   cell.advertiserLogo.hidden = YES;
 
-  // No advertiser name for this format
+  // No advertiser name for this format.
   cell.advertiserName.hidden = YES;
 
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -72,13 +72,14 @@
   [cell.advertiserName setFont:[UIFont systemFontOfSize:13.0f]];
 
   UIButton *installButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  installButton.frame = CGRectMake(247.0, 58.0, 62.0, 24.0);
+  installButton.frame = CGRectMake(195.0, 58.0, 117.0, 24.0);
   UIImage *installImage = [[UIImage imageNamed:@"worldtube_button.png"]
       resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   [installButton setBackgroundImage:installImage forState:UIControlStateNormal];
   [installButton setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]
                       forState:UIControlStateNormal];
   cell.installButton = installButton;
+  [installButton setTitle:@"Download App" forState:UIControlStateNormal];
   [cell addSubview:installButton];
 
   UIImageView *downloadImage =
@@ -87,23 +88,24 @@
   downloadImage.image = [UIImage imageNamed:@"worldtube_download.png"];
   [cell addSubview:downloadImage];
 
-  // Ad some constraints when the content changes.
-  cell.contentChangedBlock = ^(NamoAdCell *changedCell, NamoAd *ad) {
-    // Change install button width based on the text
-    UIButton *button = changedCell.installButton;
-    CGRect buttonFrame = button.frame;
-    CGFloat buttonRight = buttonFrame.origin.x + buttonFrame.size.width;
-    CGFloat buttonWidth = [ad.clickTargetText sizeWithFont:button.titleLabel.font].width + 14;
-    buttonFrame.origin.x = buttonRight - buttonWidth;
-    buttonFrame.size.width = buttonWidth;
-    button.frame = buttonFrame;
-    [button setTitle:ad.clickTargetText forState:UIControlStateNormal];
-
-    // Change the publisher name width to take up the remaining space.
-    CGRect nameFrame = changedCell.advertiserName.frame;
-    nameFrame.size.width = button.frame.origin.x - nameFrame.origin.x - 5;
-    changedCell.advertiserName.frame = nameFrame;
-  };
+//
+//  // Ad some constraints when the content changes.
+//  cell.contentChangedCallback = ^(NamoAdCell *changedCell, NamoAd *ad) {
+//    // Change install button width based on the text.
+//    UIButton *button = changedCell.installButton;
+//    CGRect buttonFrame = button.frame;
+//    CGFloat buttonRight = buttonFrame.origin.x + buttonFrame.size.width;
+//    CGFloat buttonWidth = [ad.clickTargetText sizeWithFont:button.titleLabel.font].width + 14;
+//    buttonFrame.origin.x = buttonRight - buttonWidth;
+//    buttonFrame.size.width = buttonWidth;
+//    button.frame = buttonFrame;
+//
+//
+//    // Change the publisher name width to take up the remaining space.
+//    CGRect nameFrame = changedCell.advertiserName.frame;
+//    nameFrame.size.width = button.frame.origin.x - nameFrame.origin.x - 5;
+//    changedCell.advertiserName.frame = nameFrame;
+//  };
 }
 
 @end
