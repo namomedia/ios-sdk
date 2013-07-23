@@ -42,7 +42,7 @@
 
   UILabel *sponsoredText = cell.sponsoredText;
   sponsoredText.hidden = NO;
-  sponsoredText.frame = CGRectMake(127.0, 66.0, 160.0, 22.0);
+  sponsoredText.frame = CGRectMake(127.0, 60.0, 160.0, 22.0);
   sponsoredText.backgroundColor = [UIColor clearColor];
   sponsoredText.textColor = [UIColor colorWithWhite:1.000 alpha:1.000];
   [sponsoredText setFont:[UIFont boldSystemFontOfSize:12.0f]];
