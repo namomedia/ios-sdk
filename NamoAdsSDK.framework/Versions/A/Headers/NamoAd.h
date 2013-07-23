@@ -26,4 +26,5 @@
 @property(nonatomic, strong) NSString *clickTargetUrl;
 @property(nonatomic, strong) NSString *impressionTrackingUrl;
 @property(nonatomic, strong) NSString *clickTrackingUrl;
+@property(nonatomic, strong) NSString *actionType;
 @end

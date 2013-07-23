@@ -85,27 +85,8 @@
   UIImageView *downloadImage =
       [[UIImageView alloc] initWithFrame:CGRectMake(36.0, 32.0, 45.0, 36.0)];
   downloadImage.contentMode = UIViewContentModeScaleToFill;
-  downloadImage.image = [UIImage imageNamed:@"worldtube_download.png"];
+  downloadImage.image = [UIImage imageNamed:@"wt_download_overlay_v2.png"];
   [cell addSubview:downloadImage];
-
-//
-//  // Ad some constraints when the content changes.
-//  cell.contentChangedCallback = ^(NamoAdCell *changedCell, NamoAd *ad) {
-//    // Change install button width based on the text.
-//    UIButton *button = changedCell.installButton;
-//    CGRect buttonFrame = button.frame;
-//    CGFloat buttonRight = buttonFrame.origin.x + buttonFrame.size.width;
-//    CGFloat buttonWidth = [ad.clickTargetText sizeWithFont:button.titleLabel.font].width + 14;
-//    buttonFrame.origin.x = buttonRight - buttonWidth;
-//    buttonFrame.size.width = buttonWidth;
-//    button.frame = buttonFrame;
-//
-//
-//    // Change the publisher name width to take up the remaining space.
-//    CGRect nameFrame = changedCell.advertiserName.frame;
-//    nameFrame.size.width = button.frame.origin.x - nameFrame.origin.x - 5;
-//    changedCell.advertiserName.frame = nameFrame;
-//  };
 }
 
 @end
