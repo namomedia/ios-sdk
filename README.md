@@ -1,4 +1,4 @@
 ios-sdk
 =======
 
-See our [Support Site](https://github.com/namomedia/SupportDocs/blob/master/iOSSdkGettingStarted.md) for help getting started with the iOS SDK.
+See our [Support Site](http://namomedia.github.io/index.html) for help getting started with the iOS SDK.
