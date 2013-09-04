@@ -1,7 +1,7 @@
-#import "UIImageView+NAMO_WebCache.h"
-
-#import "NAMOAdData.h"
 #import "NAMOTableViewAdCellThumb.h"
+
+// If you are building your own cell based on this file, replace these imports with <Namo/Namo.h>
+#import "NAMOAdData.h"
 #import "UIImageView+NAMOImage.h"
 
 
