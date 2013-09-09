@@ -21,7 +21,7 @@
  `[tableView reloadData]` with calls to `[tableView namo_reloadData]`, which informs the ad placer that
  the number of rows in your table may have changed.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface UITableView (NAMOTableViewAdPlacer)
 
@@ -34,7 +34,7 @@
  warning log message.
 
  @return The ad placer currently bound to this table, or `nil`.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (NAMOTableViewAdPlacer *)namo_adPlacer;
 
@@ -42,7 +42,7 @@
  Returns the index path adjuster for this table. See `NAMOIndexPathAdjuster`.
 
  @return The index path adjuster for this table, or `nil` if there is none.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (NAMOIndexPathAdjuster *)namo_indexPathAdjuster;
 
@@ -62,7 +62,7 @@
   `[self.tableView namo_registerAdCellClass:[NAMOTableViewAdCellThumb class]];`
  
  @param cellClass The class to register.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_registerAdCellClass:(Class<NAMOTableViewAdCell>)cellClass;
 
@@ -77,7 +77,7 @@
  If you want to detach the ad placer, use `NAMOAdPlacer bindToTableView:nil` instead.
 
  @param dataSource The new table view data source.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_setDataSource:(id<UITableViewDataSource>)dataSource;
 
@@ -88,7 +88,7 @@
  `tableView dataSource`.
 
  @return The original table view data source.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (id<UITableViewDataSource>)namo_dataSource;
 
@@ -101,7 +101,7 @@
  If you want to detach the ad placer, use `NAMOAdPlacer bindToTableView:nil` instead.
 
  @param delegate The new table view delegate.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_setDelegate:(id<UITableViewDelegate>)delegate;
 
@@ -112,7 +112,7 @@
  `tableView delegate`.
 
  @return The original table view delegate.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (id<UITableViewDelegate>)namo_delegate;
 
@@ -125,7 +125,7 @@
  row counts, which might cause an InternalConsistency error when performing certain operations on
  your table view, such as deleting rows.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_reloadData;
 
@@ -139,7 +139,7 @@
  @param adjustedIndexPaths An array of NSIndexPath objects each representing a row index and
      section index that together identify a row in the table view.
  @param animation A constant that either specifies the kind of animation to perform when inserting.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_insertRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;
@@ -153,7 +153,7 @@
 
  @param adjustedIndexPaths An array of NSIndexPath objects identifying the rows to delete.
  @param animation A constant that indicates how the deletion is to be animated.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_deleteRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;
@@ -168,7 +168,7 @@
  @param indexPath An index path identifying the row to move.
  @param newIndexPath An index path identifying the row that is the destination of the row at
      indexPath.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_moveRowAtIndexPath:(NSIndexPath *)indexPath
                     toIndexPath:(NSIndexPath *)newIndexPath;
@@ -179,7 +179,7 @@
 
  @param adjustedIndexPaths An array of `NSIndexPath` objects identifying the rows to reload.
  @param animation A constant that indicates how the reloading is to be animated.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_reloadRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;

@@ -7,7 +7,7 @@
  NAMOWebViewAdPlacer places ads into your UIWebView by inserting a Javascript snippet that
  can be read by the NAMO Javascript SDK.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface NAMOWebViewAdPlacer : NSObject
 
@@ -17,7 +17,7 @@
  Create and return a new web view placer.
 
  @return The newly created web view placer.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 + (NAMOWebViewAdPlacer *)adPlacer;
 
@@ -28,7 +28,7 @@
  ads from the server and include them in your stream.
 
  @param webView The web view into which to bind ads.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)bindToWebView:(UIWebView *)webView;
 @end

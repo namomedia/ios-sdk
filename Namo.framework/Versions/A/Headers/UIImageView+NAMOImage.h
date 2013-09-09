@@ -13,7 +13,7 @@
  internally. The requests also generate image URLs that allow the Namo Media server to scale the
  image to the exact dimensions needed in order to reduce network bandwidth.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface UIImageView (NAMOImage)
 
@@ -25,7 +25,7 @@
  This makes an asynchronous request for the image.
 
  @param adData Ad data downloaded from the server.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)namo_bindAdImage:(NAMOAdData *)adData;
 
@@ -35,7 +35,7 @@
  This makes an asynchronous request for the icon.
 
  @param adData Ad data downloaded from the server.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (void)namo_bindAdIcon:(NAMOAdData *)adData;
 

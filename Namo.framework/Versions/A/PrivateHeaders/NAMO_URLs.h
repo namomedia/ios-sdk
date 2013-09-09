@@ -6,57 +6,63 @@
 #import "NAMORequest.h"
 #import "NAMOAdData.h"
 
-// Base urls
-extern NSString *const NamoAdServerURL;
-
-extern NSString *const NamoImageServerURL;
-extern NSString *const NamoImageServerLocalURL;
-
 // Required params
-extern NSString *const NamoParamAppId;
-extern NSString *const NamoParamMacAddressHash;
-extern NSString *const NamoParamAdvertisingId;
-extern NSString *const NamoParamTrackingEnabled;
+extern NSString *const NAMOParamAppId;
+extern NSString *const NAMOParamMacAddressHash;
+extern NSString *const NAMOParamAdvertisingId;
+extern NSString *const NAMOParamTrackingEnabled;
 
 // Optional application level params
-extern NSString *const NamoParamBundleId;
-extern NSString *const NamoParamBundleVersion;
-extern NSString *const NamoParamUserInfo;
-extern NSString *const NamoParamSequence;
-extern NSString *const NamoParamConnectionType;
-extern NSString *const NamoParamScreenWidth;
-extern NSString *const NamoParamScreenHeight;
-extern NSString *const NamoParamSdkVersion;
-extern NSString *const NamoParamCarrier;
-extern NSString *const NamoParamLocalTime;
-extern NSString *const NamoParamTimeSinceAppOpened;
+extern NSString *const NAMOParamBundleId;
+extern NSString *const NAMOParamBundleVersion;
+extern NSString *const NAMOParamUserInfo;
+extern NSString *const NAMOParamSequence;
+extern NSString *const NAMOParamConnectionType;
+extern NSString *const NAMOParamScreenWidth;
+extern NSString *const NAMOParamScreenHeight;
+extern NSString *const NAMOParamSdkVersion;
+extern NSString *const NAMOParamCarrier;
+extern NSString *const NAMOParamLocalTime;
+extern NSString *const NAMOParamTimeSinceAppOpened;
 
 // Optional view level params
-extern NSString *const NamoParamViewId;
-extern NSString *const NamoParamViewSequence;
-extern NSString *const NamoParamNumAds;
-extern NSString *const NamoParamSectionId;
-extern NSString *const NamoParamKeywords;
-extern NSString *const NamoParamTimeSinceViewOpened;
-
-// Additional interaction params
-extern NSString *const NamoParamActionType;
+extern NSString *const NAMOParamViewId;
+extern NSString *const NAMOParamViewSequence;
+extern NSString *const NAMOParamNumAds;
+extern NSString *const NAMOParamSectionId;
+extern NSString *const NAMOParamKeywords;
+extern NSString *const NAMOParamTimeSinceViewOpened;
 
 /**
- NAMO_URLs defines utility messages for generating uris
+ NAMO_URLs defines utility messages for generating URLs.
 */
 @interface NAMO_URLs : NSObject
 
 /**
- Encodes a query parameter for safe use in a URI.
+ Ad server URL.
+ */
++ (NSURL *)adServerURL;
+
+/**
+ Image server URL.
+ */
++ (NSURL *)imageServerURL;
+
+/**
+ Local image server URL.
+ */
++ (NSURL *)imageServerLocalURL;
+
+/**
+ Encodes a query parameter for safe use in a URL.
 */
 + (NSString *)encodeQueryParam:(id)object;
 
 /**
- Builds a URI using the base url and nil terminated array of NAMOPair arguments,
+ Builds a URL using the base url and nil terminated array of NAMOPair arguments,
  The returned URI will be properly encoded.
 */
-+ (NSString *)URIWithBase:(NSString *)baseURL params:(NSArray *)pairs;
++ (NSURL *)URLWithBase:(NSURL *)baseURL params:(NSArray *)pairs;
 
 /**
  Returns a url parameter value for the given network status.
@@ -71,6 +77,6 @@ extern NSString *const NamoParamActionType;
 /**
  Returns true if the url points to a known imageServer instance.
 */
-+ (BOOL)isKnownImageServerURL:(NSString*)url;
++ (BOOL)isKnownImageServerURL:(NSURL *)url;
 
 @end

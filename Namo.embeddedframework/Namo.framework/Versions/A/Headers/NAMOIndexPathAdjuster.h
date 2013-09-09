@@ -11,7 +11,7 @@
  to use it directly to translate positions in your dataSource to positions in your table view,
  or vice versa.
  
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface NAMOIndexPathAdjuster : NSObject
 
@@ -22,7 +22,7 @@
 
  @param indexPath The original index path.
  @return The index path of a row adjusted based on ad placement in the stream.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath;
 
@@ -31,7 +31,7 @@
 
  @param adjustedIndexPath The adjusted index path.
  @return The original index path.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (NSIndexPath *)originalIndexPath:(NSIndexPath *)adjustedIndexPath;
 
@@ -41,7 +41,7 @@
  Whether the row at the given index path is an ad.
 
  @param adjustedIndexPath The adjusted index path.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (BOOL)isAdAtIndexPath:(NSIndexPath *)adjustedIndexPath;
 
@@ -50,7 +50,7 @@
 
  @param adjustedIndexPath An adjusted index path.
  @return The ad at the index path, or nil if there is no ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (NAMOAdData *)adAtIndexPath:(NSIndexPath *)adjustedIndexPath;
 
@@ -63,7 +63,7 @@
  @param originalNumberOfRows The original number of rows in the section.
  @param section The section index.
  @return The adjusted number of rows in the section.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (NSInteger)adjustedNumberOfRows:(NSUInteger)originalNumberOfRows forSection:(NSInteger)section;
 

@@ -6,7 +6,7 @@
  This protocol serves as a common interface for requesting ads from the server and placing them
  into your stream.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @protocol NAMOAdPlacer<NSObject>
 
@@ -21,7 +21,7 @@
  @param firstPosition The first position within a section at which to show an ad.
  @param spacing The spacing between subsequent ads.
  @param maxAds The maximum number of ads to display.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)setAdPlacementWithFirstPosition:(NSUInteger)firstPosition
                                 spacing:(NSUInteger)spacing
@@ -37,7 +37,7 @@
  @param firstPosition The first position within the section at which to show an ad.
  @param spacing The spacing between subsequent ads.
  @param maxAds The maximum number of ads to display.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)setAdPlacementForSection:(NSUInteger)section
                    firstPosition:(NSUInteger)firstPosition
@@ -56,7 +56,7 @@
  Once ads are returned from the server, the placer will call your TableView reloadData method
  to ensure that ads are displayed in your stream.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (void)requestAds;
 @end

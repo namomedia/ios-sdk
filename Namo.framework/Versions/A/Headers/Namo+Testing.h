@@ -12,21 +12,21 @@
  Debugging method for setting an ad server URL. You do not need to set this URL for normal
  use of the SDK.
 */
-+ (void)setAdServerURL:(NSString *)url;
++ (void)setAdServerURL:(NSURL *)url;
 
 /**
  Debugging method for setting an image server URL. You do not need to set this URL for normal use
  of the SDK.
 */
-+ (void)setImageServerURL:(NSString *)url;
++ (void)setImageServerURL:(NSURL *)url;
 
 /**
  Debugging for getting the ad server URL.
 */
-+ (NSString *)adServerURL;
++ (NSURL *)adServerURL;
 
 /**
  Debugging for getting the image server URL.
 */
-+ (NSString *)imageServerURL;
++ (NSURL *)imageServerURL;
 @end

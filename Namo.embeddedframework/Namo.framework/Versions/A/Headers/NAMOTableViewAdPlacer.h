@@ -3,7 +3,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "NamoAdPlacer.h"
+#import "NAMOAdPlacer.h"
 
 @class NAMOWebViewController;
 
@@ -34,7 +34,7 @@
        [self.adPlacer requestAds];
      }
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface NAMOTableViewAdPlacer : NSObject<NAMOAdPlacer, UITableViewDataSource, UITableViewDelegate>
 
@@ -44,7 +44,7 @@
  Creates and returns a new ad placer.
 
  @return The new ad placer.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 + (NAMOTableViewAdPlacer *)adPlacer;
 
@@ -64,7 +64,7 @@
  a table view.
 
  @param tableView The table view to bind.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 - (void)bindToTableView:(UITableView *)tableView;
 

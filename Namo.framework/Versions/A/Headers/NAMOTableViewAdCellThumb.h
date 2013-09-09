@@ -15,7 +15,7 @@
  cell as a nib with matching UIView outlets for this cell, or you can copy this cell implementation
  and create your own cell.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface NAMOTableViewAdCellThumb : UITableViewCell<NAMOTableViewAdCell>
 
@@ -25,7 +25,7 @@
  A short ad title label.
 
  @return The title for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UILabel *adTitleLabel;
 
@@ -33,7 +33,7 @@
  Ad text label.
 
  @return The text for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UILabel *adTextLabel;
 
@@ -42,7 +42,7 @@
  An advertiser name label.
 
  @return The advertiser name for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UILabel *advertiserNameLabel;
 
@@ -50,7 +50,7 @@
  The primary ad image URL.
 
  @return The image view for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UIImageView *adImageView;
 
@@ -60,7 +60,7 @@
  This image will show a different image for link, install, and video ads.
 
  @return The image view for the overlay.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UIImageView *adOverlayImageView;
 
@@ -68,7 +68,7 @@
  An advertiser icon image view.
 
  @return The advertiser icon for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UIImageView *advertiserIconImageView;
 
@@ -76,7 +76,7 @@
  A small indicator showing a clear ad demarcation for this ad, such as "Ads by Namo"
 
  @return The ad indicator image view.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UIImageView *adIndicatorImageView;
 @end

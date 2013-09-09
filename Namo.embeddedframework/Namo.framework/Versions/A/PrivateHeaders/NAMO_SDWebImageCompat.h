@@ -30,11 +30,11 @@
 #endif
 
 #if OS_OBJECT_USE_OBJC
-    #define NAMO_SDDispatchQueueRelease(q)
+    #define NAMO_SDDispatchQueueRelease(q) 
     #define NAMO_SDDispatchQueueSetterSementics strong
 #else
-    #define NAMO_SDDispatchQueueRelease
-    #define NAMO_SDDispatchQueueSetterSementics
+    #define NAMO_SDDispatchQueueRelease(q) dispatch_release(q)
+    #define NAMO_SDDispatchQueueSetterSementics assign
 #endif
 
 extern inline UIImage *namo_SDScaledImageForPath(NSString *path, NSObject *imageOrData);

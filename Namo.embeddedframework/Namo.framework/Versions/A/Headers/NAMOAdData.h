@@ -5,7 +5,7 @@
 /**
  The action type for an Ad.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 typedef NS_ENUM(NSInteger, NAMOActionType) {
   /** The ad opens an in-app browser with a web URL. */
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
 /**
  Defines data for a Namo ad returned from the server.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 @interface NAMOAdData : NSObject
 
@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  title above the ad text.
 
  @return The title for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (NSString *)title;
 
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  font on an iPhone.
 
  @return The text for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (NSString *)text;
 
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  Showing the advertiser name is optional.
 
  @return The advertiser name for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (NSString *)advertiserName;
 
@@ -65,11 +65,9 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  ad. The SDK will correctly handle different action types when clicking on your ad cell.
 
  @return The action type associated with this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 - (NAMOActionType)actionType;
-
-// TODO(nassar): Change to return NSURL
 
 /**
  The action URL.
@@ -79,9 +77,9 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  default action handling behavior.
 
  @return The action URL for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
-- (NSString *)actionURL;
+- (NSURL *)actionURL;
 
 /**
  The primary ad image URL.
@@ -94,9 +92,9 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  appropriately.
 
  @return The image URL for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
-- (NSString *)imageURL;
+- (NSURL *)imageURL;
 
 /**
  An advertiser icon URL.
@@ -106,7 +104,7 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  minimum size of 14x14.
 
  @return The advertiser icon for this ad.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
-- (NSString *)advertiserIconURL;
+- (NSURL *)advertiserIconURL;
 @end

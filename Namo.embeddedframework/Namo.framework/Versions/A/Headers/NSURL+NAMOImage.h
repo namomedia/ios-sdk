@@ -13,7 +13,7 @@
  the image should scale to different aspect ratios. These functions return a URL for an ad
  image that will return an image with the given dimensions.
 
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 @interface NSURL (NAMOImage)
 
@@ -26,7 +26,7 @@
  @param adData Ad data downloaded from the server.
  @param imageSize The desired image size to return for the URL.
  @return An image URL for the ad image.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 + (NSURL *)namo_URLForImageWithAdData:(NAMOAdData *)adData size:(CGSize)imageSize;
 
@@ -38,7 +38,7 @@
  @param imageSize The desired image size to return for the URL.
  @param scaleFactor The scale factor applied to the image.
  @return An image URL for the ad image.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
 */
 + (NSURL *)namo_URLForImageWithAdData:(NAMOAdData *)adData
                                  size:(CGSize)imageSize
@@ -52,7 +52,7 @@
  @param adData Ad data downloaded from the server.
  @param imageSize The desired image size to return for the URL.
  @return An advertiser icon URL for the ad image.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 + (NSURL *)namo_URLForIconWithAdData:(NAMOAdData *)adData size:(CGSize)imageSize;
 
@@ -64,7 +64,7 @@
  @param imageSize The desired image size to return for the URL.
  @param scaleFactor The scale factor applied to the image.
  @return An advertiser icon URL for the ad image.
- @available NamoAds 1.0 and later.
+ @available Namo 1.0 and later.
  */
 + (NSURL *)namo_URLForIconWithAdData:(NAMOAdData *)adData
                                 size:(CGSize)imageSize

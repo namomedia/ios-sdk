@@ -1,46 +1,31 @@
 // Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
+
 #import <UIKit/UIKit.h>
 
+// If you are building your own cell based on this file, replace this imports with <Namo/Namo.h>
 #import "NAMOTableViewAdCell.h"
 
 /**
- A table view cell for displaying a photo ad format.
-
- A _Photo Ad_ is an ad whose information is primarily based on a large photo. These ads are
- suitable to display in streams that have have image rich content and only a small amount of text,
- if any. For example, a Pinterest stream would typically display photo ads.
-
- You can use this photo cell as a template to build your own ad cell. You can either build your
- cell as a nib with matching UIView outlets for this cell, or you can copy this cell implementation
- and create your own cell.
+ A table view cell for social streams. Does not display the ad text
 
  @available Namo 1.0 and later.
-*/
-@interface NAMOTableViewAdCellPhoto : UITableViewCell<NAMOTableViewAdCell>
+ */
+@interface NAMOTableViewAdCellSocial1 : UITableViewCell<NAMOTableViewAdCell>
 
 /// @name Managing cell content
 
 /**
  A short ad title label.
-
+ 
  @return The title for this ad.
  @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UILabel *adTitleLabel;
 
 /**
- Ad text label.
-
- @return The text for this ad.
- @available Namo 1.0 and later.
- */
-@property(nonatomic, strong) UILabel *adTextLabel;
-
-
-/**
  An advertiser name label.
-
+ 
  @return The advertiser name for this ad.
  @available Namo 1.0 and later.
  */
@@ -48,7 +33,7 @@
 
 /**
  The primary ad image URL.
-
+ 
  @return The image view for this ad.
  @available Namo 1.0 and later.
  */
@@ -56,9 +41,9 @@
 
 /**
  An image overlay for displaying an action hint.
-
+ 
  This image will show a different image for link, install, and video ads.
-
+ 
  @return The image view for the overlay.
  @available Namo 1.0 and later.
  */
@@ -66,18 +51,18 @@
 
 /**
  An advertiser icon image view.
-
+ 
  @return The advertiser icon for this ad.
  @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UIImageView *advertiserIconImageView;
 
 /**
- A small indicator showing a clear ad demarcation for this ad, such as "Ads by Namo"
-
- @return The ad indicator image view.
+ A text indicator explaining that this is an ad. It says "sponsored post".
+ 
+ @return The ad indicator label.
  @available Namo 1.0 and later.
  */
-@property(nonatomic, strong) UIImageView *adIndicatorImageView;
+@property(nonatomic, strong) UILabel *adIndicatorLabel;
 
 @end

@@ -1,29 +1,51 @@
-// Copyright (c) 2013 Namo Media, Inc. All rights reserved.
+/*
+The MIT License (MIT)
+
+Copyright (c) 2013 Namo Media, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
 
 #import <UIKit/UIKit.h>
 
-#import "NAMOTableViewAdCell.h"
+#import <Namo/NAMOTableViewAdCell.h>
 
 /**
  A table view cell for displaying a photo ad format.
-
+ 
  A _Photo Ad_ is an ad whose information is primarily based on a large photo. These ads are
  suitable to display in streams that have have image rich content and only a small amount of text,
  if any. For example, a Pinterest stream would typically display photo ads.
-
+ 
  You can use this photo cell as a template to build your own ad cell. You can either build your
  cell as a nib with matching UIView outlets for this cell, or you can copy this cell implementation
  and create your own cell.
-
+ 
  @available NamoAds 1.0 and later.
-*/
-@interface NAMOTableViewAdCellPhoto : UITableViewCell<NAMOTableViewAdCell>
+ */
+@interface AdCellPhoto : UITableViewCell<NAMOTableViewAdCell>
 
 /// @name Managing cell content
 
 /**
  A short ad title label.
-
+ 
  @return The title for this ad.
  @available NamoAds 1.0 and later.
  */
@@ -31,7 +53,7 @@
 
 /**
  Ad text label.
-
+ 
  @return The text for this ad.
  @available NamoAds 1.0 and later.
  */
@@ -40,7 +62,7 @@
 
 /**
  An advertiser name label.
-
+ 
  @return The advertiser name for this ad.
  @available NamoAds 1.0 and later.
  */
@@ -48,7 +70,7 @@
 
 /**
  The primary ad image URL.
-
+ 
  @return The image view for this ad.
  @available NamoAds 1.0 and later.
  */
@@ -56,9 +78,9 @@
 
 /**
  An image overlay for displaying an action hint.
-
+ 
  This image will show a different image for link, install, and video ads.
-
+ 
  @return The image view for the overlay.
  @available NamoAds 1.0 and later.
  */
@@ -66,7 +88,7 @@
 
 /**
  An advertiser icon image view.
-
+ 
  @return The advertiser icon for this ad.
  @available NamoAds 1.0 and later.
  */
@@ -74,7 +96,7 @@
 
 /**
  A small indicator showing a clear ad demarcation for this ad, such as "Ads by Namo"
-
+ 
  @return The ad indicator image view.
  @available NamoAds 1.0 and later.
  */
