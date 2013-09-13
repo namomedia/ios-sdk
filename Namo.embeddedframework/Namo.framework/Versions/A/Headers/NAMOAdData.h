@@ -1,4 +1,4 @@
-//  Copyright (c) 2013 Namo Media. All rights reserved.
+// Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
 #import <Foundation/Foundation.h>
 
@@ -8,11 +8,20 @@
  @available Namo 1.0 and later.
 */
 typedef NS_ENUM(NSInteger, NAMOActionType) {
-  /** The ad opens an in-app browser with a web URL. */
+  /**
+   The ad opens an in-app browser with a web URL.
+   */
   NAMOActionTypeLink,
-  /** The ad opens an in-app video player with a video feed URL. */
+
+  /**
+   The ad opens an in-app video player with a video feed URL.
+   */
   NAMOActionTypeVideo,
-  /** The ad opens the App Store with an iTunes app URL. */
+
+  /**
+   The ad opens the App Store with an iTunes app URL. The action URL may also link to an
+   intermediary attribution tracking platform before redirecting to iTunes, such as HasOffers.
+   */
   NAMOActionTypeInstall
 };
 

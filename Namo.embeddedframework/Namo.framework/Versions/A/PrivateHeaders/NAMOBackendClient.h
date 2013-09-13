@@ -5,6 +5,8 @@
 #import "NAMORequest.h"
 #import "NAMOAdData.h"
 
+@class NAMOTargeting;
+
 /**
  Monotonically increasing SDK version. This is used by the server to determine what
  features are supported by the SDK.
@@ -63,6 +65,8 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
  Requests ads from the server
  */
 - (void)requestAdsWithNumAds:(NSUInteger) numAds
+            adCellIdentifier:(NSString *)adCellIdentifier
+                   targeting:(NAMOTargeting *)targeting
                       viewId:(NSUInteger)viewId
                   completion:(void(^)(NSArray *))callback;
 
@@ -71,6 +75,14 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
 */
 - (void)sendInteractionWithURL:(NSURL *)url
                         viewId:(NSUInteger)viewId;
+
+/**
+ Sends video interaction information to the server by following the given interaction url.
+*/
+- (void)sendInteractionWithURL:(NSURL *)url
+                        viewId:(NSUInteger)viewId
+               videoViewLength:(NSUInteger)videoView
+              videoTotalLength:(NSUInteger)videoTotal;
 
 /**
  Javascript that can be used to bind a webview to ad data.

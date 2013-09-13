@@ -29,9 +29,27 @@ extern NSString *const NAMOParamTimeSinceAppOpened;
 extern NSString *const NAMOParamViewId;
 extern NSString *const NAMOParamViewSequence;
 extern NSString *const NAMOParamNumAds;
-extern NSString *const NAMOParamSectionId;
-extern NSString *const NAMOParamKeywords;
 extern NSString *const NAMOParamTimeSinceViewOpened;
+
+// Optional list of supported format types. On iOS, these correspond to the
+// cell reuseIdentifier, which the server can use for targeting.
+extern NSString *const NAMOParamFormatTypes;
+
+// Optional targeting params
+extern NSString *const NAMOParamTargetGender;
+extern NSString *const NAMOParamTargetEducation;
+extern NSString *const NAMOParamTargetRelationshipStatus;
+extern NSString *const NAMOParamTargetAge;
+extern NSString *const NAMOParamTargetZipCode;
+extern NSString *const NAMOParamTargetSearchTerm;
+extern NSString *const NAMOParamTargetBirthday;
+extern NSString *const NAMOParamTargetInterests;
+extern NSString *const NAMOParamTargetMusicType;
+extern NSString *const NAMOParamTargetSport;
+
+// Optional video params
+extern NSString *const NAMOParamVideoViewLength;
+extern NSString *const NAMOParamVideoTotalLength;
 
 /**
  NAMO_URLs defines utility messages for generating URLs.
@@ -75,7 +93,7 @@ extern NSString *const NAMOParamTimeSinceViewOpened;
 + (NSString *)URLStringForActionType:(NAMOActionType)type;
 
 /**
- Returns true if the url points to a known imageServer instance.
+ Returns true if the url points to a known image server instance.
 */
 + (BOOL)isKnownImageServerURL:(NSURL *)url;
 

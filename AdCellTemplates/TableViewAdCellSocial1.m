@@ -1,13 +1,10 @@
-#import "NAMOTableViewAdCellSocial1.h"
+#import <Namo/Namo.h>
+#import "TableViewAdCellSocial1.h"
 
-// If you are building your own cell based on this file, replace these imports with <Namo/Namo.h>
-#import "NAMOAdData.h"
-#import "UIImageView+NAMOImage.h"
-
-@implementation NAMOTableViewAdCellSocial1
+@implementation TableViewAdCellSocial1
 
 + (NSString *)reuseIdentifier {
-  return @"NAMOTableViewAdCellThumb";
+  return @"TableViewAdCellThumb";
 }
 
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width {
@@ -63,10 +60,6 @@
     self.adIndicatorLabel.text = @"Sponsored Post";
     [self addSubview:self.adIndicatorLabel];
     
-    self.adOverlayImageView = [[UIImageView alloc] init];
-    self.adOverlayImageView.contentMode = UIViewContentModeCenter;
-    [self addSubview:self.adOverlayImageView];
-    
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
   }
@@ -118,8 +111,6 @@
   self.advertiserNameLabel.frame = CGRectOffset(advertiserNameRect, 4.0f, 0.0f);
   self.adIndicatorLabel.frame = line2Rect;
   self.adTitleLabel.frame = line3Rect;
-  
-  self.adOverlayImageView.frame = adImageRect;
 }
 
 #pragma mark - NAMOAdCell implementation
@@ -129,22 +120,6 @@
   [self.advertiserIconImageView namo_bindAdIcon:adData];
   self.advertiserNameLabel.text = adData.advertiserName;
   self.adTitleLabel.text = adData.text; //TODO(gabor): Our ads don't have titles, only text. We should change that.
-  
-  // Fix the overlay image
-  switch (adData.actionType) {
-    case NAMOActionTypeVideo:
-      [self.adOverlayImageView setHidden:NO];
-      self.adOverlayImageView.image = [UIImage imageNamed:@"namo-action-type-overlay-video.png"];
-      break;
-    case NAMOActionTypeInstall:
-      [self.adOverlayImageView setHidden:NO];
-      self.adOverlayImageView.image = [UIImage imageNamed:@"namo-action-type-overlay-install.png"];
-      break;
-    case NAMOActionTypeLink:
-    default:
-      [self.adOverlayImageView setHidden:YES];
-      break;
-  }
 }
 
 

@@ -1,11 +1,11 @@
-#import "AdCellThumb.h"
+#import "TableViewAdCellThumb.h"
 
 #import <Namo/Namo.h>
 
-@implementation AdCellThumb
+@implementation TableViewAdCellThumb
 
 + (NSString *)reuseIdentifier {
-  return @"NAMOTableViewAdCellThumb";
+  return @"TableViewAdCellThumb";
 }
 
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width {

@@ -7,6 +7,12 @@
 @interface NAMOIndexPathAdjuster (Internal)
 
 /**
+ An index path adjuster which doesn't actually adjust anything. Useful as a sentinel value
+ when a table isn't yet bound.
+*/
++ (NAMOIndexPathAdjuster *) nonAdjustingAdjuster;
+
+/**
  Called to rebuild the ad indexes.
 */
 - (void)readjust;
@@ -32,14 +38,14 @@
 - (void)setAdData:(NSArray *)adData;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (void)setAdPlacementWithSpacing:(NSUInteger)spacing
                     firstPosition:(NSUInteger)firstPosition
                            maxAds:(NSUInteger)maxAds;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (void)setAdPlacementForSection:(NSUInteger)section
                      withSpacing:(NSUInteger)spacing
@@ -47,37 +53,37 @@
                           maxAds:(NSUInteger)maxAds;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (BOOL)hasAdsForSection:(NSUInteger)section;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (NSUInteger)firstPositionForSection:(NSUInteger)section;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (NSUInteger)spacingForSection:(NSUInteger)section;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (NSUInteger)maxAdsForSection:(NSUInteger)section;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (void)insertRowsAtIndexPaths:(NSArray *)adjustedIndexPaths;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (void)deleteRowsAtIndexPaths:(NSArray *)adjustedIndexPaths;
 
 /**
- @see NAMOAdPlacer.h
+ @see UITableView+NAMOAdPlacer.h
 */
 - (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath;
 

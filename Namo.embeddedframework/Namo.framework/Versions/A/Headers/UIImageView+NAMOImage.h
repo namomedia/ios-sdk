@@ -1,4 +1,4 @@
-//  Copyright (c) 2013 Namo Media. All rights reserved.
+// Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
 // UIImageView category that adds methods for binding Namo Ad Images into the view.
 
@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- A category to help bind UIImageViews to and ad image, providing server side image scaling, a
+ A category to help bind UIImageViews to an ad image, providing server side image scaling, a
  lightweight caching framework, and appropriate network throttling.
 
  The image requests generated from using this category use the popular SDWebImageCache library

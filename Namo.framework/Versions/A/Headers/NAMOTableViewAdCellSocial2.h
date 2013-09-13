@@ -1,17 +1,18 @@
 // Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
-
 #import <UIKit/UIKit.h>
 
-// If you are building your own cell based on this file, replace this imports with <Namo/Namo.h>
 #import "NAMOTableViewAdCell.h"
 
 /**
- A table view cell for social streams. Does not display the ad text
-
+ A table view cell for social streams with a big photo. 
+ 
+ Only displays ad title, not ad text.
+ 
  @available Namo 1.0 and later.
  */
-@interface NAMOTableViewAdCellSocial1 : UITableViewCell<NAMOTableViewAdCell>
+
+@interface NAMOTableViewAdCellSocial2 : UITableViewCell<NAMOTableViewAdCell>
 
 /// @name Managing cell content
 
@@ -38,16 +39,6 @@
  @available Namo 1.0 and later.
  */
 @property(nonatomic, strong) UIImageView *adImageView;
-
-/**
- An image overlay for displaying an action hint.
- 
- This image will show a different image for link, install, and video ads.
- 
- @return The image view for the overlay.
- @available Namo 1.0 and later.
- */
-@property(nonatomic, strong) UIImageView *adOverlayImageView;
 
 /**
  An advertiser icon image view.

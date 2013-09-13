@@ -5,13 +5,14 @@
 #import "NAMOTableViewAdCell.h"
 
 /**
- A table view cell for social streams.
+ A table view cell for social streams with a big photo. 
  
  Only displays ad title, not ad text.
  
  @available Namo 1.0 and later.
  */
-@interface NAMOTableViewAdCellSocial1 : UITableViewCell<NAMOTableViewAdCell>
+
+@interface NAMOTableViewAdCellSocial2 : UITableViewCell<NAMOTableViewAdCell>
 
 /// @name Managing cell content
 

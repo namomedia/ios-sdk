@@ -1,17 +1,14 @@
 // Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
+#import <Namo/Namo.h>
 #import <UIKit/UIKit.h>
 
-#import "NAMOTableViewAdCell.h"
-
 /**
- A table view cell for social streams.
- 
- Only displays ad title, not ad text.
- 
+ A table view cell for social streams. Does not display the ad text
+
  @available Namo 1.0 and later.
  */
-@interface NAMOTableViewAdCellSocial1 : UITableViewCell<NAMOTableViewAdCell>
+@interface TableViewAdCellSocial1 : UITableViewCell<NAMOTableViewAdCell>
 
 /// @name Managing cell content
 

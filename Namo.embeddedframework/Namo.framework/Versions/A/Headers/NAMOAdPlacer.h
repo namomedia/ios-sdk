@@ -2,6 +2,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class NAMOTargeting;
+
 /**
  This protocol serves as a common interface for requesting ads from the server and placing them
  into your stream.
@@ -58,5 +60,5 @@
 
  @available Namo 1.0 and later.
  */
-- (void)requestAds;
+- (void)requestAds:(NAMOTargeting *)targeting;
 @end

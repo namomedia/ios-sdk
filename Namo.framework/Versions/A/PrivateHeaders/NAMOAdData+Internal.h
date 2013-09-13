@@ -1,10 +1,11 @@
-//  Copyright (c) 2013 Namo Media. All rights reserved.
+// Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
 #import <Foundation/Foundation.h>
 #import "NAMOAdData.h"
 
-// TODO(nassar): Documentation
-
+/**
+ Defines non-public data for a NAMOAd.
+ */
 @interface NAMOAdData (Internal)
 
 #pragma - mark Initializers
@@ -52,4 +53,9 @@
  overriding click tracking for direct sold ads.
  */
 - (NSURL *)clickTrackingURL;
+
+/**
+ The url for video view tracking.
+ */
+- (NSURL *)videoViewTrackingURL;
 @end

@@ -31,7 +31,7 @@
      }
 
      - (void)viewWillAppear:(BOOL)animated {
-       [self.adPlacer requestAds];
+       [self.adPlacer requestAds:nil];
      }
 
  @available Namo 1.0 and later.

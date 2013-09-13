@@ -1,8 +1,8 @@
-#import "AdCellPhoto.h"
+#import "TableViewAdCellPhoto.h"
 
 #import <Namo/Namo.h>
 
-@implementation AdCellPhoto
+@implementation TableViewAdCellPhoto
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -74,7 +74,7 @@
 #pragma mark - NAMOAdCell implementation
 
 + (NSString *)reuseIdentifier {
-  return @"NAMOTableViewAdCellPhoto";
+  return @"TableViewAdCellPhoto";
 }
 
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width {

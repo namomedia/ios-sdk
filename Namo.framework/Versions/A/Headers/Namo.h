@@ -19,6 +19,7 @@
 #import "NAMOAdData.h"
 #import "UIImageView+NAMOImage.h"
 #import "NSURL+NAMOImage.h"
+#import "NAMOTargeting.h"
 
 #import "NAMOAdPlacer.h"
 #import "NAMOIndexPathAdjuster.h"
@@ -26,6 +27,7 @@
 #import "UITableView+NAMOAdPlacer.h"
 #import "NAMOTableViewAdCellPhoto.h"
 #import "NAMOTableViewAdCellSocial1.h"
+#import "NAMOTableViewAdCellSocial2.h"
 #import "NAMOTableViewAdCellThumb.h"
 
 #import "NAMOWebViewAdPlacer.h"
