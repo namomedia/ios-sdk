@@ -81,8 +81,8 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
 */
 - (void)sendInteractionWithURL:(NSURL *)url
                         viewId:(NSUInteger)viewId
-               videoViewLength:(NSUInteger)videoView
-              videoTotalLength:(NSUInteger)videoTotal;
+               videoViewLength:(NSTimeInterval)videoView
+              videoTotalLength:(NSTimeInterval)videoTotal;
 
 /**
  Javascript that can be used to bind a webview to ad data.

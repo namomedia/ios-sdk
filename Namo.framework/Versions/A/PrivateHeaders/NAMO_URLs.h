@@ -40,7 +40,6 @@ extern NSString *const NAMOParamTargetGender;
 extern NSString *const NAMOParamTargetEducation;
 extern NSString *const NAMOParamTargetRelationshipStatus;
 extern NSString *const NAMOParamTargetAge;
-extern NSString *const NAMOParamTargetZipCode;
 extern NSString *const NAMOParamTargetSearchTerm;
 extern NSString *const NAMOParamTargetBirthday;
 extern NSString *const NAMOParamTargetInterests;

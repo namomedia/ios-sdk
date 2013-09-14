@@ -57,7 +57,7 @@
 /**
  Start or stop the SDK from connecting to the server for ads.
 
- When not active, calling `[NAMOAdPlacer requestAds]` will log a warning message. To prevent this
+ When not active, calling `[NAMOAdPlacer requestAds:targeting]` will log a warning message. To prevent this
  warning, you can check the active value before requesting ads.
 
  @param active Whether to enable or disable serving ads.

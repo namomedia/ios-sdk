@@ -58,6 +58,7 @@
  Once ads are returned from the server, the placer will call your TableView reloadData method
  to ensure that ads are displayed in your stream.
 
+ @param targeting Targeting information sent in the ad request.
  @available Namo 1.0 and later.
  */
 - (void)requestAds:(NAMOTargeting *)targeting;
