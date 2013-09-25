@@ -1,6 +1,7 @@
 // Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class NAMOTargeting;
 
@@ -8,9 +9,58 @@
  This protocol serves as a common interface for requesting ads from the server and placing them
  into your stream.
 
+ To change ad placement use the `setAdPlacement` method. If you do not specify ad placement,
+ Namo will place ads at default locations. In version 1.0, this is a first position of 6, spacing
+ of 6, and maximum number of ads of 10. This is subject to change in future version of the SDK.
+
  @available Namo 1.0 and later.
 */
-@protocol NAMOAdPlacer<NSObject>
+@interface NAMOAdPlacer : NSObject
+
+/**
+ Creates and returns a new ad placer.
+ 
+ @return The new ad placer.
+ @available Namo 1.0 and later.
+ */
++ (NAMOAdPlacer *)adPlacer;
+
+/**
+ Binds this placer to your table view.
+ 
+ The placer will replace the tableView's delegate and dataSource objects with a proxy version
+ that can insert ads into the stream according to your placement rules. In addition binding
+ to a placer makes a number of new methods available on your UITableView that are convenient for
+ dealing with the modified NSIndexPath's for your table rows. See UITableView+NAMOAdPlacer.h.
+ 
+ A placer instance can only be bound to one table view. Calling bindToTableView on another table
+ view results in the placer being removed from the original table view and the table view's original
+ dataSource and delegate properties being restored. You can also bind to nil to remove a placer from
+ a table view.
+ 
+ @param tableView The table view to bind.
+ @available Namo 1.0 and later.
+ */
+- (void)bindToTableView:(UITableView *)tableView;
+
+/**
+ Binds this placer to you collection view.
+ 
+ The placer will replace the collectionView's delegate and dataSource objects with a proxy version
+ that can insert ads into the stream according to your placement rules. In addition binding
+ to a placer makes a number of new methods available on your UICollectionView that are convenient 
+ for dealing with the modified NSIndexPath's for your items.
+ See UICollectionView+NAMOAdPlacer.h.
+ 
+ A placer instance can only be bound to one collection view. Calling bindToCollectionView on another
+ collection view results in the placer being removed from the original collection view and the
+ collection view's original dataSource and delegate properties being restored. You can also bind
+ to nil to remove a placer from a collection view.
+ 
+ @param collectionView The collection view to bind.
+ @available Namo 1.0 and later.
+ */
+- (void)bindToCollectionView:(UICollectionView *)collectionView;
 
 /// @name Setting ad placement
 
@@ -20,8 +70,9 @@
  Calling this method resets any section specific placement you have set up using
  setAdPlacementForSection:section:firstPosition:spacing:maxAds.
 
- @param firstPosition The first position within a section at which to show an ad.
- @param spacing The spacing between subsequent ads.
+ @param firstPosition The zero based first position within a section at which to show an ad.
+ @param spacing The spacing between subsequent ads. This is the number of regular cells for each
+     ad cell.
  @param maxAds The maximum number of ads to display.
  @available Namo 1.0 and later.
 */
@@ -36,8 +87,9 @@
  setAdPlacementWithFirstPosition:spacing:maxAds.
 
  @param section The section for which to set placement information.
- @param firstPosition The first position within the section at which to show an ad.
- @param spacing The spacing between subsequent ads.
+ @param firstPosition The zero based first position within the section at which to show an ad.
+ @param spacing The spacing between subsequent ads. This is the number of regular cells for each
+     ad cell.
  @param maxAds The maximum number of ads to display.
  @available Namo 1.0 and later.
 */

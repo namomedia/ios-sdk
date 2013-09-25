@@ -27,6 +27,15 @@
 - (NSIndexPath *)adjustedIndexPath:(NSIndexPath *)indexPath;
 
 /**
+ Returns an array of index paths adjusted from the array of original index paths.
+ 
+ @param indexPaths An array of original index paths.
+ @return The array of adjusted index paths based on ad placement in the stream.
+ @available Namo 1.0 and later.
+*/
+- (NSArray *)adjustedIndexPaths:(NSArray *)indexPaths;
+
+/**
  Given an adjusted index path, returns the original index path in the table view.
 
  @param adjustedIndexPath The adjusted index path.
@@ -41,6 +50,7 @@
  Whether the row at the given index path is an ad.
 
  @param adjustedIndexPath The adjusted index path.
+ @return Whether the row at the given index path is an ad.
  @available Namo 1.0 and later.
 */
 - (BOOL)isAdAtIndexPath:(NSIndexPath *)adjustedIndexPath;

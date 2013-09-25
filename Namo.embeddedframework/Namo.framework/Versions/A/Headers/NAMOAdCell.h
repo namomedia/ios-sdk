@@ -8,16 +8,16 @@
 
 
 /**
- NAMOTableViewAdCell defines an interface for displaying an advertisement inside a table view.
+ NAMOAdCell defines an interface for displaying an advertisement inside a table view.
 
  To customize the look of your cell, you will typically want your own implementation of this
  protocol. Look in the AdCellTemplates directory for examples.
  
  @available Namo 1.0 and later.
 */
-@protocol NAMOTableViewAdCell
+@protocol NAMOAdCell
 
-/// @name Initializing a NAMOTableViewAdCell Object
+/// @name Initializing a NAMOAdCell Object
 
 /**
  Returns a new instance of the cell.
@@ -26,20 +26,6 @@
  @available Namo 1.0 and later.
 */
 + (id)alloc;
-
-/**
- Initializes a table cell with a style and a reuse identifier and returns it to the caller.
-
- This method is the designated initializer. If your table view cell derives from UITableView cell,
- it should call the super initializer.
-
- @param style A constant indicating a cell style.
- @param reuseIdentifier A string used to identify the cell object if it is to be reused for drawing
-     multiple rows of a table view.
- @return An initialized cell, or nil if the object could not be created.
- @available Namo 1.0 and later.
-*/
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 /// @name Reusing cells
 
@@ -54,13 +40,29 @@
 */
 + (NSString *)reuseIdentifier;
 
-/// @name Setting cell heights
 
+/// @name Filling ad data
+
+/**
+ Sets the ad data for this cell.
+ 
+ This method should apply the ad cell data to your custom layout. At a minimum, we recommend
+ displaying the ad image, along with the ad title or ad text (or both).
+ 
+ @param adData The ad data to render into the cell.
+ @available Namo 1.0 and later.
+ */
+- (void)setAdData:(NAMOAdData *)adData;
+
+/// @name Setting cell sizes
+
+@optional
 /**
  The row height for a cell with the given ad data and layout width.
 
  This value is used by NAMOAdPlacer when providing a `UITableViewDelegate` to your table view in
- order to implement `tableView:heightForRowAtIndexPath:`.
+ order to implement `tableView:heightForRowAtIndexPath:`. If you do not implement this method, a
+ default height of 100.0f will be used.
 
  @param adData The data for an Ad returned from the server.
  @param width The width of the table cell.
@@ -69,16 +71,17 @@
 */
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width;
 
-/// @name Filling ad data
-
 /**
- Sets the ad data for this cell.
-
- This method should apply the ad cell data to your custom layout. At a minimum, we recommend
- displaying the ad image, ad title, and ad text.
-
- @param adData The ad data to render into the cell.
+ The size for a cell with the given ad data.
+ 
+ This value is used by NAMOAdPlacer when your collection view calls
+ `collectionView:flowLayout:sizeForItemAtIndexPath:` on its delegate. If you do not implement this,
+ a default size of CGSizeMake(150.0f, 100.0f) will be used.
+ 
+ @param adData The data for an Ad returned from the server.
+ @return The cell size for a cell of this class with the given data.
  @available Namo 1.0 and later.
 */
-- (void)setAdData:(NAMOAdData *)adData;
++ (CGSize)cellSizeWithData:(NAMOAdData *)adData;
+
 @end

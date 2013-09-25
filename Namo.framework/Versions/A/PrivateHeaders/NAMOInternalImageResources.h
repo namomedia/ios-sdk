@@ -9,9 +9,8 @@
 
 @interface NAMOInternalImageResources : NSObject
 
-+(UIImage*)namoActionTypeOverlayInstall;
-+(UIImage*)namoActionTypeOverlayVideo;
 +(UIImage*)namoAdIndicatorLight;
 +(UIImage*)namoAdIndicator;
++(UIImage*)namoSample3Button;
 
 @end

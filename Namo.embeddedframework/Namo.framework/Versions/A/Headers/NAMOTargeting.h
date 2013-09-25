@@ -42,6 +42,8 @@ extern NSString *const NAMOInterestNews;
 extern NSString *const NAMOInterestPets;
 extern NSString *const NAMOInterestPolitics;
 extern NSString *const NAMOInterestEntertainment;
+extern NSString *const NAMOInterestMusic;
+extern NSString *const NAMOInterestSports;
 
 // Music constants
 extern NSString *const NAMOMusicRock;
@@ -50,14 +52,14 @@ extern NSString *const NAMOMusicJazz;
 extern NSString *const NAMOMusicClassical;
 
 // Sport constants
-extern NSString *const NAMOMusicBaseball;
-extern NSString *const NAMOMusicFootball;
-extern NSString *const NAMOMusicBasketball;
-extern NSString *const NAMOMusicHockey;
-extern NSString *const NAMOMusicCricket;
-extern NSString *const NAMOMusicGolf;
-extern NSString *const NAMOMusicSoccer;
-extern NSString *const NAMOMusicTennis;
+extern NSString *const NAMOSportBaseball;
+extern NSString *const NAMOSportFootball;
+extern NSString *const NAMOSportBasketball;
+extern NSString *const NAMOSportHockey;
+extern NSString *const NAMOSportCricket;
+extern NSString *const NAMOSportGolf;
+extern NSString *const NAMOSportSoccer;
+extern NSString *const NAMOSportTennis;
 
 
 /// @name Creating a targeting object.
@@ -142,63 +144,68 @@ extern NSString *const NAMOMusicTennis;
 - (void)setBirthDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year;
 
 /**
- Adds an interest to the targeting information.
+ Adds an interest type and array of interests to the targeting information. Calling
+ this method twice adds the array of interests to the previously added interests
+ and ignores duplicates.
  
  Possible values are:
  <ul>
- <li>NAMOInterestFood</li>
- <li>NAMOInterestGaming</li>
- <li>NAMOInterestShopping</li>
- <li>NAMOInterestTraveling</li>
- <li>NAMOInterestAutos</li>
- <li>NAMOInterestEducation</li>
- <li>NAMOInterestNews</li>
- <li>NAMOInterestPets</li>
- <li>NAMOInterestPolitics</li>
- <li>NAMOInterestEntertainment</li>
+ <li><b>Type</b>: NAMOInterestFood</li>
+ <li><b>Type</b>: NAMOInterestGaming</li>
+ <li><b>Type</b>: NAMOInterestShopping</li>
+ <li><b>Type</b>: NAMOInterestTraveling</li>
+ <li><b>Type</b>: NAMOInterestAutos</li>
+ <li><b>Type</b>: NAMOInterestEducation</li>
+ <li><b>Type</b>: NAMOInterestNews</li>
+ <li><b>Type</b>: NAMOInterestPets</li>
+ <li><b>Type</b>: NAMOInterestPolitics</li>
+ <li><b>Type</b>: NAMOInterestEntertainment</li>
+ <li><b>Type</b>: NAMOInterestMusic
+     <ul>
+     <li><b>Interests</b>: NAMOMusicRock, NAMOMusicPop, NAMOMusicJazz, NAMOMusicClassical</li>
+     </ul>
+ </li>
+ <li><b>Type</b>: NAMOInterestSports
+     <ul>
+     <b>Interests</b>: NAMOSportBaseball, NAMOSportFootball, NAMOSportBasketball,
+ NAMOSportHockey, NAMOSportCricket, NAMOSportGolf, NAMOSportSoccer, NAMOSportTennis
+     </ul>
+ </li>
  </ul>
  
- @param interest The interest to add. Should be one of the NAMO_Interest constants.
+ @warning *Important:* Raises an NSInvalidArgumentException if type is nil.
+ 
+ @param type The interest type to add. Should be one of the NAMOInterest constants.
+ @param interests The array of interests for a particular type. Set to nil if no
+     specific interests are available for the type.
  @available Namo 1.0 and later.
  */
-- (void)addInterest:(NSString *)interest;
+- (void)addInterestType:(NSString *)type interests:(NSArray *)interests;
 
 /**
- Adds a Music Type to the targeting information.
+ Adds an interest type to the targeting information without specifying particular interests.
  
  Possible values are:
  <ul>
- <li>NAMOMusicRock</li>
- <li>NAMOMusicPop</li>
- <li>NAMOMusicJazz</li>
- <li>NAMOMusicClassical</li>
- </ul>
-
- @param musicType The Music Type to add. Should be one of the NAMO_MusicType constants.
- @available Namo 1.0 and later.
- */
-- (void)addMusicType:(NSString *)musicType;
-
-/**
- Adds a sport to the targeting information.
- 
- Possible values are:
- <ul>
- <li>NAMOMusicBaseball</li>
- <li>NAMOMusicFootball</li>
- <li>NAMOMusicBasketball</li>
- <li>NAMOMusicHockey</li>
- <li>NAMOMusicCricket</li>
- <li>NAMOMusicGolf</li>
- <li>NAMOMusicSoccer</li>
- <li>NAMOMusicTennis</li>
+ <li><b>Type</b>: NAMOInterestFood</li>
+ <li><b>Type</b>: NAMOInterestGaming</li>
+ <li><b>Type</b>: NAMOInterestShopping</li>
+ <li><b>Type</b>: NAMOInterestTraveling</li>
+ <li><b>Type</b>: NAMOInterestAutos</li>
+ <li><b>Type</b>: NAMOInterestEducation</li>
+ <li><b>Type</b>: NAMOInterestNews</li>
+ <li><b>Type</b>: NAMOInterestPets</li>
+ <li><b>Type</b>: NAMOInterestPolitics</li>
+ <li><b>Type</b>: NAMOInterestEntertainment</li>
+ <li><b>Type</b>: NAMOInterestMusic</li>
+ <li><b>Type</b>: NAMOInterestSports</li>
  </ul>
  
- @param sport The sport to add. Should be one of the NAMO_Sport constants. 
- @available Namo 1.0 and later.
+ @warning *Important:* Raises an NSInvalidArgumentException if type is nil.
+ 
+ @param type The interest type to add. Should be one of the NAMOInterest constants.
  */
-- (void)addSport:(NSString *)sport;
-
+- (void)addInterestType:(NSString *)type;
 
 /// @name Reading targeting lists
 
@@ -211,39 +218,33 @@ extern NSString *const NAMOMusicTennis;
 - (NSString *)birthday;
 
 /**
- An array of interests.
+ An array of interest types.
 
- @return The array of interests for this targeting criteria.
+ @return The array of interest types for this targeting criteria.
  @available Namo 1.0 and later.
  */
-- (NSArray *)interests;
+- (NSArray *)interestTypes;
 
 /**
- An array of music types.
-
- @return The array of music types.
+ An array of interests for a particular interest type.
+ 
+ @param interestType One of the values that start with NAMOInterest*
+ @return An array of interests for a particular type.
  @available Namo 1.0 and later.
  */
-- (NSArray *) musicTypes;
-
-/**
- An array of sports.
-
- @return The array of sports for this targeting criteria.
- @available Namo 1.0 and later.
- */
-- (NSArray *)sports;
-
+- (NSArray *)interestsForType:(NSString *)interestType;
 
 /// @name Removing targeting values
 
 /**
- Removes a particular interest if it is in the list.
-
- @param interest The interest to remove.
+ Removes a particular interest type if it is in the list.
+ 
+ @warning *Important:* Raises an NSInvalidArgumentException if type is nil.
+ 
+ @param interest The interest type to remove.
  @available Namo 1.0 and later.
  */
-- (void)removeInterest:(NSString *)interest;
+- (void)removeInterestType:(NSString *)interest;
 
 /**
  Clears the list of interests.
@@ -251,35 +252,5 @@ extern NSString *const NAMOMusicTennis;
  @available Namo 1.0 and later.
  */
 - (void)clearInterests;
-
-/**
- Removes a particular music type if it is in the list.
-
- @param musicType The Music Type to remove.
- @available Namo 1.0 and later.
- */
-- (void)removeMusicType:(NSString *)musicType;
-
-/**
- Clears the list of music types.
-
- @available Namo 1.0 and later.
- */
-- (void)clearMusicTypes;
-
-/**
- Removes particular sport if it is in the list.
-
- @param sport The sport to remove.
- @available Namo 1.0 and later.
- */
-- (void)removeSport:(NSString *)sport;
-
-/**
- Clears the list of sports.
-
- @available Namo 1.0 and later.
- */
-- (void)clearSports;
 
 @end

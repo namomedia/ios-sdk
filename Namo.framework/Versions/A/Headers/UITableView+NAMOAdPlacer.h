@@ -3,9 +3,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class NAMOTableViewAdPlacer;
 @class NAMOIndexPathAdjuster;
-@protocol NAMOTableViewAdCell;
+@protocol NAMOAdCell;
 @protocol UITableViewDataSource;
 @protocol UITableViewDelegate;
 
@@ -36,7 +35,7 @@
  @return The ad placer currently bound to this table, or `nil`.
  @available Namo 1.0 and later.
 */
-- (NAMOTableViewAdPlacer *)namo_adPlacer;
+- (NAMOAdPlacer *)namo_adPlacer;
 
 /**
  Returns the index path adjuster for this table. See `NAMOIndexPathAdjuster`.
@@ -55,16 +54,18 @@
  registers the class with the attached ad placer. You must call this method before you table view
  will display ads.
  
- You can optionally use the pre-configured NAMOTableViewAdCellPhoto and NAMOTableViewAdCellThumb classes
+ The Ad cell class must be a subclass of UITableViewCell and conform to the NAMOAdCell protocol.
+ 
+ You can optionally use the pre-configured NAMOAdCellTableSample2 and NAMOAdCellTableSample1 classes
  provided by Namo if you want the default ad formats to show up instead of making your own custom ones.
  In that case, just call
  
-  `[self.tableView namo_registerAdCellClass:[NAMOTableViewAdCellThumb class]];`
+  `[self.tableView namo_registerAdCellClass:[NAMOAdCellTableSample1 class]];`
  
  @param cellClass The class to register.
  @available Namo 1.0 and later.
 */
-- (void)namo_registerAdCellClass:(Class<NAMOTableViewAdCell>)cellClass;
+- (void)namo_registerAdCellClass:(Class)cellClass;
 
 /// @name Proxying Table View Methods
 
