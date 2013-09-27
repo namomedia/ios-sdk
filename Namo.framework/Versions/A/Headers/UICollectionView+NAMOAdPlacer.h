@@ -23,8 +23,10 @@
  */
 @interface UICollectionView (NAMOAdPlacer)
 
+/// @name Getting an Associated Ad Placer
+
 /**
- Returns the ad placer currently bound to this table.
+ Returns the ad placer currently bound to this collection view.
 
  Without an ad placer, other methods on this class have undefined behavior, and will generate a
  warning log message.
@@ -42,22 +44,7 @@
  */
 - (NAMOIndexPathAdjuster *)namo_indexPathAdjuster;
 
-/**
- Dequeues a UICollectionViewCell.
- 
- After binding to a `NAMOAdPlacer`, you must replace all calls to
- `[collectionView dequeueReusableCellWithReuseIdentifier: forIndexPath:]` with a call to this method
- or an ad cell and content cell may be placed in the same position on the screen by the
- UICollectionViewLayout.
- 
- @param reuseIdentifier The reuseIdentifier associated with this cell class.
- @param indexPath The index path passed to a UICollectionViewDataSource's `cellForItemAtIndexPath`
-     method. The data source should just pass this on without modification.
- @return A UICollectionViewCell instance for the given reuse identifier.
- @available Namo 1.0 and later.
-*/
-- (UICollectionViewCell *)namo_dequeueReusableCellWithReuseIdentifier:(NSString *)reuseIdentifier
-                                                         forIndexPath:(NSIndexPath *)indexPath;
+/// @name Registering an Ad Cell
 
 /**
  Registers an ad cell class for this collection view.
@@ -72,6 +59,25 @@
  @available Namo 1.0 and later.
  */
 - (void)namo_registerAdCellClass:(Class)cellClass;
+
+/// @name Proxying Collection View Methods
+
+/**
+ Dequeues a UICollectionViewCell.
+
+ After binding to a `NAMOAdPlacer`, you must replace all calls to
+ `[collectionView dequeueReusableCellWithReuseIdentifier: forIndexPath:]` with a call to this method
+ or an ad cell and content cell may be placed in the same position on the screen by the
+ UICollectionViewLayout.
+
+ @param reuseIdentifier The reuseIdentifier associated with this cell class.
+ @param indexPath The index path passed to a UICollectionViewDataSource's `cellForItemAtIndexPath`
+     method. The data source should just pass this on without modification.
+ @return A UICollectionViewCell instance for the given reuse identifier.
+ @available Namo 1.0 and later.
+*/
+- (UICollectionViewCell *)namo_dequeueReusableCellWithReuseIdentifier:(NSString *)reuseIdentifier
+                                                         forIndexPath:(NSIndexPath *)indexPath;
 
 /**
  Reloads the items and sections of your collection view, and informs the attached ad placer that the item

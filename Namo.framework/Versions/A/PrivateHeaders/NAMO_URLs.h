@@ -33,7 +33,7 @@ extern NSString *const NAMOParamTimeSinceViewOpened;
 
 // Optional list of supported format types. On iOS, these correspond to the
 // cell reuseIdentifier, which the server can use for targeting.
-extern NSString *const NAMOParamFormatTypes;
+extern NSString *const NAMOParamFormatType;
 
 // Optional targeting params
 extern NSString *const NAMOParamTargetGender;

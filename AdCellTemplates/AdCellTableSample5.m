@@ -27,7 +27,7 @@
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     self.adImageView = [[UIImageView alloc] init];
-    self.adImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.adImageView.contentMode = UIViewContentModeCenter;
     self.adImageView.clipsToBounds = YES;
     [self.contentView addSubview:self.adImageView];
 
@@ -61,7 +61,8 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  // Split up the cell as follows:
+
+  // The cell looks like this
   //  -----------------------------------------------------
   // |              |                                      |
   // |              |               topRect                |
@@ -91,7 +92,7 @@
       UIEdgeInsetsInsetRect(bottomRightRect, UIEdgeInsetsMake(0.0f, 0.0f, 2.0f, 6.0f));
 
   // Set install button background.
-  UIImage *installImage = [[NAMOInternalImageResources namoSample3Button]
+  UIImage *installImage = [[NAMOAdCellImageResources namoGreyInstallButton]
       resizableImageWithCapInsets:UIEdgeInsetsMake(12.0f, 12.0f, 12.0f, 12.0f)];
   [self.installButton setBackgroundImage:installImage forState:UIControlStateNormal];
 }

@@ -17,6 +17,8 @@
 */
 @interface NAMOAdPlacer : NSObject
 
+/// @name Creating an ad placer
+
 /**
  Creates and returns a new ad placer.
  
@@ -24,6 +26,8 @@
  @available Namo 1.0 and later.
  */
 + (NAMOAdPlacer *)adPlacer;
+
+/// @name Binding to a stream
 
 /**
  Binds this placer to your table view.

@@ -26,35 +26,33 @@
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     self.adImageView = [[UIImageView alloc] init];
-    // TODO(nassar): Change to center in order to request ads from the ad server correctly.
-    self.adImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self addSubview:self.adImageView];
+    self.adImageView.contentMode = UIViewContentModeCenter;
+    [self.contentView addSubview:self.adImageView];
 
     self.advertiserIconImageView = [[UIImageView alloc] init];
-    // TODO(nassar): Change to center in order to request ads from the ad server correctly.
-    self.advertiserIconImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self addSubview:self.advertiserIconImageView];
+    self.advertiserIconImageView.contentMode = UIViewContentModeCenter;
+    [self.contentView addSubview:self.advertiserIconImageView];
 
     self.advertiserNameLabel = [[UILabel alloc] init];
     self.advertiserNameLabel.backgroundColor = [UIColor clearColor];
     self.advertiserNameLabel.font = [UIFont systemFontOfSize:14.0f];
-    [self addSubview:self.advertiserNameLabel];
+    [self.contentView addSubview:self.advertiserNameLabel];
 
     self.adIndicatorImageView = [[UIImageView alloc] init];
     self.adIndicatorImageView.contentMode = UIViewContentModeTopRight;
-    self.adIndicatorImageView.image = [NAMOInternalImageResources namoAdIndicator];
-    [self addSubview:self.adIndicatorImageView];
+    self.adIndicatorImageView.image = [NAMOAdCellImageResources namoAdIndicator];
+    [self.contentView addSubview:self.adIndicatorImageView];
 
     self.adTitleLabel = [[UILabel alloc] init];
     self.adTitleLabel.backgroundColor = [UIColor clearColor];
+    self.adTextLabel.backgroundColor = [UIColor redColor];
     self.adTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-    [self addSubview:self.adTitleLabel];
+    [self.contentView addSubview:self.adTitleLabel];
 
     self.adTextLabel = [[UILabel alloc] init];
-    self.adTextLabel.backgroundColor = [UIColor clearColor];
     self.adTextLabel.numberOfLines = 3;
     self.adTextLabel.font = [UIFont systemFontOfSize:14.0f];
-    [self addSubview:self.adTextLabel];
+    [self.contentView addSubview:self.adTextLabel];
 
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -62,12 +60,10 @@
   return self;
 }
 
-#pragma mark - Layout logic
-
 - (void)layoutSubviews {
   [super layoutSubviews];
 
-  // Place content like this.
+  // The cell looks like this
   //  -----------------------------------------------------
   // |             |  advertiser icon + name  |  indicator |
   // |             |  ad title                             |

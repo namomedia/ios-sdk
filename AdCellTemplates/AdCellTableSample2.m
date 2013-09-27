@@ -19,36 +19,28 @@
     // create and add subviews
     self.adTitleLabel = [[UILabel alloc] init];
     self.adTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-    [self addSubview:self.adTitleLabel];
+    [self.contentView addSubview:self.adTitleLabel];
 
     self.adTextLabel = [[UILabel alloc] init];
     self.adTextLabel.numberOfLines = 3;
     self.adTextLabel.font = [UIFont systemFontOfSize:14.0f];
-    [self addSubview:self.adTextLabel];
+    [self.contentView addSubview:self.adTextLabel];
 
     self.advertiserNameLabel = [[UILabel alloc] init];
-    [self addSubview:self.advertiserNameLabel];
+    [self.contentView addSubview:self.advertiserNameLabel];
 
     self.adImageView = [[UIImageView alloc] init];
-    [self addSubview:self.adImageView];
+    [self.contentView addSubview:self.adImageView];
 
     self.advertiserIconImageView = [[UIImageView alloc] init];
-    [self addSubview:self.advertiserIconImageView];
+    [self.contentView addSubview:self.advertiserIconImageView];
 
     self.adIndicatorImageView = [[UIImageView alloc] init];
-    [self addSubview:self.adIndicatorImageView];
+    [self.contentView addSubview:self.adIndicatorImageView];
   }
 
   return self;
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-  [super setSelected:selected animated:animated];
-
-  // Configure the view for the selected state
-}
-
-#pragma mark - Layout logic
 
 - (void)layoutSubviews {
   [super layoutSubviews];
@@ -87,7 +79,7 @@
   [self.adImageView namo_bindAdImage:adData];
   [self.advertiserIconImageView namo_bindAdIcon:adData];
 
-  self.adIndicatorImageView.image = [NAMOInternalImageResources namoAdIndicator];
+  self.adIndicatorImageView.image = [NAMOAdCellImageResources namoAdIndicator];
 }
 
 @end

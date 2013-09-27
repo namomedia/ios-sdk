@@ -1,7 +1,7 @@
 #import <Namo/Namo.h>
 #import "AdCellCollectionSample1.h"
 
-@interface NamoAdCellCollectionSample1 ()
+@interface AdCellCollectionSample1 ()
 @property(nonatomic, strong) UILabel *labelTitle;
 @property(nonatomic, strong) UILabel *labelText;
 @property(nonatomic, strong) UILabel *labelAdvertiserName;
@@ -9,10 +9,10 @@
 @property(nonatomic, strong) UIButton *actionButton;
 @end
 
-@implementation NamoAdCellCollectionSample1
+@implementation AdCellCollectionSample1
 
 + (NSString *)reuseIdentifier {
-  return @"NamoAdCellCollectionSample1";
+  return @"AdCellCollectionSample1";
 }
 
 + (CGSize)cellSizeWithData:(NAMOAdData *)adData {
@@ -37,7 +37,7 @@
     [self.contentView addSubview:self.labelAdvertiserName];
 
     self.adImage = [[UIImageView alloc] init];
-    self.adImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.adImage.contentMode = UIViewContentModeCenter;
     self.adImage.clipsToBounds = YES;
     [self.contentView addSubview:self.adImage];
 
@@ -54,7 +54,7 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  // The cell looks like:
+  // The cell looks like this
   //   +-------------------------------------+
   //   |                                     |
   //   |                                     |
@@ -67,6 +67,8 @@
   //   | Ad Text...                          |
   //   | Advertiser Name       Action Button |
   //   +-------------------------------------+
+
+  // TODO(nassar): This looks pretty bad right now. Clean this up.
   CGFloat width = self.contentView.frame.size.width;
   CGRect imageRect;
   CGRect bottomRect;
@@ -81,7 +83,7 @@
       bottomRect.origin.y + 11.0f, width, 50.0f);
   self.actionButton.frame = UIEdgeInsetsInsetRect(
       bottomRect, UIEdgeInsetsMake(11.0f + 18.0f + 20.0f, width * 0.56f, 2.0f, 6.0f));
-  UIImage *actionImage = [[NAMOInternalImageResources namoSample3Button]
+  UIImage *actionImage = [[NAMOAdCellImageResources namoGreyInstallButton]
       resizableImageWithCapInsets:UIEdgeInsetsMake(12.0f, 12.0f, 12.0f, 12.0f)];
   [self.actionButton setBackgroundImage:actionImage forState:UIControlStateNormal];
 }

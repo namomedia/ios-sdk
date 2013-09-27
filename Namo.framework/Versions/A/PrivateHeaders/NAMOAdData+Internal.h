@@ -22,21 +22,6 @@
 - (NSString *)adId;
 
 /**
- The unique identifier for the ad group.
- */
-- (NSString *)adGroupId;
-
-/**
- The unique identifier for the campaign.
- */
-- (NSString *)campaignId;
-
-/**
- The unique identifier the the request used to retrieve this ad.
- */
-- (NSString *)requestId;
-
-/**
  The image metadata for the ad. The Namo framework uses this metadata along
  with the imageURL to request an appropriately sized image from the Namo image server.
  */

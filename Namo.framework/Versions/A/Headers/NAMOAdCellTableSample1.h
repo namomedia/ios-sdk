@@ -5,11 +5,14 @@
 #import "NAMOAdCell.h"
 
 /**
- A table view cell for displaying a thumbnail ad format.
+ Table view ad cell sample #2.
 
- A _Thumbnail Ad_ is an ad that shows a small to medium sized thumbnail photo along with text
- describing the the ad information. These ads are suitable to display in streams with similar
- content. For example, many news streams display a small picture and a text preview of an article.
+ This sample is a _Thumbnail Ad_ that shows a small to medium sized thumbnail photo along with text
+ describing the the ad information.
+
+ You can use this cell as a template to build your own ad cell. See the
+ <a href="https://github.com/namomedia/ios-sdk/tree/master/AdCellTemplates" target="_blank">
+ the source code</a>.
 
  @available Namo 1.0 and later.
 */

@@ -24,7 +24,7 @@
 */
 @interface UITableView (NAMOTableViewAdPlacer)
 
-/// @name Getting associated ad placer objects
+/// @name Getting an Associated Ad Placer
 
 /**
  Returns the ad placer currently bound to this table.
@@ -45,7 +45,7 @@
 */
 - (NAMOIndexPathAdjuster *)namo_indexPathAdjuster;
 
-/// @name Registering an Ad Cell Format
+/// @name Registering an Ad Cell
 
 /**
  Registers an ad cell class for this table.

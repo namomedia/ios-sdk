@@ -27,18 +27,15 @@
   return fmaxf(70.0f, titleSize.height + 10.0f + 18.0f + 18.0f + 10.0f + 200.0f);
 }
 
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     self.adImageView = [[UIImageView alloc] init];
-    // TODO(nassar): Change to center in order to request ads from the ad server correctly.
-    self.adImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.adImageView.contentMode = UIViewContentModeCenter;
     [self.contentView addSubview:self.adImageView];
 
     self.advertiserIconImageView = [[UIImageView alloc] init];
-    // TODO(nassar): Change to center in order to request ads from the ad server correctly.
-    self.advertiserIconImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.advertiserIconImageView.contentMode = UIViewContentModeCenter;
     [self.contentView addSubview:self.advertiserIconImageView];
 
     self.advertiserNameLabel = [[UILabel alloc] init];
@@ -65,7 +62,7 @@
                                                  saturation:0.0f
                                                  brightness:0.55f
                                                       alpha:1.0f];
-    self.adIndicatorLabel.text = @"Ad";
+    self.adIndicatorLabel.text = @"Sponsored";
     [self.contentView addSubview:self.adIndicatorLabel];
 
     self.contentView.backgroundColor = [UIColor whiteColor];
@@ -74,16 +71,10 @@
   return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-  [super setSelected:selected animated:animated];
-
-  // Configure the view for the selected state
-}
-
 - (void)layoutSubviews {
   [super layoutSubviews];
 
-  // Place content like this.
+  // The cell looks like this
   //  -----------------------------------------------------
   // |  advertiser |  name                                 |
   // |             |  indicator                            |

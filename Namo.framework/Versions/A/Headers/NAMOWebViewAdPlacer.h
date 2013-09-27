@@ -11,7 +11,7 @@
 */
 @interface NAMOWebViewAdPlacer : NSObject
 
-/// @name Initializing a NAMOWebViewAdPlacer object
+/// @name Creating a NAMOWebViewAdPlacer object
 
 /**
  Create and return a new web view placer.
