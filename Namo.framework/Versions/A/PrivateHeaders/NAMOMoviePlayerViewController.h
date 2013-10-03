@@ -7,9 +7,10 @@
  */
 @interface NAMOMoviePlayerViewController : UIViewController
 
-@property(nonatomic, copy) void (^dismissCallback)(NAMOMoviePlayerViewController *,
-                                                   NSTimeInterval playbackTime,
-                                                   NSTimeInterval totalTime);
+@property(nonatomic, copy) void (^dismissCallback)(
+    NAMOMoviePlayerViewController *,
+    NSTimeInterval playbackTime,
+    NSTimeInterval totalTime);
 
 - (id)initWithURL:(NSURL *)url;
 @end

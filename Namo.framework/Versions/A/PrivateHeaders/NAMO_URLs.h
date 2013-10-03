@@ -43,8 +43,6 @@ extern NSString *const NAMOParamTargetAge;
 extern NSString *const NAMOParamTargetSearchTerm;
 extern NSString *const NAMOParamTargetBirthday;
 extern NSString *const NAMOParamTargetInterests;
-extern NSString *const NAMOParamTargetMusicType;
-extern NSString *const NAMOParamTargetSport;
 
 // Optional video params
 extern NSString *const NAMOParamVideoViewLength;

@@ -8,7 +8,6 @@
 @property(nonatomic, strong) UILabel *advertiserNameLabel;
 @property(nonatomic, strong) UIImageView *adImageView;
 @property(nonatomic, strong) UIImageView *advertiserIconImageView;
-@property(nonatomic, strong) UIImageView *adIndicatorImageView;
 @end
 
 @implementation AdCellTableSample2
@@ -34,9 +33,6 @@
 
     self.advertiserIconImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:self.advertiserIconImageView];
-
-    self.adIndicatorImageView = [[UIImageView alloc] init];
-    [self.contentView addSubview:self.adIndicatorImageView];
   }
 
   return self;
@@ -49,8 +45,6 @@
 
   self.advertiserIconImageView.frame = CGRectMake(2.0f, 2.0f, 16.0f, 16.0f);
   self.advertiserNameLabel.frame = CGRectMake(20.0f, 2.0f, cellWidth - 20.0f, 16.0f);
-
-  self.adIndicatorImageView.frame = CGRectMake(cellWidth - 64.0f, 6.0f, 62.0f, 8.0f);
 
   self.adImageView.frame = CGRectMake(2.0f, 20.0f, cellWidth - 4.0f, 100.0f);
 
@@ -78,8 +72,6 @@
 
   [self.adImageView namo_bindAdImage:adData];
   [self.advertiserIconImageView namo_bindAdIcon:adData];
-
-  self.adIndicatorImageView.image = [NAMOAdCellImageResources namoAdIndicator];
 }
 
 @end

@@ -10,7 +10,7 @@
  An index path adjuster which doesn't actually adjust anything. Useful as a sentinel value
  when a table isn't yet bound.
 */
-+ (NAMOIndexPathAdjuster *) nonAdjustingAdjuster;
++ (NAMOIndexPathAdjuster *)nonAdjustingAdjuster;
 
 /**
  Called to rebuild the ad indexes.

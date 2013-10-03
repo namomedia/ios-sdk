@@ -9,6 +9,7 @@
 + (NAMOCollectionViewDataSource *)collectionViewDataSource:(id<UICollectionViewDataSource>)originalDataSource
                                      withIndexPathAdjuster:(NAMOIndexPathAdjuster *)indexPathAdjuster
                                               withAdPlacer:(NAMOAdPlacer *)adPlacer;
+
 - (NAMOAdPlacer *)AdPlacer;
 
 // Currently recently visible cells mapped to the ad data they were bound to.

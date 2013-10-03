@@ -8,7 +8,6 @@
 @property(nonatomic, strong) UILabel *advertiserNameLabel;
 @property(nonatomic, strong) UIImageView *adImageView;
 @property(nonatomic, strong) UIImageView *advertiserIconImageView;
-@property(nonatomic, strong) UIImageView *adIndicatorImageView;
 @end
 
 
@@ -38,11 +37,6 @@
     self.advertiserNameLabel.font = [UIFont systemFontOfSize:14.0f];
     [self.contentView addSubview:self.advertiserNameLabel];
 
-    self.adIndicatorImageView = [[UIImageView alloc] init];
-    self.adIndicatorImageView.contentMode = UIViewContentModeTopRight;
-    self.adIndicatorImageView.image = [NAMOAdCellImageResources namoAdIndicator];
-    [self.contentView addSubview:self.adIndicatorImageView];
-
     self.adTitleLabel = [[UILabel alloc] init];
     self.adTitleLabel.backgroundColor = [UIColor clearColor];
     self.adTextLabel.backgroundColor = [UIColor redColor];
@@ -65,7 +59,7 @@
 
   // The cell looks like this
   //  -----------------------------------------------------
-  // |             |  advertiser icon + name  |  indicator |
+  // |             |  advertiser icon + name               |
   // |             |  ad title                             |
   // |    image    |  ad text                              |
   // |             |                                       |
@@ -84,20 +78,15 @@
   CGRect line3Rect;
   CGRectDivide(contentRect, &line1Rect, &line2Rect, 18.0f, CGRectMinYEdge);
   CGRectDivide(line2Rect, &line2Rect, &line3Rect, 20.0f, CGRectMinYEdge);
-  CGRect advertiserRect;
-  CGRect adIndicatorRect;
-  CGRectDivide(line1Rect, &adIndicatorRect, &advertiserRect, 62.0f, CGRectMaxXEdge);
-
   CGRect advertiserIconRect;
   CGRect advertiserNameRect;
-  CGRectDivide(advertiserRect, &advertiserIconRect, &advertiserNameRect,
+  CGRectDivide(line1Rect, &advertiserIconRect, &advertiserNameRect,
       16.0f, CGRectMinXEdge);
 
   // Set the sub view locations.
   self.adImageView.frame = imageRect;
   self.advertiserIconImageView.frame = advertiserIconRect;
   self.advertiserNameLabel.frame = CGRectOffset(advertiserNameRect, 4.0f, 0.0f);
-  self.adIndicatorImageView.frame = adIndicatorRect;
   self.adTitleLabel.frame = line2Rect;
   self.adTextLabel.frame = line3Rect;
 }

@@ -25,6 +25,8 @@
 #import "NAMOIndexPathAdjuster.h"
 #import "UITableView+NAMOAdPlacer.h"
 #import "UICollectionView+NAMOAdPlacer.h"
+
+#import "NAMOAdCellImageResources.h"
 #import "NAMOAdCellCollectionSample1.h"
 #import "NAMOAdCellTableSample1.h"
 #import "NAMOAdCellTableSample2.h"

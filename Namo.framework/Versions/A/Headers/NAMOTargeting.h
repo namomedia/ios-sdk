@@ -39,7 +39,7 @@ extern NSString *const NAMORelationshipUnknown;
  @return The new namo targeting object.
  @available Namo 1.0 and later.
  */
-+ (NAMOTargeting *) targeting;
++ (NAMOTargeting *)targeting;
 
 
 /// @name Setting targeting information
@@ -52,7 +52,7 @@ extern NSString *const NAMORelationshipUnknown;
  <li>NAMOGenderUnknown</li>
  </ul>
  */
-@property (nonatomic, strong) NSString *gender;
+@property(nonatomic, strong) NSString *gender;
 
 /**
  Education. Possible values for education are:
@@ -67,7 +67,7 @@ extern NSString *const NAMORelationshipUnknown;
  @return The education value for the targeting params.
  @available Namo 1.0 and later.
  */
-@property (nonatomic, strong) NSString *education;
+@property(nonatomic, strong) NSString *education;
 
 /**
  Relationship Status. Possible values are:
@@ -83,7 +83,7 @@ extern NSString *const NAMORelationshipUnknown;
  @return The relationship status value for the targeting params.
  @available Namo 1.0 and later.
  */
-@property (nonatomic, strong) NSString *relationshipStatus;
+@property(nonatomic, strong) NSString *relationshipStatus;
 
 
 /**
@@ -92,7 +92,7 @@ extern NSString *const NAMORelationshipUnknown;
  @return The targeting age.
  @available Namo 1.0 and later.
  */
-@property (nonatomic, assign) NSUInteger age;
+@property(nonatomic, assign) NSUInteger age;
 
 /**
  Search term if this is a search view. This can contain multiple words.
@@ -100,7 +100,7 @@ extern NSString *const NAMORelationshipUnknown;
  @return The search terms.
  @available Namo 1.0 and later.
  */
-@property (nonatomic, strong) NSString *searchTerms;
+@property(nonatomic, strong) NSString *searchTerms;
 
 /**
  Sets the birth day, month and year. This overwrite the age value.

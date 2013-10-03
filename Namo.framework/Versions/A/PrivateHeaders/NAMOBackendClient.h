@@ -25,7 +25,7 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
  A singleton object responsible for storing application state and connecting to Namo Media
  backend servers.
 */
-@interface NAMOBackendClient : NSObject <UIWebViewDelegate>
+@interface NAMOBackendClient : NSObject<UIWebViewDelegate>
 
 /**
  Singleton backend client object.
@@ -59,16 +59,16 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
 /**
  User agent attached to the web view on this device.
  */
-@property(nonatomic, strong, readonly) NSString* userAgent;
+@property(nonatomic, strong, readonly) NSString *userAgent;
 
 /**
  Requests ads from the server
  */
-- (void)requestAdsWithNumAds:(NSUInteger) numAds
-            adCellIdentifier:(NSString *)adCellIdentifier
+- (void)requestAdsWithNumAds:(NSUInteger)numAds
+                  formatType:(NSString *)formatType
                    targeting:(NAMOTargeting *)targeting
                       viewId:(NSUInteger)viewId
-                  completion:(void(^)(NSArray *))callback;
+                  completion:(void (^)(NSArray *))callback;
 
 /**
  Sends interaction information to the server by following the given interaction url.

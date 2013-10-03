@@ -103,7 +103,7 @@
  @param indexPaths An array of NSIndexPath identifying the item locations to add.
  @available Namo 1.0 and later.
  */
-- (void)namo_insertItemsAtIndexPaths:(NSArray  *)indexPaths;
+- (void)namo_insertItemsAtIndexPaths:(NSArray *)indexPaths;
 
 /**
  Delete items in the receiver at the locations identified by an array of index paths. This will notify

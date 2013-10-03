@@ -10,6 +10,7 @@
 + (NAMOTableViewDataSource *)tableViewDataSource:(id<UITableViewDataSource>)originalDataSource
                            withIndexPathAdjuster:(NAMOIndexPathAdjuster *)indexPathAdjuster
                                     withAdPlacer:(NAMOAdPlacer *)adPlacer;
+
 - (NAMOAdPlacer *)getAdPlacer;
 
 // Currently recently visible cells mapped to the ad data they were bound to.

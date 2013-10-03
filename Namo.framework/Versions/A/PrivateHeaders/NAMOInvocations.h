@@ -21,7 +21,7 @@
                 indexPathAdjuster:(NAMOIndexPathAdjuster *)indexPathAdjuster;
 
 + (NSInvocation *)invokeForTarget:(id)target
-                 with3ArgIntSelector:(SEL)selector
+              with3ArgIntSelector:(SEL)selector
                          firstArg:(id)arg1
                         secondArg:(NSInteger)arg2
                          thirdArg:(NSIndexPath *)indexPath
