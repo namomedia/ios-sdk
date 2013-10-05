@@ -131,6 +131,17 @@
 - (void)namo_reloadData;
 
 /**
+ Deselect the row at the given original index path.
+ 
+ You must replace all calls to `[tableView deselectRowAtIndexPath:animated:]` with this
+ method for a `UITableView` bound to an ad placer.
+ 
+ @param indexPath The index path of the row to deselect.
+ @param animated Specify YES to animate the change in selection.
+ */
+- (void)namo_deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+
+/**
  Inserts rows in the receiver at the locations identified by an array of index paths, and informs
  the attached ad placer of the insertions.
 
@@ -184,4 +195,16 @@
 */
 - (void)namo_reloadRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;
+
+/**
+ Selects the row at the specified original index path and optionally scrolls it into view.
+ 
+ You must replace all calls to `[tableView selectItemsAtIndexPath:animated:scrollPosition:]`
+ with this method for a `UITableView` bound to an ad placer.
+ 
+ @param indexPath the index path of the row to select.
+ @param animated Specify YES to animate the change in the selection or NO to make the change without animating it.
+ @param scrollPosition An option that specifies where the row should be positioned when scrolling finishes. For a list of possible values, see `UITableViewScrollPosition`.
+ */
+- (void)namo_selectRowAtIndexPath:(NSIndexPath*)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
 @end

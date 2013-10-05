@@ -119,6 +119,17 @@
 - (void)namo_deleteItemsAtIndexPaths:(NSArray *)indexPaths;
 
 /**
+ Deselect the item at the given original index path.
+
+ You must replace all calls to `[collectionView deselectItemAtIndexPath:animated:]` with this
+ method for a `UICollectionView` bound to an ad placer.
+ 
+ @param indexPath The index path of the item to deselect.
+ @param animated Specify YES to animate the change in selection.
+ */
+- (void)namo_deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+
+/**
  Move items in the receiver from the index path in the first argument to the index path specified
  by newIndexPath.
  
@@ -142,4 +153,16 @@
  @available Namo 1.0 and later.
  */
 - (void)namo_reloadItemsAtIndexPath:(NSArray *)indexPaths;
+
+/**
+ Selects the item at the specified original index path and optionally scrolls it into view.
+ 
+ You must replace all calls to `[collectionView selectItemsAtIndexPath:animated:scrollPosition:]` 
+ with this method for a `UICollectionView` bound to an ad placer.
+ 
+ @param indexPath the index path of the item to select.
+ @param animated Specify YES to animate the change in the selection or NO to make the change without animating it.
+ @param scrollPosition An option that specifies where the item should be positioned when scrolling finishes. For a list of possible values, see `UICollectionViewScrollPosition`.
+*/
+- (void)namo_selectItemAtIndexPath:(NSIndexPath*)indexPath animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
 @end

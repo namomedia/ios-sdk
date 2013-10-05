@@ -67,7 +67,7 @@
 
 - (void)setAdData:(NAMOAdData *)adData {
   self.adTextLabel.text = adData.text;
-  self.adTextLabel.text = adData.title;
+  self.adTitleLabel.text = adData.title;
   self.advertiserNameLabel.text = adData.advertiserName;
 
   [self.adImageView namo_bindAdImage:adData];
