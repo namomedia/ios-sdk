@@ -126,6 +126,7 @@
  
  @param indexPath The index path of the item to deselect.
  @param animated Specify YES to animate the change in selection.
+ @available Namo 1.0 or later.
  */
 - (void)namo_deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
@@ -163,6 +164,7 @@
  @param indexPath the index path of the item to select.
  @param animated Specify YES to animate the change in the selection or NO to make the change without animating it.
  @param scrollPosition An option that specifies where the item should be positioned when scrolling finishes. For a list of possible values, see `UICollectionViewScrollPosition`.
+ @available Namo 1.0 and later.
 */
 - (void)namo_selectItemAtIndexPath:(NSIndexPath*)indexPath animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
 @end

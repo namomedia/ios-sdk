@@ -138,6 +138,7 @@
  
  @param indexPath The index path of the row to deselect.
  @param animated Specify YES to animate the change in selection.
+ @available Namo 1.0 and later.
  */
 - (void)namo_deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
@@ -205,6 +206,7 @@
  @param indexPath the index path of the row to select.
  @param animated Specify YES to animate the change in the selection or NO to make the change without animating it.
  @param scrollPosition An option that specifies where the row should be positioned when scrolling finishes. For a list of possible values, see `UITableViewScrollPosition`.
+ @available Namo 1.0 and later.
  */
 - (void)namo_selectRowAtIndexPath:(NSIndexPath*)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
 @end
