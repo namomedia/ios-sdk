@@ -17,7 +17,7 @@
 }
 
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width {
-  CGSize maximumLabelSize = CGSizeMake(width - 50.0 - 10.0 - 9.0 - 10.0, 1000);
+  CGSize maximumLabelSize = CGSizeMake(width - 50.0f - 10.0f - 9.0f - 10.0f, 1000.0f);
   CGSize titleSize = [adData.text sizeWithFont:[UIFont systemFontOfSize:12.0f]
                              constrainedToSize:maximumLabelSize
                                  lineBreakMode:NSLineBreakByWordWrapping];
@@ -39,6 +39,7 @@
 
     self.advertiserNameLabel = [[UILabel alloc] init];
     self.advertiserNameLabel.backgroundColor = [UIColor clearColor];
+    self.advertiserNameLabel.numberOfLines = 1;
     self.advertiserNameLabel.font = [UIFont boldSystemFontOfSize:14.5f];
     self.advertiserNameLabel.textColor = [UIColor colorWithRed:0.0f
                                                          green:0.4f

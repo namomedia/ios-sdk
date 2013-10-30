@@ -42,8 +42,9 @@
     self.adIndicatorLabel.contentMode = UIViewContentModeLeft;
     self.adIndicatorLabel.text = @"Ad";
     self.adIndicatorLabel.font = [UIFont systemFontOfSize:13.0];
+    self.adIndicatorLabel.numberOfLines = 1;
+    self.adIndicatorLabel.backgroundColor = [UIColor clearColor];
     self.adIndicatorLabel.textColor = [UIColor whiteColor];
-    self.adIndicatorLabel.backgroundColor = [UIColor blackColor];
     [self.contentView addSubview:self.adIndicatorLabel];
 
     self.installButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

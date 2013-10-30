@@ -6,7 +6,7 @@
  Internal definitions for the ad placer class.
 */
 @interface NAMOAdPlacer (Internal)
-- (NSMutableSet *)ViewedAdIds;
+- (BOOL)hadImpressionForAdId:(NSString *)adId;
 
 - (void)handleImpression:(UIView *)view withData:(NAMOAdData *)adData;
 

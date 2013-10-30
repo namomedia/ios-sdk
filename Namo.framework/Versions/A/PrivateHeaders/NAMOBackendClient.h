@@ -8,11 +8,6 @@
 @class NAMOTargeting;
 
 /**
- Monotonically increasing SDK version. This is used by the server to determine what
- features are supported by the SDK.
-*/
-extern NSUInteger const NAMOSdkVersion;
-/**
  The number of seconds an ad must be visible before counting as an impression.
 */
 extern NSTimeInterval const NAMOImpressionTimeInSecs;

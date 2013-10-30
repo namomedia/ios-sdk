@@ -2,11 +2,11 @@
 #import "AdCellCollectionSample1.h"
 
 @interface AdCellCollectionSample1 ()
-@property(nonatomic, strong) UILabel *labelTitle;
-@property(nonatomic, strong) UILabel *labelText;
-@property(nonatomic, strong) UILabel *labelAdvertiserName;
-@property(nonatomic, strong) UIImageView *adImage;
-@property(nonatomic, strong) UIButton *actionButton;
+@property(nonatomic, strong) UIImageView *adImageView;
+@property(nonatomic, strong) UILabel *adTitleLabel;
+@property(nonatomic, strong) UILabel *adTextLabel;
+@property(nonatomic, strong) UIImageView *advertiserIconImageView;
+@property(nonatomic, strong) UILabel *advertiserNameLabel;
 @end
 
 @implementation AdCellCollectionSample1
@@ -16,95 +16,143 @@
 }
 
 + (CGSize)cellSizeWithData:(NAMOAdData *)adData {
-  return CGSizeMake(320.0f, 200.0f);
+  return [self sizeForAdvertiserName:adData.advertiserName
+                               title:adData.title
+                                text:adData.text
+                          viewFrames:NULL];
+}
+
+/* Frames for all views. */
+struct ViewFrames {
+  CGRect adImageRect;
+  CGRect advertiserIconRect;
+  CGRect advertiserNameRect;
+  CGRect adTitleRect;
+  CGRect adTextRect;
+} typedef ViewFrames;
+
++ (CGSize)sizeForAdvertiserName:(NSString *)advertiserName
+                          title:(NSString *)adTitle
+                           text:(NSString *)adText
+                     viewFrames:(ViewFrames *)pFrames {
+
+  // The cell looks like this
+  //  -----------------------------------------------------
+  // |                                                     |
+  // |                   image                             |
+  // |                                                     |
+  // | --------------------------------------------------- |
+  // |  title                                              |
+  // |  text                                               |
+  // |                                                     |
+  // |  advertiser icon + name                             |
+  //  -----------------------------------------------------
+
+  // Heights
+  CGFloat cellWidth = 320.0f;
+  CGFloat margin = 8.0f;
+  CGFloat imageHeight = 100.0f;
+  CGFloat imageMargin = 4.0f;
+  CGFloat contentWidth = cellWidth - margin - margin;
+
+  CGFloat titleTop = imageHeight + imageMargin;
+  CGFloat titleHeight = [self heightForLabel:adTitle
+                                        font:[UIFont boldSystemFontOfSize:16.0f]
+                                    maxWidth:contentWidth];
+
+  CGFloat textTop = titleTop + titleHeight;
+  CGFloat textHeight = [self heightForLabel:adText
+                                       font:[UIFont systemFontOfSize:14.0f]
+                                   maxWidth:contentWidth];
+
+  CGFloat advertiserTop = textTop + textHeight + 4.0f;
+  CGFloat advertiserHeight = [self heightForLabel:advertiserName
+                                             font:[UIFont systemFontOfSize:12.0f]
+                                         maxWidth:CGFLOAT_MAX];
+
+  CGFloat iconSize = 14.0f;
+  CGFloat advertiserNameLeft = margin + iconSize + 2.0f;
+  CGFloat advertiserNameWidth = contentWidth - advertiserNameLeft;
+
+  CGFloat cellHeight = advertiserTop + advertiserHeight + 4.0f;
+
+  // Make the subview frames
+  if (pFrames != NULL) {
+    pFrames->adImageRect = CGRectMake(0.0f, 0.0f, cellWidth, imageHeight);
+    pFrames->advertiserIconRect = CGRectMake(margin, advertiserTop, iconSize, iconSize);
+    pFrames->advertiserNameRect = CGRectMake(
+        advertiserNameLeft, advertiserTop, advertiserNameWidth, advertiserHeight);
+    pFrames->adTitleRect = CGRectMake(margin, titleTop, contentWidth, titleHeight);
+    pFrames->adTextRect = CGRectMake(margin, textTop, contentWidth, textHeight);
+  }
+  return CGSizeMake(cellWidth, cellHeight);
+}
+
++ (CGFloat)heightForLabel:(NSString *)text font:(UIFont *)font maxWidth:(CGFloat)maxWidth {
+  CGSize size = [text sizeWithFont:font
+                 constrainedToSize:CGSizeMake(maxWidth, 1000.0f)
+                     lineBreakMode:NSLineBreakByWordWrapping];
+  return size.height;
 }
 
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.backgroundColor = [UIColor colorWithRed:0.87f green:0.87f blue:0.87f alpha:1.0f];
-    self.labelTitle = [[UILabel alloc] init];
-    self.labelTitle.font = [UIFont systemFontOfSize:14.0f];
-    [self.contentView addSubview:self.labelTitle];
+    self.backgroundColor = [UIColor whiteColor];
 
-    self.labelText = [[UILabel alloc] init];
-    self.labelText.font = [UIFont systemFontOfSize:12.0f];
-    [self.contentView addSubview:self.labelText];
+    self.adImageView = [[UIImageView alloc] init];
+    [self.contentView addSubview:self.adImageView];
 
-    self.labelAdvertiserName = [[UILabel alloc] init];
-    self.labelAdvertiserName.font = [UIFont systemFontOfSize:10.0f];
-    self.labelAdvertiserName.textAlignment = NSTextAlignmentLeft;
-    [self.contentView addSubview:self.labelAdvertiserName];
+    self.adTitleLabel = [[UILabel alloc] init];
+    self.adTitleLabel.numberOfLines = 0;
+    self.adTitleLabel.backgroundColor = [UIColor clearColor];
+    self.adTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    self.adTitleLabel.textColor = [UIColor colorWithRed:0.0f
+                                                         green:0.4f
+                                                          blue:0.8f
+                                                         alpha:1.0f];
+    [self.contentView addSubview:self.adTitleLabel];
 
-    self.adImage = [[UIImageView alloc] init];
-    self.adImage.contentMode = UIViewContentModeCenter;
-    self.adImage.clipsToBounds = YES;
-    [self.contentView addSubview:self.adImage];
+    self.adTextLabel = [[UILabel alloc] init];
+    self.adTextLabel.numberOfLines = 0;
+    self.adTextLabel.backgroundColor = [UIColor clearColor];
+    self.adTextLabel.font = [UIFont systemFontOfSize:14.0f];
+    [self.contentView addSubview:self.adTextLabel];
 
-    self.actionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.actionButton setUserInteractionEnabled:NO];
+    self.advertiserNameLabel = [[UILabel alloc] init];
+    self.advertiserNameLabel.numberOfLines = 1;
+    self.advertiserNameLabel.backgroundColor = [UIColor clearColor];
+    self.advertiserNameLabel.font = [UIFont systemFontOfSize:12.0f];
+    [self.contentView addSubview:self.advertiserNameLabel];
 
-    [self.actionButton setTitleColor:[UIColor colorWithWhite:0 alpha:1]
-                            forState:UIControlStateNormal];
-    [self.actionButton setTitle:@"Download App" forState:UIControlStateNormal];
-    [self.contentView addSubview:self.actionButton];
+    self.advertiserIconImageView = [[UIImageView alloc] init];
+    [self.contentView addSubview:self.advertiserIconImageView];
+
   }
   return self;
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  // The cell looks like this
-  //   +-------------------------------------+
-  //   |                                     |
-  //   |                                     |
-  //   |              Ad Image               |
-  //   |                                     |
-  //   |                                     |
-  //   |                                     |
-  //   +-------------------------------------+
-  //   | Ad Title...                         |
-  //   | Ad Text...                          |
-  //   | Advertiser Name       Action Button |
-  //   +-------------------------------------+
 
-  // TODO(nassar): This looks pretty bad right now. Clean this up.
-  CGFloat width = self.contentView.frame.size.width;
-  CGRect imageRect;
-  CGRect bottomRect;
-  CGRectDivide(self.contentView.frame, &imageRect, &bottomRect, 120.0f, CGRectMinYEdge);
-  self.adImage.frame = imageRect;
-
-  self.labelAdvertiserName.frame = UIEdgeInsetsInsetRect(
-      bottomRect, UIEdgeInsetsMake(11.0f + 18.0f + 20.0f, 2.0f, 2.0f, width * 0.5f));
-  self.labelTitle.frame = CGRectMake(
-      bottomRect.origin.x + 2.0f, bottomRect.origin.y + 2.0f, width, 18.0f);
-  self.labelText.frame = CGRectMake(bottomRect.origin.x + 2.0f,
-      bottomRect.origin.y + 11.0f, width, 50.0f);
-  self.actionButton.frame = UIEdgeInsetsInsetRect(
-      bottomRect, UIEdgeInsetsMake(11.0f + 18.0f + 20.0f, width * 0.56f, 2.0f, 6.0f));
-  UIImage *actionImage = [[NAMOAdCellImageResources namoGreyInstallButton]
-      resizableImageWithCapInsets:UIEdgeInsetsMake(12.0f, 12.0f, 12.0f, 12.0f)];
-  [self.actionButton setBackgroundImage:actionImage forState:UIControlStateNormal];
+  ViewFrames frames;
+  [AdCellCollectionSample1 sizeForAdvertiserName:self.advertiserNameLabel.text
+                                               title:self.adTitleLabel.text
+                                                text:self.adTextLabel.text
+                                          viewFrames:&frames];
+  self.adImageView.frame = frames.adImageRect;
+  self.advertiserIconImageView.frame = frames.advertiserIconRect;
+  self.advertiserNameLabel.frame = frames.advertiserNameRect;
+  self.adTitleLabel.frame = frames.adTitleRect;
+  self.adTextLabel.frame = frames.adTextRect;
 }
 
 - (void)setAdData:(NAMOAdData *)adData {
-  self.labelText.text = adData.text;
-  self.labelTitle.text = adData.title;
-  self.labelAdvertiserName.text = adData.advertiserName;
-  [self.adImage namo_bindAdImage:adData];
+  self.adTextLabel.text = adData.text;
+  self.adTitleLabel.text = adData.title;
+  self.advertiserNameLabel.text = adData.advertiserName;
 
-  switch (adData.actionType) {
-    case NAMOActionTypeVideo:
-      [self.actionButton setHidden:YES];
-      break;
-    case NAMOActionTypeInstall:
-      [self.actionButton setHidden:NO];
-      break;
-    case NAMOActionTypeLink:
-    default:
-      [self.actionButton setHidden:YES];
-      break;
-  }
+  [self.adImageView namo_bindAdImage:adData];
+  [self.advertiserIconImageView namo_bindAdIcon:adData];
 }
 @end

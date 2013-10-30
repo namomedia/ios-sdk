@@ -55,7 +55,8 @@ extern NSString *const NAMORelationshipUnknown;
 @property(nonatomic, strong) NSString *gender;
 
 /**
- Education. Possible values for education are:
+ Education. You can specify your own value, or use one of the
+ following pre-defined constants:
  
  <ul>
  <li>NAMOEducationHighSchool</li>
@@ -70,8 +71,9 @@ extern NSString *const NAMORelationshipUnknown;
 @property(nonatomic, strong) NSString *education;
 
 /**
- Relationship Status. Possible values are:
- 
+ Relationship Status. You can specify your own value, or use one of the
+ following pre-defined constants:
+
  <ul>
  <li>NAMORelationshipSingle</li>
  <li>NAMORelationshipInRelationship</li>
@@ -173,5 +175,28 @@ extern NSString *const NAMORelationshipUnknown;
  @available Namo 1.0 and later.
  */
 - (void)clearInterests;
+
+/**
+ Add a keyword to the targeting data. You should only use keywords if you directly sell
+ advertising campaigns for your app and have ad groups in campaigns that are only shown under
+ specific conditions.
+ 
+ @param keyword The keyword to target.
+ @available Namo 1.0 and later.
+ */
+- (void)addKeyword:(NSString *)keyword;
+
+/**
+ An array of keywords currently set on the targeting object.
+ 
+ @available Namo 1.0 and later.
+ */
+- (NSArray *)keywords;
+/**
+ Clears all the keywords.
+ 
+ @available Namo 1.0 and later.
+ */
+- (void)clearKeywords;
 
 @end

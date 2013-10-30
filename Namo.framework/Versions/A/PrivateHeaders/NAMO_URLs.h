@@ -8,9 +8,9 @@
 
 // Required params
 extern NSString *const NAMOParamAppId;
-extern NSString *const NAMOParamMacAddressHash;
 extern NSString *const NAMOParamAdvertisingId;
 extern NSString *const NAMOParamTrackingEnabled;
+extern NSString *const NAMOParamMacAddressSha1;
 
 // Optional application level params
 extern NSString *const NAMOParamBundleId;
@@ -29,6 +29,7 @@ extern NSString *const NAMOParamTimeSinceAppOpened;
 extern NSString *const NAMOParamViewId;
 extern NSString *const NAMOParamViewSequence;
 extern NSString *const NAMOParamNumAds;
+extern NSString *const NAMOParamResponseTime;
 extern NSString *const NAMOParamTimeSinceViewOpened;
 
 // Optional list of supported format types. On iOS, these correspond to the
@@ -42,7 +43,8 @@ extern NSString *const NAMOParamTargetRelationshipStatus;
 extern NSString *const NAMOParamTargetAge;
 extern NSString *const NAMOParamTargetSearchTerm;
 extern NSString *const NAMOParamTargetBirthday;
-extern NSString *const NAMOParamTargetInterests;
+extern NSString *const NAMOParamTargetInterest;
+extern NSString *const NAMOParamTargetKeyword;
 
 // Optional video params
 extern NSString *const NAMOParamVideoViewLength;
@@ -75,23 +77,30 @@ extern NSString *const NAMOParamVideoTotalLength;
 
 /**
  Builds a URL using the base url and nil terminated array of NAMOPair arguments,
- The returned URI will be properly encoded.
+ The returned URL will be properly encoded.
 */
 + (NSURL *)URLWithBase:(NSURL *)baseURL params:(NSArray *)pairs;
 
 /**
- Returns a url parameter value for the given network status.
+ Returns a URL parameter value for the given network status.
 */
 + (NSString *)URLStringForNetworkStatus:(NAMONetworkStatus)networkStatus;
 
 /**
- Returns a url parameter value for the interaction type.
+ Returns a URL parameter value for the interaction type.
 */
 + (NSString *)URLStringForActionType:(NAMOActionType)type;
 
 /**
- Returns true if the url points to a known image server instance.
+ Returns true if the URL points to a known image server instance.
 */
 + (BOOL)isKnownImageServerURL:(NSURL *)url;
 
+/**
+ Creates and returns a URL for the given image size, base URL, scale factor, and image metadata.
+*/
++ (NSURL *)URLForImageSize:(CGSize)imageSize
+                   baseURL:(NSURL *)baseURL
+               scaleFactor:(CGFloat)scaleFactor
+                  metadata:(NSString *)metadata;
 @end
