@@ -46,7 +46,7 @@
 /**
  * Set the imageView `image` with an `url`.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
  * @param url The url for the image.
  */

@@ -5,6 +5,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class NAMOAdData;
+
 /**
  A category to help bind UIImageViews to an ad image, providing server side image scaling, a
  lightweight caching framework, and appropriate network throttling.
@@ -18,6 +20,15 @@
 @interface UIImageView (NAMOImage)
 
 /// @name Binding images to an Ad
+
+/**
+ Callback block for bind image requests, called when the image request completes.
+
+ When this block gets called, the `UIView` `image` property will be set to the result of the image
+ request if there is no error. If there is an error, the error property will be non-nil.
+ @available Namo 1.0 and later.
+ */
+typedef void(^NAMO_BindImageCompletedBlock)(UIImage *image, NSError *error);
 
 /**
  Binds the UIImageView to the Ad image for the given ad.
@@ -38,13 +49,13 @@
  provide transition effects on the view.
  
  @param adData Ad data downloaded from the server.
- @param placeholderImage An optionally-nil image to place in the UIImageView before the ad request completes.
- @param completed A block to execute after the image request completes. At this point the `UIView` `image` property will be set to the result of the image request if there is no error. If there is an error, the error property will be non-nil.
+ @param placeholder An optionally-nil image to place in the UIImageView before the ad request completes.
+ @param completedBlock A block to execute after the image request completes.
  @available Namo 1.0 and later.
  */
 - (void)namo_bindAdImage:(NAMOAdData *)adData
         placeholderImage:(UIImage *)placeholder
-               completed:(void (^)(UIImage *image, NSError *error))completed;
+          completedBlock:(NAMO_BindImageCompletedBlock)completedBlock;
 
 /**
  Binds the UIImageView to the Advertiser icon for the given ad.
@@ -65,12 +76,12 @@
  provide transition effects on the view.
  
  @param adData Ad data downloaded from the server.
- @param placeholderImage An optionally-nil image to place in the UIImageView before the ad request completes.
- @param completed A block to execute after the image request completes. At this point the `UIView` `image` property will be set to the result of the image request if there is no error. If there is an error, the error property will be non-nil.
+ @param placeholder An optionally-nil image to place in the UIImageView before the ad request completes.
+ @param completedBlock A block to execute after the image request completes.
  @available Namo 1.0 and later.
  */
 - (void)namo_bindAdIcon:(NAMOAdData *)adData
        placeholderImage:(UIImage *)placeholder
-              completed:(void (^)(UIImage *image, NSError *error))completed;
+         completedBlock:(NAMO_BindImageCompletedBlock)completedBlock;
 
 @end

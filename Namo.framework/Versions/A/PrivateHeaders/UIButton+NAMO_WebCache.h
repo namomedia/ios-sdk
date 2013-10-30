@@ -63,7 +63,7 @@
  * @param completedBlock A block called when operation has been completed. This block as no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache of from the network.
  */
 - (void)namo_setImageWithURL:(NSURL *)url
                     forState:(UIControlState)state
@@ -80,7 +80,7 @@
  * @param completedBlock A block called when operation has been completed. This block as no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache of from the network.
  */
 - (void)namo_setImageWithURL:(NSURL *)url
                     forState:(UIControlState)state
@@ -99,7 +99,7 @@
  * @param completedBlock A block called when operation has been completed. This block as no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache of from the network.
  */
 - (void)namo_setImageWithURL:(NSURL *)url
                     forState:(UIControlState)state
@@ -179,7 +179,7 @@
 /**
  * Set the backgroundImageView `image` with an `url`, placeholder and custom options.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
  * @param url The url for the image.
  * @param placeholder The image to be set initially, until the image request finishes.

@@ -109,7 +109,7 @@ typedef enum NAMO_SDImageCacheType NAMO_SDImageCacheType;
 - (void)removeImageForKey:(NSString *)key;
 
 /**
- * Remove the image from memory and optionaly disk cache synchronously
+ * Remove the image from memory and optionally disk cache synchronously
  *
  * @param key The unique image cache key
  * @param fromDisk Also remove cache entry from disk if YES

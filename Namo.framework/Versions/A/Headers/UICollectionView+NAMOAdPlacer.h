@@ -147,13 +147,13 @@
 /**
  Reload items in the receiver at the locations specified in the array of index paths.
  
- You must replace all calls to `[collectionView reoladItemsAtIndexPaths:]` with this method for a 
+ You must replace all calls to `[collectionView reloadItemsAtIndexPaths:]` with this method for a
  `UICollectionView` bound to an ad placer.
 
  @param indexPaths An array of NSIndexPath identifying items to reload.
  @available Namo 1.0 and later.
  */
-- (void)namo_reloadItemsAtIndexPath:(NSArray *)indexPaths;
+- (void)namo_reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
 /**
  Selects the item at the specified original index path and optionally scrolls it into view.
@@ -162,9 +162,13 @@
  with this method for a `UICollectionView` bound to an ad placer.
  
  @param indexPath the index path of the item to select.
- @param animated Specify YES to animate the change in the selection or NO to make the change without animating it.
- @param scrollPosition An option that specifies where the item should be positioned when scrolling finishes. For a list of possible values, see `UICollectionViewScrollPosition`.
+ @param animated Specify YES to animate the change in the selection or NO to make the change without
+ animating it.
+ @param scrollPosition An option that specifies where the item should be positioned when scrolling
+ finishes. For a list of possible values, see `UICollectionViewScrollPosition`.
  @available Namo 1.0 and later.
 */
-- (void)namo_selectItemAtIndexPath:(NSIndexPath*)indexPath animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
+- (void)namo_selectItemAtIndexPath:(NSIndexPath *)indexPath
+                          animated:(BOOL)animated
+                    scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
 @end

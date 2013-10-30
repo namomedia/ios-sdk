@@ -38,7 +38,7 @@ typedef enum
      * This option helps deal with images changing behind the same request URL, e.g. Facebook graph api profile pics.
      * If a cached image is refreshed, the completion block is called once with the cached image and again with the final image.
      *
-     * Use this flag only if you can't make your URLs static with embeded cache busting parameter.
+     * Use this flag only if you can't make your URLs static with embedded cache busting parameter.
      */
     NAMO_SDWebImageRefreshCached = 1 << 4
 } NAMO_SDWebImageOptions;
@@ -139,11 +139,11 @@ typedef void(^NAMO_SDWebImageCompletedWithFinishedBlock)(UIImage *image, NSError
  *                       This block as no return value and takes the requested UIImage as first parameter.
  *                       In case of error the image parameter is nil and the second parameter may contain an NSError.
  *
- *                       The third parameter is a Boolean indicating if the image was retrived from the local cache
+ *                       The third parameter is a Boolean indicating if the image was retrieved from the local cache
  *                       of from the network.
  *
  *                       The last parameter is set to NO when the NAMO_SDWebImageProgressiveDownload option is used and
- *                       the image is downloading. This block is thus called repetidly with a partial image. When
+ *                       the image is downloading. This block is thus called repeatedly with a partial image. When
  *                       image is fully downloaded, the block is called a last time with the full image and the last
  *                       parameter set to YES.
  *
@@ -155,7 +155,7 @@ typedef void(^NAMO_SDWebImageCompletedWithFinishedBlock)(UIImage *image, NSError
                                  completed:(NAMO_SDWebImageCompletedWithFinishedBlock)completedBlock;
 
 /**
- * Cancel all current opreations
+ * Cancel all current operations
  */
 - (void)cancelAll;
 

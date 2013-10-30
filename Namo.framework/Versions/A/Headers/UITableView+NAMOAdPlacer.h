@@ -22,7 +22,7 @@
 
  @available Namo 1.0 and later.
 */
-@interface UITableView (NAMOTableViewAdPlacer)
+@interface UITableView (NAMOAdPlacer)
 
 /// @name Getting an Associated Ad Placer
 
@@ -204,9 +204,13 @@
  with this method for a `UITableView` bound to an ad placer.
  
  @param indexPath the index path of the row to select.
- @param animated Specify YES to animate the change in the selection or NO to make the change without animating it.
- @param scrollPosition An option that specifies where the row should be positioned when scrolling finishes. For a list of possible values, see `UITableViewScrollPosition`.
+ @param animated Specify YES to animate the change in the selection or NO to make the change
+ without animating it.
+ @param scrollPosition An option that specifies where the row should be positioned when scrolling
+ finishes. For a list of possible values, see `UITableViewScrollPosition`.
  @available Namo 1.0 and later.
  */
-- (void)namo_selectRowAtIndexPath:(NSIndexPath*)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+- (void)namo_selectRowAtIndexPath:(NSIndexPath *)indexPath
+                         animated:(BOOL)animated
+                   scrollPosition:(UITableViewScrollPosition)scrollPosition;
 @end
