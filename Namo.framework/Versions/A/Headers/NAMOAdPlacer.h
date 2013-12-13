@@ -9,9 +9,8 @@
  This protocol serves as a common interface for requesting ads from the server and placing them
  into your stream.
 
- To change ad placement use the `setAdPlacement` method. If you do not specify ad placement,
- Namo will place ads at default locations. In version 1.0, this is a first position of 6, spacing
- of 6, and maximum number of ads of 10. This is subject to change in future version of the SDK.
+ Ad positions are set by the Namo Media Ad Server and can be controlled by the app's owner at:
+ https://dashboard.namomedia.com/
 
  @available Namo 1.0 and later.
 */
@@ -65,42 +64,6 @@
  @available Namo 1.0 and later.
  */
 - (void)bindToCollectionView:(UICollectionView *)collectionView;
-
-/// @name Setting ad placement
-
-/**
- Sets the ad placement for all sections.
-
- Calling this method resets any section specific placement you have set up using
- setAdPlacementForSection:section:firstPosition:spacing:maxAds.
-
- @param firstPosition The zero based first position within a section at which to show an ad.
- @param spacing The spacing between subsequent ads. This is the number of regular cells for each
-     ad cell.
- @param maxAds The maximum number of ads to display.
- @available Namo 1.0 and later.
-*/
-- (void)setAdPlacementWithFirstPosition:(NSUInteger)firstPosition
-                                spacing:(NSUInteger)spacing
-                                 maxAds:(NSUInteger)maxAds;
-
-/**
- Sets ad placement for a specific section.
-
- Calling this method removes any global placement you have set up using
- setAdPlacementWithFirstPosition:spacing:maxAds.
-
- @param section The section for which to set placement information.
- @param firstPosition The zero based first position within the section at which to show an ad.
- @param spacing The spacing between subsequent ads. This is the number of regular cells for each
-     ad cell.
- @param maxAds The maximum number of ads to display.
- @available Namo 1.0 and later.
-*/
-- (void)setAdPlacementForSection:(NSUInteger)section
-                   firstPosition:(NSUInteger)firstPosition
-                         spacing:(NSUInteger)spacing
-                          maxAds:(NSUInteger)maxAds;
 
 /// @name Requesting ads from the server
 

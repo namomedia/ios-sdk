@@ -28,6 +28,11 @@
 - (NSString *)imageMetadata;
 
 /**
+ The action URL.
+ */
+- (NSURL *)actionURL;
+
+/**
  The url for impression tracking. You do not need to access this URL unless you
  are overriding impression tracking for direct sold ads.
  */
@@ -43,4 +48,12 @@
  The url for video view tracking.
  */
 - (NSURL *)videoViewTrackingURL;
+
+/**
+ Formatting data about the cell this ad was rendered into. This allows us to send information about
+ the cell to the server when sending an impression. Ideally, we'd store this information in the
+ ad placer rather than here, which would require refactoring our ad binding logic.
+*/
+@property(nonatomic, strong) NSData *layoutInfo;
+
 @end

@@ -17,6 +17,11 @@ extern NSTimeInterval const NAMOImpressionTimeInSecs;
 extern NSTimeInterval const NAMORequestTimeoutInterval;
 
 /**
+ A block called when an ad request completes.
+ */
+typedef void (^NAMOAdCallbackBlock)(NSArray *adData, NSArray *positions, NSString *continuationToken);
+
+/**
  A singleton object responsible for storing application state and connecting to Namo Media
  backend servers.
 */
@@ -57,13 +62,24 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
 @property(nonatomic, strong, readonly) NSString *userAgent;
 
 /**
+ Device ids for which to send a test_mode parameter.
+*/
+@property(nonatomic, strong) NSArray *testDeviceIds;
+
+/**
+ Whether being in the simulator forces the test_mode parameter to be set. Defaults to YES.
+*/
+@property(nonatomic) BOOL isSimulatorInTestMode;
+
+/**
  Requests ads from the server
  */
-- (void)requestAdsWithNumAds:(NSUInteger)numAds
-                  formatType:(NSString *)formatType
-                   targeting:(NAMOTargeting *)targeting
-                      viewId:(NSUInteger)viewId
-                  completion:(void (^)(NSArray *))callback;
+- (NAMORequest *)requestAdsWithNumAds:(NSUInteger)numAds
+                           formatType:(NSString *)formatType
+                            targeting:(NAMOTargeting *)targeting
+                               viewId:(NSUInteger)viewId
+                         continuation:(NSString *)continuation
+                           completion:(NAMOAdCallbackBlock)callback;
 
 /**
  Sends interaction information to the server by following the given interaction url.
@@ -72,10 +88,18 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
                         viewId:(NSUInteger)viewId;
 
 /**
- Sends video interaction information to the server by following the given interaction url.
+ Overload with layout info.
 */
 - (void)sendInteractionWithURL:(NSURL *)url
                         viewId:(NSUInteger)viewId
+                    layoutInfo:(NSData *)layoutInfo;
+
+/**
+ Overload with video info.
+*/
+- (void)sendInteractionWithURL:(NSURL *)url
+                        viewId:(NSUInteger)viewId
+                    layoutInfo:(NSData *)layoutInfo
                videoViewLength:(NSTimeInterval)videoView
               videoTotalLength:(NSTimeInterval)videoTotal;
 
@@ -84,4 +108,5 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
 */
 - (NSString *)webViewJavascript;
 
+- (BOOL)isInTestMode;
 @end

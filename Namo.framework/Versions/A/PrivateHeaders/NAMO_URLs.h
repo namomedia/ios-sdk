@@ -13,6 +13,7 @@ extern NSString *const NAMOParamTrackingEnabled;
 extern NSString *const NAMOParamMacAddressSha1;
 
 // Optional application level params
+extern NSString *const NAMOParamTestMode;
 extern NSString *const NAMOParamBundleId;
 extern NSString *const NAMOParamBundleVersion;
 extern NSString *const NAMOParamUserInfo;
@@ -29,12 +30,16 @@ extern NSString *const NAMOParamTimeSinceAppOpened;
 extern NSString *const NAMOParamViewId;
 extern NSString *const NAMOParamViewSequence;
 extern NSString *const NAMOParamNumAds;
-extern NSString *const NAMOParamResponseTime;
+extern NSString *const NAMOParamPrevResponseTime;
+extern NSString *const NAMOParamPrevResponseError;
 extern NSString *const NAMOParamTimeSinceViewOpened;
 
 // Optional list of supported format types. On iOS, these correspond to the
 // cell reuseIdentifier, which the server can use for targeting.
 extern NSString *const NAMOParamFormatType;
+
+// Optional continuation token. Used when requesting more ads in the same view.
+extern NSString *const NAMOParamContinuationToken;
 
 // Optional targeting params
 extern NSString *const NAMOParamTargetGender;
@@ -49,6 +54,9 @@ extern NSString *const NAMOParamTargetKeyword;
 // Optional video params
 extern NSString *const NAMOParamVideoViewLength;
 extern NSString *const NAMOParamVideoTotalLength;
+
+// Layout info params
+extern NSString *const NAMOParamLayoutInfo;
 
 /**
  NAMO_URLs defines utility messages for generating URLs.

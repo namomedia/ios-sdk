@@ -46,9 +46,9 @@
 /**
  Sets the ad data for this cell.
  
- This method should apply the ad cell data to your custom layout. At a minimum, we recommend
- displaying the ad image, along with the ad title or ad text (or both).
- 
+ This method should apply the ad cell data to your custom layout. At a minimum, you are required
+ to display the ad image and ad text.
+
  @param adData The ad data to render into the cell.
  @available Namo 1.0 and later.
  */

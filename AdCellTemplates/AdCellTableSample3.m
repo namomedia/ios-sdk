@@ -3,11 +3,11 @@
 
 @interface AdCellTableSample3 ()
 
-@property(nonatomic, strong) UILabel *adTitleLabel;
-@property(nonatomic, strong) UILabel *advertiserNameLabel;
 @property(nonatomic, strong) UIImageView *adImageView;
+@property(nonatomic, strong) UILabel *advertiserNameLabel;
 @property(nonatomic, strong) UIImageView *advertiserIconImageView;
 @property(nonatomic, strong) UILabel *adIndicatorLabel;
+@property(nonatomic, strong) UILabel *adTextLabel;
 @end
 
 @implementation AdCellTableSample3
@@ -17,13 +17,7 @@
 }
 
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width {
-  CGSize maximumLabelSize = CGSizeMake(width - 50.0f - 10.0f - 9.0f - 10.0f, 1000.0f);
-  CGSize titleSize = [adData.text sizeWithFont:[UIFont systemFontOfSize:12.0f]
-                             constrainedToSize:maximumLabelSize
-                                 lineBreakMode:NSLineBreakByWordWrapping];
-
-  // Minimum height of 70.0f.
-  return fmaxf(70.0f, titleSize.height + 10.0f + 18.0f + 18.0f + 10.0f);
+  return 80.0f;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -47,16 +41,15 @@
                                                          alpha:1.0f];
     [self.contentView addSubview:self.advertiserNameLabel];
 
-    self.adTitleLabel = [[UILabel alloc] init];
-    self.adTitleLabel.backgroundColor = [UIColor clearColor];
-    self.adTitleLabel.font = [UIFont systemFontOfSize:12.0f];
-    self.adTitleLabel.numberOfLines = 0;
-    self.adTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    [self.contentView addSubview:self.adTitleLabel];
+    self.adTextLabel = [[UILabel alloc] init];
+    self.adTextLabel.numberOfLines = 2;
+    self.adTextLabel.backgroundColor = [UIColor clearColor];
+    self.adTextLabel.font = [UIFont systemFontOfSize:12.0f];
+    [self.contentView addSubview:self.adTextLabel];
 
     self.adIndicatorLabel = [[UILabel alloc] init];
-    self.adIndicatorLabel.backgroundColor = [UIColor clearColor];
     self.adIndicatorLabel.numberOfLines = 1;
+    self.adIndicatorLabel.backgroundColor = [UIColor clearColor];
     self.adIndicatorLabel.font = [UIFont systemFontOfSize:11.0f];
     self.adIndicatorLabel.textColor = [UIColor colorWithHue:0.0f
                                                  saturation:0.0f
@@ -77,46 +70,26 @@
   // The cell looks like this
   //  -----------------------------------------------------
   // |             |  advertiser icon + name               |
-  // |             |  indicator                            |
+  // |             |  Sponsored                            |
   // |    image    |  ad text                              |
   // |             |                                       |
   // |             |                                       |
   //  -----------------------------------------------------
 
-  CGRect leftRect;
-  CGRect rightRect;
-  CGRectDivide(self.contentView.frame, &leftRect, &rightRect, 69.0f, CGRectMinXEdge);
-  CGRect rightContentRect = UIEdgeInsetsInsetRect(
-      rightRect, UIEdgeInsetsMake(10.0f, 0.0f, 10.0f, 10.0f));
-
-  CGRect adImageRect = CGRectMake(10.0, 10.0, 50.0, 50.0);
-
-  CGRect line1Rect;
-  CGRect line2Rect;
-  CGRect line3Rect;
-  CGRectDivide(rightContentRect, &line1Rect, &line2Rect, 16.0f, CGRectMinYEdge);
-  CGRectDivide(line2Rect, &line2Rect, &line3Rect, 18.0f, CGRectMinYEdge);
-
-  CGRect advertiserIconRect;
-  CGRect advertiserNameRect;
-  CGRectDivide(line1Rect, &advertiserIconRect, &advertiserNameRect,
-      16.0f, CGRectMinXEdge);
-
-  // Set the sub view locations.
-  self.adImageView.frame = adImageRect;
-  self.advertiserIconImageView.frame = advertiserIconRect;
-  self.advertiserNameLabel.frame = CGRectOffset(advertiserNameRect, 4.0f, 0.0f);
-  self.adIndicatorLabel.frame = line2Rect;
-  self.adTitleLabel.frame = line3Rect;
+  self.adImageView.frame = CGRectMake(10.0f, 10.0f, 50.0f, 50.0f);
+  self.advertiserIconImageView.frame = CGRectMake(70.0f, 10.0f, 16.0f, 16.0f);
+  self.advertiserNameLabel.frame = CGRectMake(90.0f, 10.0f, 220.0f, 16.0f);
+  self.adIndicatorLabel.frame = CGRectMake(70.0f, 28.0f, 240.0f, 14.0f);
+  self.adTextLabel.frame = CGRectMake(70.0f, 40.0f, 240.0f, 36.0f);
 }
 
 #pragma mark - NAMOAdCell implementation
 
 - (void)setAdData:(NAMOAdData *)adData {
-  [self.adImageView namo_bindAdImage:adData];
-  [self.advertiserIconImageView namo_bindAdIcon:adData];
-  self.advertiserNameLabel.text = adData.advertiserName;
-  self.adTitleLabel.text = adData.text;
+  [adData loadImageIntoImageView:self.adImageView];
+  [adData loadTextIntoLabel:self.adTextLabel];
+  [adData loadAdvertiserIconIntoImageView:self.advertiserIconImageView];
+  [adData loadAdvertiserNameIntoLabel:self.advertiserNameLabel];
 }
 
 @end

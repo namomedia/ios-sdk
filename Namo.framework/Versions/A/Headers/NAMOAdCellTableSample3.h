@@ -8,7 +8,7 @@
  Table view ad cell sample #3.
 
  This sample is a _Thumbnail Ad_ that shows a small to medium sized thumbnail photo along with text
- describing the the ad information. This version shows only the ad text without the title:
+ describing the the ad information. This version uses the text "Sponsored" to demarcate an Ad.
 
  <img style="border:2px dotted black" alt="Cell Preview" src="../docs/Images/table-sample3.png">
  

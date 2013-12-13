@@ -17,7 +17,6 @@
 
 #import "NAMOAdCell.h"
 #import "NAMOAdData.h"
-#import "UIImageView+NAMOImage.h"
 #import "NSURL+NAMOImage.h"
 #import "NAMOTargeting.h"
 
@@ -50,7 +49,7 @@
 
  You must invoke this method in order to use the Namo SDK. You must provide your
  application ID as found in your Namo Publisher Account at
- <a href="http://beta.namomedia.com/monetize" target="_blank">beta.namomedia.com</a>.
+ <a href="http://dashboard.namomedia.com/monetize" target="_blank">dashboard.namomedia.com</a>.
 
  @param applicationId The application ID for your registered application.
  @available Namo 1.0 and later.
@@ -60,7 +59,7 @@
 /// @name Globally deactivating ads
 
 /**
- Start or stop the SDK from connecting to the server for ads.
+ Enables or disables the SDK from connecting to the server for ads.
 
  When not active, calling `[NAMOAdPlacer requestAds:]` will log a warning message. To prevent this
  warning, you can check the active value before requesting ads.
@@ -80,4 +79,22 @@
  */
 + (BOOL)active;
 
+/**
+ Puts the given device in 'test' mode.
+
+ Test mode ensures that ads will be always be shown. It also will prevent impressions and clicks
+ from the device from being counted as revenue. We recommend adding any devices you use for
+ development.
+
+ On iOS 6 and greater devices, your test device ID is the the advertiser identifier. On pre
+ iOS 6 devices where the advertiser identifier is unavailable, this ID is a hash or your device's
+ MAC address. You can easily obtain both of these values by copying and pasting them
+ from the console logs printed by the SDK when you first call setApplicationId.
+
+ @param testDeviceIds An array of strings containing test device ids. You do not need to pass an
+ ID for your simulator. Use the `includeSimulator` parameter instead.
+ @param includeSimulator Whether to include the iPhone simulator as a test device.
+ @available Namo 1.0.1 and later.
+*/
++ (void)setTestDevices:(NSArray *)testDeviceIds includeSimulator:(BOOL)includeSimulator;
 @end

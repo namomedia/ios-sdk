@@ -2,6 +2,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class UILabel;
+@class UIImage;
+@class UIImageView;
+
+/**
+ Defines data for a Namo ad returned from the server.
+
+ @available Namo 1.0 and later.
+ */
+@interface NAMOAdData : NSObject
+
+/// @name Determining the action type.
+
 /**
  The action type for an Ad.
 
@@ -26,47 +39,6 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
 };
 
 /**
- Defines data for a Namo ad returned from the server.
-
- @available Namo 1.0 and later.
- */
-@interface NAMOAdData : NSObject
-
-/// @name Accessing Ad data
-
-/**
- A short ad title.
-
- Your ad should show an ad title or ad text. If you show both, you should display the
- title above the ad text.
-
- @return The title for this ad.
- @available Namo 1.0 and later.
- */
-- (NSString *)title;
-
-/**
- Ad text.
-
- Ad text will be longer than the ad title, typically between 2 and 5 lines of medium size
- font on an iPhone.
-
- @return The text for this ad.
- @available Namo 1.0 and later.
- */
-- (NSString *)text;
-
-/**
- The advertiser name.
-
- Showing the advertiser name is optional.
-
- @return The advertiser name for this ad.
- @available Namo 1.0 and later.
- */
-- (NSString *)advertiserName;
-
-/**
  The action type associated with this ad.
 
  You may want to show a different UI for different action types. For example, you could
@@ -78,42 +50,128 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
  */
 - (NAMOActionType)actionType;
 
-/**
- The action URL.
-
- Typically you do not need to call this link yourself, as the SDK will attach the appropriate
- GestureRecognizer classes to your cell. You may need this property if you wish to override the
- default action handling behavior.
-
- @return The action URL for this ad.
- @available Namo 1.0 and later.
- */
-- (NSURL *)actionURL;
+/// @name Showing ad text.
 
 /**
- The primary ad image URL.
+ Callback block for text loading, called after the UILabel text property is set.
 
- Showing the image is required. You may show the image at whatever dimensions you wish within
- a reasonable aspect ratio for your app, although we recommend a minimum height and width of
- 80 pixels, and an aspect ratio between 3:1 and 4:7. The image returned from the Namo Media ad
- servers will be scaled and cropped according to the image metadata associated with the ad, which
- describes a desired hotspot to keep visible, and a scaling algorithm to resize the image
- appropriately.
-
- @return The image URL for this ad.
- @available Namo 1.0 and later.
+ @available Namo 2.0 and later.
  */
-- (NSURL *)imageURL;
+typedef void(^NAMO_TextLoadedBlock)(UILabel *label);
 
 /**
- An advertiser icon URL.
+ Loads the Ad text into the given UILabel.
 
- Showing the advertiser icon is optional. If you display both the advertiser name and icon, we
- recommend placing the icon to the left of the name, and showing it as square image with a
- minimum size of 14x14.
+ This will asynchronously measure the UILabel and load ad text of the appropriate length based on
+ its dimensions.
 
- @return The advertiser icon for this ad.
- @available Namo 1.0 and later.
+ @param label The UILabel into which to load the text.
+ @available Namo 2.0 and later.
+*/
+- (void)loadTextIntoLabel:(UILabel *)label;
+
+/**
+ Loads the Ad text into the given UILabel, with a callback.
+
+ If you provide a non-nil success block, the block will be executed after the text has been set.
+ You can, for example, use this block to provide a transition animation.
+
+ @param label The UILabel into which to load the text.
+ @param completedBlock A block to execute after the text loads.
+ @available Namo 2.0 and later.
  */
-- (NSURL *)advertiserIconURL;
+- (void)loadAdTextIntoLabel:(UILabel *)label
+                  completedBlock:(NAMO_TextLoadedBlock)completedBlock;
+
+/**
+ Loads the advertiser name into the given UILabel.
+
+ This will asynchronously measure the UILabel and set the advertiser name.
+
+ @param label The UILabel into which to load the text.
+ @available Namo 2.0 and later.
+*/
+- (void)loadAdvertiserNameIntoLabel:(UILabel *)label;
+
+/**
+ Loads the advertiser name into the given UILabel, with a callback.
+
+ If you provide a non-nil success block, the block will be executed after the text has been set.
+ You can, for example, use this block to provide a transition animation.
+
+ @param label The UILabel into which to load the text.
+ @param completedBlock A block to execute after the text loads.
+ @available Namo 2.0 and later.
+ */
+- (void)loadAdvertiserNameIntoLabel:(UILabel *)label
+             completedBlock:(NAMO_TextLoadedBlock)completedBlock;
+
+/// @name Showing ad images.
+
+/**
+ Callback block for image requests, called when image loading completes.
+
+ When this block gets called, the `UIImageView` `image` property will be set to the result of the
+ image request if there is no error. If there is an error, the error property will be non-nil.
+ @available Namo 2.0 and later.
+ */
+typedef void(^NAMO_ImageLoadedBlock)(UIImageView *imageView, NSError *error);
+
+/**
+ Loads the Ad image into the given UIImageView.
+
+ This makes a request for the image using the dimensions of the ImageView. The resulting image will
+ be asynchronously loaded into the ImageView.
+
+ @param imageView The image view into which to load the image.
+ @available Namo 2.0 and later.
+*/
+- (void)loadImageIntoImageView:(UIImageView *)imageView;
+
+/**
+ Loads the Ad image into the given UIImage, with a callback.
+
+ This makes an asynchronous request for the image. If you provide a non-nil success block, the block
+ will be executed after the image request completes and after the UIImageView's image property has
+ been set to the result of the image request. You can, for example, use this success block to
+ provide transition effects on the view.
+
+ @param imageView The UIImageView that will hold the ad image.
+ @param placeholder An optionally-nil image to place in the UIImageView before the ad request
+ completes.
+ @param completedBlock A block to execute after the image request completes.
+ @available Namo 2.0 and later.
+ */
+- (void)loadAdImageIntoImageView:(UIImageView *)imageView
+                placeholderImage:(UIImage *)placeholder
+                  completedBlock:(NAMO_ImageLoadedBlock)completedBlock;
+
+/**
+ Loads the Advertiser icon into the given UIImageView.
+
+ This makes a request for the icon using the dimensions of the ImageView. The resulting image will
+ be asynchronously loaded into the ImageView.
+
+ @param imageView The image view into which to load the image.
+ @available Namo 2.0 and later.
+ */
+- (void)loadAdvertiserIconIntoImageView:(UIImageView *)imageView;
+
+/**
+ Loads the Advertiser icon into the given UIImageView, with a callback.
+
+ This makes an asynchronous request for the icon. If you provide a non-nil success block, the block
+ will be executed after the image request completes and after the UIImageView's image property has
+ been set to the result of the image request. You can, for example, use this block to
+ provide transition effects on the view.
+
+ @param imageView The image view into which to load the image.
+ @param placeholder An optionally-nil image to place in the UIImageView before the ad request
+ completes.
+ @param completedBlock A block to execute after the image request completes.
+ @available Namo 2.0 and later.
+ */
+- (void)loadAdvertiserIconIntoImageView:(UIImageView *)imageView
+                       placeholderImage:(UIImage *)placeholder
+                         completedBlock:(NAMO_ImageLoadedBlock)completedBlock;
 @end

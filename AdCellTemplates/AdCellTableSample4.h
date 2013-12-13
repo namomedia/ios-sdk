@@ -8,7 +8,7 @@
  Table view ad cell sample #4.
 
  This sample is a _Photo Ad_ that shows a large photo along with text
- describing the the ad information. This version shows only the ad text without the title:
+ describing the the ad information.
 
  <img style="border:2px dotted black" alt="Cell Preview" src="../docs/Images/table-sample4.png">
 

@@ -4,6 +4,10 @@
 #import <UIKit/UIKit.h>
 #import "NAMOIndexPathAdjuster.h"
 
+@class NAMOAdsInfo;
+
+typedef void(^NAMOContinuationBlock)();
+
 @interface NAMOIndexPathAdjuster (Internal)
 
 /**
@@ -30,47 +34,17 @@
 /**
  The currently loaded ad data.
 */
-- (NSArray *)adData;
+- (NAMOAdsInfo *)adsInfo;
+
+
+- (void)clearAdData;
 
 /**
  Sets the currently loaded ad data.
-*/
-- (void)setAdData:(NSArray *)adData;
-
-/**
- @see UITableView+NAMOAdPlacer.h
-*/
-- (void)setAdPlacementWithSpacing:(NSUInteger)spacing
-                    firstPosition:(NSUInteger)firstPosition
-                           maxAds:(NSUInteger)maxAds;
-
-/**
- @see UITableView+NAMOAdPlacer.h
-*/
-- (void)setAdPlacementForSection:(NSUInteger)section
-                     withSpacing:(NSUInteger)spacing
-                   firstPosition:(NSUInteger)firstPosition
-                          maxAds:(NSUInteger)maxAds;
-
-/**
- @see UITableView+NAMOAdPlacer.h
-*/
-- (BOOL)hasAdsForSection:(NSUInteger)section;
-
-/**
- @see UITableView+NAMOAdPlacer.h
-*/
-- (NSUInteger)firstPositionForSection:(NSUInteger)section;
-
-/**
- @see UITableView+NAMOAdPlacer.h
-*/
-- (NSUInteger)spacingForSection:(NSUInteger)section;
-
-/**
- @see UITableView+NAMOAdPlacer.h
-*/
-- (NSUInteger)maxAdsForSection:(NSUInteger)section;
+ */
+- (void)addAdData:(NSArray *)adData
+        positions:(NSArray *)positions
+continuationBlock:(NAMOContinuationBlock)continuationBlock;
 
 /**
  @see UITableView+NAMOAdPlacer.h
