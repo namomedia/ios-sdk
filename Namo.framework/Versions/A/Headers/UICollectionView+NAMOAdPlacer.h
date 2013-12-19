@@ -100,10 +100,10 @@
  `UICollectionView` bound to an ad placer. Otherwise you may receive
  `NSInternalInconsistencyException` errors.
 
- @param indexPaths An array of NSIndexPath identifying the item locations to add.
+ @param originalIndexPaths An array of NSIndexPath identifying the item locations to add.
  @available Namo 1.0 and later.
  */
-- (void)namo_insertItemsAtIndexPaths:(NSArray *)indexPaths;
+- (void)namo_insertItemsAtIndexPaths:(NSArray *)originalIndexPaths;
 
 /**
  Delete items in the receiver at the locations identified by an array of index paths. This will notify
@@ -113,10 +113,10 @@
  `UICollectionView` bound to an ad placer. Otherwise you may receive
  `NSInternalInconsistencyException` errors.
 
- @param indexPaths An array of NSIndexPath identifying the items to delete.
+ @param originalIndexPaths An array of NSIndexPath identifying the items to delete.
  @available Namo 1.0 and later.
  */
-- (void)namo_deleteItemsAtIndexPaths:(NSArray *)indexPaths;
+- (void)namo_deleteItemsAtIndexPaths:(NSArray *)originalIndexPaths;
 
 /**
  Deselect the item at the given original index path.
@@ -124,11 +124,11 @@
  You must replace all calls to `[collectionView deselectItemAtIndexPath:animated:]` with this
  method for a `UICollectionView` bound to an ad placer.
  
- @param indexPath The index path of the item to deselect.
+ @param originalIndexPath the index path of the row to deselect.
  @param animated Specify YES to animate the change in selection.
  @available Namo 1.0 or later.
  */
-- (void)namo_deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+- (void)namo_deselectItemAtIndexPath:(NSIndexPath *)originalIndexPath animated:(BOOL)animated;
 
 /**
  Move items in the receiver from the index path in the first argument to the index path specified
@@ -138,11 +138,11 @@
  for a `UICollectionView` bound to an ad placer. Otherwise you may receive
  `NSInternalInconsistencyException` errors.
 
- @param indexPath The index path at which the item currently exists.
+ @param originalIndexPath The index path at which the item currently exists.
  @param newIndexPath The index path to move the item to.
  @available Namo 1.0 or later.
 */
-- (void)namo_moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
+- (void)namo_moveItemAtIndexPath:(NSIndexPath *)originalIndexPath toIndexPath:(NSIndexPath *)newIndexPath;
 
 /**
  Reload items in the receiver at the locations specified in the array of index paths.
@@ -161,14 +161,16 @@
  You must replace all calls to `[collectionView selectItemsAtIndexPath:animated:scrollPosition:]` 
  with this method for a `UICollectionView` bound to an ad placer.
  
- @param indexPath the index path of the item to select.
+ @param originalIndexPath the index path of the row to select. If you get the index path from a
+ collectionView method you should call [indexPathAdjuster originalIndexPath:] to get the value to use
+ in this method.
  @param animated Specify YES to animate the change in the selection or NO to make the change without
  animating it.
  @param scrollPosition An option that specifies where the item should be positioned when scrolling
  finishes. For a list of possible values, see `UICollectionViewScrollPosition`.
  @available Namo 1.0 and later.
 */
-- (void)namo_selectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)namo_selectItemAtIndexPath:(NSIndexPath *)originalIndexPath
                           animated:(BOOL)animated
                     scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
 @end

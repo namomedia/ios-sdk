@@ -136,7 +136,7 @@
  You must replace all calls to `[tableView deselectRowAtIndexPath:animated:]` with this
  method for a `UITableView` bound to an ad placer.
  
- @param indexPath The index path of the row to deselect.
+ @param indexPath the index path of the row to deselect.
  @param animated Specify YES to animate the change in selection.
  @available Namo 1.0 and later.
  */
@@ -149,12 +149,11 @@
  You must replace calls to `tableView insertRowsAtIndexPaths` with this method for a `UITableView` bound
  to an ad placer. Otherwise you may receive `NSInternalInconsistencyException` errors.
 
- @param adjustedIndexPaths An array of NSIndexPath objects each representing a row index and
-     section index that together identify a row in the table view.
+ @param originalIndexPaths An array of NSIndexPath that represent rows to insert into the table.
  @param animation A constant that either specifies the kind of animation to perform when inserting.
  @available Namo 1.0 and later.
 */
-- (void)namo_insertRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
+- (void)namo_insertRowsAtIndexPaths:(NSArray *)originalIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;
 
 /**
@@ -164,11 +163,11 @@
  You must replace calls to `tableView deleteRowsAtIndexPaths` with this method for a `UITableView` bound
  to an ad placer. Otherwise you may receive `NSInternalInconsistencyException` errors.
 
- @param adjustedIndexPaths An array of NSIndexPath objects identifying the rows to delete.
+ @param originalIndexPaths An array of NSIndexPath objects identifying the rows to delete.
  @param animation A constant that indicates how the deletion is to be animated.
  @available Namo 1.0 and later.
 */
-- (void)namo_deleteRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
+- (void)namo_deleteRowsAtIndexPaths:(NSArray *)originalIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;
 
 /**
@@ -190,11 +189,11 @@
  Reloads the specified rows using the given animation effect, and informs that attached ad placer
  that the row positions may have changed.
 
- @param adjustedIndexPaths An array of `NSIndexPath` objects identifying the rows to reload.
+ @param originalIndexPaths An array of `NSIndexPath` objects identifying the rows to reload.
  @param animation A constant that indicates how the reloading is to be animated.
  @available Namo 1.0 and later.
 */
-- (void)namo_reloadRowsAtIndexPaths:(NSArray *)adjustedIndexPaths
+- (void)namo_reloadRowsAtIndexPaths:(NSArray *)originalIndexPaths
                    withRowAnimation:(UITableViewRowAnimation)animation;
 
 /**
@@ -203,14 +202,16 @@
  You must replace all calls to `[tableView selectItemsAtIndexPath:animated:scrollPosition:]`
  with this method for a `UITableView` bound to an ad placer.
  
- @param indexPath the index path of the row to select.
+ @param originalIndexPath the index path of the row to select. If you get the index path from a 
+ tableView you should call [indexPathAdjuster originalIndexPath:] to get the value to use
+ in this method.
  @param animated Specify YES to animate the change in the selection or NO to make the change
  without animating it.
  @param scrollPosition An option that specifies where the row should be positioned when scrolling
  finishes. For a list of possible values, see `UITableViewScrollPosition`.
  @available Namo 1.0 and later.
  */
-- (void)namo_selectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)namo_selectRowAtIndexPath:(NSIndexPath *)originalIndexPath
                          animated:(BOOL)animated
                    scrollPosition:(UITableViewScrollPosition)scrollPosition;
 @end

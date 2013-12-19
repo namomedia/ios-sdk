@@ -17,11 +17,6 @@ typedef void(^NAMOContinuationBlock)();
 + (NAMOIndexPathAdjuster *)nonAdjustingAdjuster;
 
 /**
- Called to rebuild the ad indexes.
-*/
-- (void)readjust;
-
-/**
  Returns original sizes for each section.
 */
 - (NSArray *)sectionSizes;
@@ -29,14 +24,12 @@ typedef void(^NAMOContinuationBlock)();
 /**
  Set the original sizes for each section.
 */
-- (void)setSectionSizes:(NSArray *)sectionSizes;
+- (void)putSectionSizes:(NSArray *)sectionSizes;
+
 
 /**
- The currently loaded ad data.
-*/
-- (NAMOAdsInfo *)adsInfo;
-
-
+ Clears all the ad data from the adjuster. Should be followed by a call to reloadData and reloadViewData
+ */
 - (void)clearAdData;
 
 /**
@@ -47,14 +40,16 @@ typedef void(^NAMOContinuationBlock)();
 continuationBlock:(NAMOContinuationBlock)continuationBlock;
 
 /**
- @see UITableView+NAMOAdPlacer.h
+ Takes an array of index paths and returns an array of adjusted paths (possible including additional ads) to insert.
+ Should be followed immediately by a call to the table/collection view's insertRowsAtIndexPaths method.
 */
-- (void)insertRowsAtIndexPaths:(NSArray *)adjustedIndexPaths;
+- (NSArray *)insertRowsAtIndexPaths:(NSArray *)indexPaths;
 
 /**
- @see UITableView+NAMOAdPlacer.h
+ Takes an array of index paths to delete and return an array of adjusted index paths that should be deleted.
+ Should be followed immediately by a call to the table/collection view's deleteRowsAtIndexPaths method.
 */
-- (void)deleteRowsAtIndexPaths:(NSArray *)adjustedIndexPaths;
+- (NSArray *)deleteRowsAtIndexPaths:(NSArray *)indexPaths;
 
 /**
  @see UITableView+NAMOAdPlacer.h
