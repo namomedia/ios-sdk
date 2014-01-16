@@ -45,11 +45,11 @@
 - (NSIndexPath *)originalIndexPath:(NSIndexPath *)adjustedIndexPath;
 
 /**
-Given an adjusted index path, returns the original index path in the table view.
+Given an array of adjusted index paths, returns the original index paths in the table view.
 
 @param adjustedIndexPaths The adjusted index paths.
 @return The original index paths.
-@available Namo 1.0 and later.
+@available Namo 2.0.1 and later.
 */
 - (NSArray *)originalIndexPaths:(NSArray *)adjustedIndexPaths;
 

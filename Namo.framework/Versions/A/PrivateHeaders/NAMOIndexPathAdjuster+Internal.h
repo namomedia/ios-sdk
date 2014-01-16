@@ -4,8 +4,6 @@
 #import <UIKit/UIKit.h>
 #import "NAMOIndexPathAdjuster.h"
 
-@class NAMOAdsInfo;
-
 typedef void(^NAMOContinuationBlock)();
 
 @interface NAMOIndexPathAdjuster (Internal)
@@ -15,11 +13,6 @@ typedef void(^NAMOContinuationBlock)();
  when a table isn't yet bound.
 */
 + (NAMOIndexPathAdjuster *)nonAdjustingAdjuster;
-
-/**
- Returns original sizes for each section.
-*/
-- (NSArray *)sectionSizes;
 
 /**
  Set the original sizes for each section.
@@ -55,5 +48,12 @@ continuationBlock:(NAMOContinuationBlock)continuationBlock;
  @see UITableView+NAMOAdPlacer.h
 */
 - (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath;
+
+/**
+ Gets the ad at the index path, optionally triggering a request for more ads. This is useful when
+ measuring the size of an ad cell before it's displayed without causing us to load more ads. 
+ Currently used in NAMOCollectionViewDelegate and NAMOTableViewDelegate.
+*/
+- (NAMOAdData *)getAdAtIndexPath:(NSIndexPath *)adjustedIndexPath mayRequest:(BOOL)mayRequest;
 
 @end

@@ -72,16 +72,30 @@ typedef void(^NAMO_TextLoadedBlock)(UILabel *label);
 
 /**
  Loads the Ad text into the given UILabel, with a callback.
+ 
+ If you provide a non-nil success block, the block will be executed after the text has been set.
+ You can, for example, use this block to provide a transition animation.
+ 
+ @param label The UILabel into which to load the text.
+ @param completedBlock A block to execute after the text loads.
+ @available Namo 2.1 and later.
+ */
+- (void)loadTextIntoLabel:(UILabel *)label
+           completedBlock:(NAMO_TextLoadedBlock)completedBlock;
+
+/**
+ Loads the Ad text into the given UILabel, with a callback.
 
  If you provide a non-nil success block, the block will be executed after the text has been set.
  You can, for example, use this block to provide a transition animation.
 
  @param label The UILabel into which to load the text.
  @param completedBlock A block to execute after the text loads.
+ @deprecated
  @available Namo 2.0 and later.
  */
 - (void)loadAdTextIntoLabel:(UILabel *)label
-                  completedBlock:(NAMO_TextLoadedBlock)completedBlock;
+                  completedBlock:(NAMO_TextLoadedBlock)completedBlock __deprecated;
 
 /**
  Loads the advertiser name into the given UILabel.
@@ -130,6 +144,24 @@ typedef void(^NAMO_ImageLoadedBlock)(UIImageView *imageView, NSError *error);
 
 /**
  Loads the Ad image into the given UIImage, with a callback.
+ 
+ This makes an asynchronous request for the image. If you provide a non-nil success block, the block
+ will be executed after the image request completes and after the UIImageView's image property has
+ been set to the result of the image request. You can, for example, use this success block to
+ provide transition effects on the view.
+ 
+ @param imageView The UIImageView that will hold the ad image.
+ @param placeholder An optionally-nil image to place in the UIImageView before the ad request
+ completes.
+ @param completedBlock A block to execute after the image request completes.
+ @available Namo 2.1 and later.
+ */
+- (void)loadImageIntoImageView:(UIImageView *)imageView
+              placeholderImage:(UIImage *)placeholder
+                completedBlock:(NAMO_ImageLoadedBlock)completedBlock;
+
+/**
+ Loads the Ad image into the given UIImage, with a callback.
 
  This makes an asynchronous request for the image. If you provide a non-nil success block, the block
  will be executed after the image request completes and after the UIImageView's image property has
@@ -140,11 +172,12 @@ typedef void(^NAMO_ImageLoadedBlock)(UIImageView *imageView, NSError *error);
  @param placeholder An optionally-nil image to place in the UIImageView before the ad request
  completes.
  @param completedBlock A block to execute after the image request completes.
+ @deprecated
  @available Namo 2.0 and later.
  */
 - (void)loadAdImageIntoImageView:(UIImageView *)imageView
                 placeholderImage:(UIImage *)placeholder
-                  completedBlock:(NAMO_ImageLoadedBlock)completedBlock;
+                  completedBlock:(NAMO_ImageLoadedBlock)completedBlock __deprecated;
 
 /**
  Loads the Advertiser icon into the given UIImageView.

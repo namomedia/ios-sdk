@@ -161,7 +161,7 @@
  You must replace all calls to `[collectionView selectItemsAtIndexPath:animated:scrollPosition:]` 
  with this method for a `UICollectionView` bound to an ad placer.
  
- @param originalIndexPath the index path of the row to select. If you get the index path from a
+ @param originalIndexPath The index path of the row to select. If you get the index path from a
  collectionView method you should call [indexPathAdjuster originalIndexPath:] to get the value to use
  in this method.
  @param animated Specify YES to animate the change in the selection or NO to make the change without
