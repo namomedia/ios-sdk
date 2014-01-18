@@ -8,8 +8,9 @@ See our [Help Documentation](http://docs.namomedia.com/ios) to get started.
 Change Log
 ========
 
-**Version 2.1.1** - *January 17, 2014*
-* Bug fix release - fix App Install text appearance in uncommon cases.
+**Version 2.1.2** - *January 17, 2014*
+* Bug fix - fix App Install cancel button appearance in uncommon cases.
+* Bug fix - fix bug that could cause duplicate impression counting.
 
 **Version 2.1.0** - *January 15, 2014*
 * Improve App Install & URL Ads UX
