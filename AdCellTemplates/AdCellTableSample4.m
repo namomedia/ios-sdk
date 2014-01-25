@@ -17,6 +17,10 @@
 }
 
 + (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width {
+  return [AdCellTableSample4 cellHeightWithWidth:width];
+}
+
++ (CGFloat)cellHeightWithWidth:(CGFloat)width {
   return 200.0f;
 }
 

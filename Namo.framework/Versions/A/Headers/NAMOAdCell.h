@@ -68,8 +68,22 @@
  @param width The width of the table cell.
  @return The row height for a cell with the given ad data and layout width.
  @available Namo 1.0 and later.
+ @deprecated Namo 2.2.0 use cellHeightWithWidth: instead.
 */
-+ (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width;
++ (CGFloat)cellHeightWithData:(NAMOAdData *)adData andWidth:(CGFloat)width __deprecated;
+
+/**
+ The row height for an ad cell with the given layout width.
+
+ This value is used by NAMOAdPlacer when providing a `UITableViewDelegate` to your table view in
+ order to implement `tableView:heightForRowAtIndexPath:`. If you do not implement this method, a
+ default height of 100.0f will be used.
+
+ @param width The width of the table cell.
+ @return The row height for a cell with the given ad data and layout width.
+ @available Namo 2.2.0 and later.
+*/
++ (CGFloat)cellHeightWithWidth:(CGFloat)width;
 
 /**
  The size for a cell with the given ad data.
@@ -81,7 +95,20 @@
  @param adData The data for an Ad returned from the server.
  @return The cell size for a cell of this class with the given data.
  @available Namo 1.0 and later.
+ @deprecated Namo 2.2.0 use cellSize instead.
 */
-+ (CGSize)cellSizeWithData:(NAMOAdData *)adData;
++ (CGSize)cellSizeWithData:(NAMOAdData *)adData __deprecated;
+
+/**
+ The size for an ad cell.
+
+ This value is used by NAMOAdPlacer when your collection view calls
+ `collectionView:flowLayout:sizeForItemAtIndexPath:` on its delegate. If you do not implement this,
+ a default size of CGSizeMake(150.0f, 100.0f) will be used.
+
+ @return The cell size for a cell of this class.
+ @available Namo 2.2.0 and later.
+*/
++ (CGSize)cellSize;
 
 @end

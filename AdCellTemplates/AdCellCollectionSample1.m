@@ -16,6 +16,10 @@
 }
 
 + (CGSize)cellSizeWithData:(NAMOAdData *)adData {
+  return [AdCellCollectionSample1 cellSize];
+}
+
++ (CGSize)cellSize {
   return CGSizeMake(320.0f, 168.0f);
 }
 
