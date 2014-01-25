@@ -10,6 +10,11 @@ See our [Help Documentation](http://docs.namomedia.com/ios) to get started.
 Change Log
 ========
 
+**Version 2.2.0 - January 24, 2014**
+* Deprecate NAMOAdCell cellHeigthWithData:andWidth: and NAMOAdCell cellSizeWithData: in favor of NAMOAdCell cellHeightWithWidth: and NAMOAdCell cellSize
+* Don't show an ad when it would be the last item in a stream.
+* Fix a bug that could cause an awkward animation when calling namo_insertRowsAtIndexPaths.
+
 **Version 2.1.2** - *January 17, 2014*
 * Bug fix - fix App Install cancel button appearance in uncommon cases.
 * Bug fix - fix bug that could cause duplicate impression counting.
