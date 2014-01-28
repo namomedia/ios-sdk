@@ -11,7 +11,7 @@ Change Log
 ========
 
 **Version 2.2.0 - January 24, 2014**
-* Deprecate NAMOAdCell cellHeigthWithData:andWidth: and NAMOAdCell cellSizeWithData: in favor of NAMOAdCell cellHeightWithWidth: and NAMOAdCell cellSize
+* Deprecate NAMOAdCell cellHeightWithData:andWidth: and NAMOAdCell cellSizeWithData: in favor of NAMOAdCell cellHeightWithWidth: and NAMOAdCell cellSize
 * Don't show an ad when it would be the last item in a stream.
 * Fix a bug that could cause an awkward animation when calling namo_insertRowsAtIndexPaths.
 
