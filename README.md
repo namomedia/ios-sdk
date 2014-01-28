@@ -20,10 +20,9 @@ Change Log
 
 **Version 2.1.1** - *January 16, 2014*
 * Bug fix - fix App Install cancel button appearance in uncommon cases.
-* 
+
 **Version 2.1.0** - *January 15, 2014*
 * Improve App Install & URL Ads UX
-
 
 **Version 2.0.1** - *December 18, 2013*
 * Fix bugs that prevented infinite scrolling for performing correctly
