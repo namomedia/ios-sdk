@@ -173,4 +173,28 @@
 - (void)namo_selectItemAtIndexPath:(NSIndexPath *)originalIndexPath
                           animated:(BOOL)animated
                     scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
+
+/**
+ Returns the index paths represented by the visible items.
+
+ You must replace all calls to `[tableView indexPathsForVisibleItems]`
+ with this method for a `UITableView` bound to an ad placer.
+
+ @return An array of index-path objects each identifying a row, or nil if there are no
+ selected items.
+ @available Namo 2.3.1 and later.
+*/
+- (NSArray *)namo_indexPathsForVisibleItems;
+
+/**
+ Returns the index paths represented by the selected items.
+
+ You must replace all calls to `[tableView indexPathsForSelectedItems]`
+ with this method for a `UITableView` bound to an ad placer.
+
+ @return An array of index-path objects each identifying a row, or nil if there are no
+ selected items.
+ @available Namo 2.3.1 and later.
+*/
+- (NSArray *)namo_indexPathsForSelectedItems;
 @end

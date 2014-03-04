@@ -19,7 +19,13 @@ extern NSTimeInterval const NAMORequestTimeoutInterval;
 /**
  A block called when an ad request completes.
  */
-typedef void (^NAMOAdCallbackBlock)(NSArray *adData, NSArray *positions, NSString *continuationToken);
+typedef void (^NAMORequestSuccessBlock)(
+    NSArray *adData, NSArray *positions, NSString *continuationToken);
+
+/**
+ A block called when an ad request fails.
+ */
+typedef void (^NAMORequestFailureBlock)(NSError *);
 
 /**
  A singleton object responsible for storing application state and connecting to Namo Media
@@ -57,6 +63,13 @@ typedef void (^NAMOAdCallbackBlock)(NSArray *adData, NSArray *positions, NSStrin
 @property(nonatomic, strong) NSURL *baseImageServerURL;
 
 /**
+ A campaign ID for debugging specific ads. When set to a number other than 0, only ads from the
+ campaign will be returned from the ad server. When set to 0, normal ad serving occurs, returning
+ ads from any running campaign.
+*/
+@property(nonatomic) NSInteger debugCampaignId;
+
+/**
  User agent attached to the web view on this device.
  */
 @property(nonatomic, strong, readonly) NSString *userAgent;
@@ -78,8 +91,9 @@ typedef void (^NAMOAdCallbackBlock)(NSArray *adData, NSArray *positions, NSStrin
                            formatType:(NSString *)formatType
                             targeting:(NAMOTargeting *)targeting
                                viewId:(NSUInteger)viewId
-                         continuation:(NSString *)continuation
-                           completion:(NAMOAdCallbackBlock)callback;
+                    continuationToken:(NSString *)continuationToken
+                         failureBlock:(NAMORequestFailureBlock)failureBlock
+                         successBlock:(NAMORequestSuccessBlock)successBlock;
 
 /**
  Sends interaction information to the server by following the given interaction url.

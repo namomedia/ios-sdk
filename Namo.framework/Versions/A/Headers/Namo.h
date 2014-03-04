@@ -15,6 +15,7 @@
 #error "The Namo SDK is ARC only. Either turn on ARC for the project or use -fobjc-arc flag."
 #endif
 
+#import "NAMOErrors.h"
 #import "NAMOAdCell.h"
 #import "NAMOAdData.h"
 #import "NSURL+NAMOImage.h"

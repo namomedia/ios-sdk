@@ -22,4 +22,6 @@
 
 - (void)openInternalMoviePlayerForURL:(NSURL *)url ad:(NAMOAdData *)ad;
 
+- (void)clearLoading;
+
 @end

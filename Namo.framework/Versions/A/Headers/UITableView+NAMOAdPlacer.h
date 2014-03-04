@@ -70,6 +70,23 @@
 /// @name Proxying Table View Methods
 
 /**
+ Dequeues a UITableViewCell.
+
+ After binding to a `NAMOAdPlacer`, you must replace all calls to
+ `[tableViewView dequeueReusableCellWithIdentifier: forIndexPath:]` with a call to this method.
+ Otherwise, you may see an ad cell and content cell may be placed in the same position on the
+ screen.
+
+ @param reuseIdentifier The reuseIdentifier associated with this cell class.
+ @param indexPath The index path passed to a UITableView's `cellForItemAtIndexPath`
+     method. The data source should just pass this on without modification.
+ @return A UITableViewCell instance for the given reuse identifier.
+ @available Namo 2.3.1 and later.
+*/
+- (UITableViewCell *)namo_dequeueReusableCellWithIdentifier:(NSString *)reuseIdentifier
+                                               forIndexPath:(NSIndexPath *)indexPath;
+
+/**
  Sets the table view data source.
 
  If you need to to set the table view data source AFTER binding to an ad placer, use this method,
@@ -214,4 +231,41 @@
 - (void)namo_selectRowAtIndexPath:(NSIndexPath *)originalIndexPath
                          animated:(BOOL)animated
                    scrollPosition:(UITableViewScrollPosition)scrollPosition;
+
+/**
+ Returns the index paths represented by the visible rows.
+
+ You must replace all calls to `[tableView indexPathsForVisibleRows]`
+ with this method for a `UITableView` bound to an ad placer.
+
+ @return An array of index-path objects each identifying a row, or nil if there are no
+ selected rows.
+ @available Namo 2.3.1 and later.
+*/
+- (NSArray *)namo_indexPathsForVisibleRows;
+
+/**
+ Returns the index paths represented by the selected rows.
+
+ You must replace all calls to `[tableView indexPathsForSelectedRows]`
+ with this method for a `UITableView` bound to an ad placer.
+
+ @return An array of index-path objects each identifying a row, or nil if there are no
+ selected rows.
+ @available Namo 2.3.1 and later.
+*/
+- (NSArray *)namo_indexPathsForSelectedRows;
+
+/**
+ Returns the index path represented by the selected rows.
+
+ You must replace all calls to `[tableView indexPathsForSelectedRow]`
+ with this method for a `UITableView` bound to an ad placer.
+
+ @return An index-path objects each identifying a row, or nil if there are no
+ selected rows.
+ @available Namo 2.3.1 and later.
+*/
+- (NSIndexPath *)namo_indexPathForSelectedRow;
+
 @end

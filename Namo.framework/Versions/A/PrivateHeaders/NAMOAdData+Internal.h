@@ -56,4 +56,9 @@
 */
 @property(nonatomic, strong) NSData *layoutInfo;
 
+/**
+ Append some debugging info to the text.
+*/
+- (void)appendDebugInfo;
+
 @end

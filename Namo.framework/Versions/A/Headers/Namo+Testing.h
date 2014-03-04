@@ -29,4 +29,7 @@
  Debugging for getting the image server URL.
 */
 + (NSURL *)imageServerURL;
+
+// Debugging for setting a campaign ID filter
++ (void)setDebugCampaignId:(NSInteger)campaignId;
 @end

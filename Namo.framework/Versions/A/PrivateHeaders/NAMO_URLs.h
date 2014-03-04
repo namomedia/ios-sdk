@@ -58,6 +58,10 @@ extern NSString *const NAMOParamVideoTotalLength;
 // Layout info params
 extern NSString *const NAMOParamLayoutInfo;
 
+// Debugging params
+extern NSString *const NAMOParamBatman;
+extern NSString *const NAMOParamDebugCampaignId;
+
 /**
  NAMO_URLs defines utility messages for generating URLs.
 */

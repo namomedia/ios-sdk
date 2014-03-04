@@ -4,7 +4,7 @@
 #import <UIKit/UIKit.h>
 #import "NAMOIndexPathAdjuster.h"
 
-typedef void(^NAMOContinuationBlock)();
+typedef void(^NAMORequestMoreBlock)();
 
 @interface NAMOIndexPathAdjuster (Internal)
 
@@ -30,7 +30,7 @@ typedef void(^NAMOContinuationBlock)();
  */
 - (void)addAdData:(NSArray *)adData
         positions:(NSArray *)positions
-continuationBlock:(NAMOContinuationBlock)continuationBlock;
+ requestMoreBlock:(NAMORequestMoreBlock)requestMoreBlock;
 
 /**
  Takes an array of index paths and returns an array of adjusted paths (possible including additional ads) to insert.

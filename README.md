@@ -10,6 +10,11 @@ See our [Help Documentation](http://docs.namomedia.com/ios) to get started.
 Change Log
 ========
 
+**Version 2.2.1 - March 4, 2014**
+* Fix a bug where an empty UICollectionView would display one ad.
+* Fix a bug to stop displaying the "ad loading" spinner when there is an error.
+* Fix a bug where reloadRowsAtIndexPaths would modify the data source.
+
 **Version 2.2.0 - January 24, 2014**
 * Deprecate NAMOAdCell cellHeightWithData:andWidth: and NAMOAdCell cellSizeWithData: in favor of NAMOAdCell cellHeightWithWidth: and NAMOAdCell cellSize
 * Don't show an ad when it would be the last item in a stream.
