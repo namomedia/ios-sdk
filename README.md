@@ -3,7 +3,7 @@ Namo iOS SDK
 
 This SDK by Namo Media facilitates inserting native mobile ads into a TableView or other content stream in your iOS application. The SDK uses native iOS APIs to display ads, and will automatically adapt ad images and text to match your cell format. You can choose one of our pre-built sample formats, reuse your existing content cells, or create a new custom format.
 
-See our [Help Documentation](http://docs.namomedia.com/ios) to get started.
+See our [Developer Documentation](http://docs.namomedia.com) to get started.
 
 ![Sample ad format](http://docs.namomedia.com/ios/readme-image.png)
 
