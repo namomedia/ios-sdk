@@ -10,6 +10,19 @@ See our [Developer Documentation](http://docs.namomedia.com) to get started.
 Change Log
 ========
 
+**Version 3.0.0 - April 18, 2014**
+
+Major release with updated API. See our 
+[migration guide](http://localhost:4000/docs-staging/upgrade/) for upgrade instructions.
+
+New features:
+* NAMOCustomStreamAdPlacer to support streams other than UITableView and UICollectionView.
+* NAMOAdView to support a stand-alone native ad format.
+* Delegate methods to know when ads have loaded.
+* Support for app store ratings.
+* Support for hierarchical ad units.
+* Simplified API for easy integration.
+
 **Version 2.2.1 - March 4, 2014**
 * Fix a bug where an empty UICollectionView would display one ad.
 * Fix a bug to stop displaying the "ad loading" spinner when there is an error.
