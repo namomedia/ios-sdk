@@ -5,7 +5,7 @@ This SDK by Namo Media facilitates inserting native mobile ads into a TableView 
 
 See our [Developer Documentation](http://docs.namomedia.com) to get started.
 
-![Sample ad format](http://docs.namomedia.com/ios/readme-image.png)
+![Sample ad format](http://docs.namomedia.com/images/ios-readme-image.png)
 
 Change Log
 ========
