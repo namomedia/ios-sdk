@@ -13,7 +13,7 @@ Change Log
 **Version 3.0.0 - April 18, 2014**
 
 Major release with updated API. See our 
-[migration guide](http://localhost:4000/docs-staging/upgrade/) for upgrade instructions.
+[migration guide](http://docs.namomedia.com/docs-staging/upgrade/) for upgrade instructions.
 
 * NAMOCustomStreamAdPlacer to support streams other than UITableView and UICollectionView.
 * NAMOAdView to support a stand-alone native ad format.
