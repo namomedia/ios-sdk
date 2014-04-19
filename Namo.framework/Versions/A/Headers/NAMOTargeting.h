@@ -31,6 +31,7 @@ extern NSString *const NAMORelationshipEngaged;
 extern NSString *const NAMORelationshipMarried;
 extern NSString *const NAMORelationshipUnknown;
 
+
 /// @name Creating a targeting object.
 
 /**
@@ -52,7 +53,7 @@ extern NSString *const NAMORelationshipUnknown;
  <li>NAMOGenderUnknown</li>
  </ul>
  */
-@property(nonatomic, strong) NSString *gender;
+@property(nonatomic, copy) NSString *gender;
 
 /**
  Education. You can specify your own value, or use one of the
@@ -68,11 +69,12 @@ extern NSString *const NAMORelationshipUnknown;
  @return The education value for the targeting params.
  @available Namo 1.0 and later.
  */
-@property(nonatomic, strong) NSString *education;
+@property(nonatomic, copy) NSString *education;
 
 /**
- Relationship Status. You can specify your own value, or use one of the
- following pre-defined constants:
+ Relationship Status.
+
+ You can specify your own value, or use one of the following pre-defined constants:
 
  <ul>
  <li>NAMORelationshipSingle</li>
@@ -85,11 +87,11 @@ extern NSString *const NAMORelationshipUnknown;
  @return The relationship status value for the targeting params.
  @available Namo 1.0 and later.
  */
-@property(nonatomic, strong) NSString *relationshipStatus;
+@property(nonatomic, copy) NSString *relationshipStatus;
 
 
 /**
- Value that is greater than or equal to 0.
+ An age value that is greater than or equal to 0.
  
  @return The targeting age.
  @available Namo 1.0 and later.
@@ -97,15 +99,17 @@ extern NSString *const NAMORelationshipUnknown;
 @property(nonatomic, assign) NSUInteger age;
 
 /**
- Search term if this is a search view. This can contain multiple words.
- 
+ A search term or set of space delimited search terms.
+
  @return The search terms.
  @available Namo 1.0 and later.
  */
-@property(nonatomic, strong) NSString *searchTerms;
+@property(nonatomic, copy) NSString *searchTerms;
 
 /**
- Sets the birth day, month and year. This overwrite the age value.
+ Sets the birthday, month and year.
+
+ Setting a birthday overwrites the age value.
 
  @param day The day of birth
  @param month The month of birth
@@ -117,7 +121,7 @@ extern NSString *const NAMORelationshipUnknown;
 /**
  Adds an interest to the targeting information.
 
- You can define your own interest strings. Some examples:
+ You can define your own interest strings. For example:
  <ul>
  <li>Food</li>
  <li>Gaming</li>
@@ -139,6 +143,18 @@ extern NSString *const NAMORelationshipUnknown;
  */
 - (void)addInterest:(NSString *)interest;
 
+/**
+ Adds a keyword to the targeting data.
+
+ You should only use keywords if you directly sell advertising campaigns for your app and have ad
+ groups in campaigns that are only shown under specific conditions.
+
+ @param keyword The keyword to target.
+ @available Namo 1.0 and later.
+ */
+- (void)addKeyword:(NSString *)keyword;
+
+
 /// @name Reading targeting values
 
 /**
@@ -150,12 +166,20 @@ extern NSString *const NAMORelationshipUnknown;
 - (NSString *)birthday;
 
 /**
- An array of interests for a particular interest type.
+ Returns an array of interests for a particular interest type.
  
  @return An array of interests for a particular type.
  @available Namo 1.0 and later.
  */
 - (NSArray *)interests;
+
+/**
+ An array of keywords currently set on the targeting object.
+
+ @available Namo 1.0 and later.
+ */
+- (NSArray *)keywords;
+
 
 /// @name Removing targeting values
 
@@ -177,24 +201,8 @@ extern NSString *const NAMORelationshipUnknown;
 - (void)clearInterests;
 
 /**
- Add a keyword to the targeting data. You should only use keywords if you directly sell
- advertising campaigns for your app and have ad groups in campaigns that are only shown under
- specific conditions.
- 
- @param keyword The keyword to target.
- @available Namo 1.0 and later.
- */
-- (void)addKeyword:(NSString *)keyword;
-
-/**
- An array of keywords currently set on the targeting object.
- 
- @available Namo 1.0 and later.
- */
-- (NSArray *)keywords;
-/**
  Clears all the keywords.
- 
+
  @available Namo 1.0 and later.
  */
 - (void)clearKeywords;

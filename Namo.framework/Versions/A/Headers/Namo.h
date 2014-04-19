@@ -16,25 +16,25 @@
 #endif
 
 #import "NAMOErrors.h"
-#import "NAMOAdCell.h"
+#import "NAMOAdFormat.h"
 #import "NAMOAdData.h"
-#import "NSURL+NAMOImage.h"
+#import "NAMOAd.h"
 #import "NAMOTargeting.h"
 
-#import "NAMOAdPlacer.h"
-#import "NAMOIndexPathAdjuster.h"
+#import "NAMOTableViewAdPlacer.h"
+#import "NAMOCollectionViewAdPlacer.h"
+#import "NAMOCustomStreamAdPlacer.h"
 #import "UITableView+NAMOAdPlacer.h"
 #import "UICollectionView+NAMOAdPlacer.h"
+#import "NAMOAdPlacerDelegate.h"
+#import "NAMOAdView.h"
 
-#import "NAMOAdCellImageResources.h"
-#import "NAMOAdCellCollectionSample1.h"
-#import "NAMOAdCellTableSample1.h"
-#import "NAMOAdCellTableSample2.h"
-#import "NAMOAdCellTableSample3.h"
-#import "NAMOAdCellTableSample4.h"
-#import "NAMOAdCellTableSample5.h"
-
-#import "NAMOWebViewAdPlacer.h"
+#import "NAMOAdFormatSample6.h"
+#import "NAMOAdFormatSample1.h"
+#import "NAMOAdFormatSample2.h"
+#import "NAMOAdFormatSample3.h"
+#import "NAMOAdFormatSample4.h"
+#import "NAMOAdFormatSample5.h"
 
 /**
  Defines application level configuration for the Namo SDK.
@@ -62,8 +62,8 @@
 /**
  Enables or disables the SDK from connecting to the server for ads.
 
- When not active, calling `[NAMOAdPlacer requestAds:]` will log a warning message. To prevent this
- warning, you can check the active value before requesting ads.
+ When not active, calling `[NAMOAdPlacer requestAdsWithTargeting:]` will log a warning message. To
+ prevent this warning, you can check the active value before requesting ads.
 
  @param active Whether to enable or disable serving ads.
  @available Namo 1.0 and later.
@@ -79,6 +79,8 @@
  @available Namo 1.0 and later.
  */
 + (BOOL)active;
+
+/// @name Test Mode
 
 /**
  Puts the given device in 'test' mode.

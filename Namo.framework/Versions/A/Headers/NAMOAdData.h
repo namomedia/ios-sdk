@@ -1,10 +1,7 @@
 // Copyright (c) 2013 Namo Media, Inc. All rights reserved.
 
 #import <Foundation/Foundation.h>
-
-@class UILabel;
-@class UIImage;
-@class UIImageView;
+#import <UIKit/UIKit.h>
 
 /**
  Defines data for a Namo ad returned from the server.
@@ -43,7 +40,7 @@ typedef NS_ENUM(NSInteger, NAMOActionType) {
 
  You may want to show a different UI for different action types. For example, you could
  show an "Install" button for an install ad, or a play video image overlay for a video
- ad. The SDK will correctly handle different action types when clicking on your ad cell.
+ ad. The SDK will correctly handle different action types when clicking on your Ad Format.
 
  @return The action type associated with this ad.
  @available Namo 1.0 and later.
@@ -84,20 +81,6 @@ typedef void(^NAMO_TextLoadedBlock)(UILabel *label);
            completedBlock:(NAMO_TextLoadedBlock)completedBlock;
 
 /**
- Loads the Ad text into the given UILabel, with a callback.
-
- If you provide a non-nil success block, the block will be executed after the text has been set.
- You can, for example, use this block to provide a transition animation.
-
- @param label The UILabel into which to load the text.
- @param completedBlock A block to execute after the text loads.
- @deprecated
- @available Namo 2.0 and later.
- */
-- (void)loadAdTextIntoLabel:(UILabel *)label
-                  completedBlock:(NAMO_TextLoadedBlock)completedBlock __deprecated;
-
-/**
  Loads the advertiser name into the given UILabel.
 
  This will asynchronously measure the UILabel and set the advertiser name.
@@ -118,9 +101,25 @@ typedef void(^NAMO_TextLoadedBlock)(UILabel *label);
  @available Namo 2.0 and later.
  */
 - (void)loadAdvertiserNameIntoLabel:(UILabel *)label
-             completedBlock:(NAMO_TextLoadedBlock)completedBlock;
+                     completedBlock:(NAMO_TextLoadedBlock)completedBlock;
 
 /// @name Showing ad images.
+
+/**
+ The image animation type.
+
+ @available Namo 1.0 and later.
+*/
+typedef NS_ENUM(NSInteger, NAMOImageAnimation) {
+  /**
+  Fade the image in. This is the default.
+  */
+  NAMOImageAnimationFade,
+  /**
+  No image animation.
+  */
+  NAMOImageAnimationNone,
+};
 
 /**
  Callback block for image requests, called when image loading completes.
@@ -153,31 +152,14 @@ typedef void(^NAMO_ImageLoadedBlock)(UIImageView *imageView, NSError *error);
  @param imageView The UIImageView that will hold the ad image.
  @param placeholder An optionally-nil image to place in the UIImageView before the ad request
  completes.
+ @param animation The animation to perform on the image when it loads.
  @param completedBlock A block to execute after the image request completes.
  @available Namo 2.1 and later.
  */
 - (void)loadImageIntoImageView:(UIImageView *)imageView
               placeholderImage:(UIImage *)placeholder
+                     animation:(NAMOImageAnimation)animation
                 completedBlock:(NAMO_ImageLoadedBlock)completedBlock;
-
-/**
- Loads the Ad image into the given UIImage, with a callback.
-
- This makes an asynchronous request for the image. If you provide a non-nil success block, the block
- will be executed after the image request completes and after the UIImageView's image property has
- been set to the result of the image request. You can, for example, use this success block to
- provide transition effects on the view.
-
- @param imageView The UIImageView that will hold the ad image.
- @param placeholder An optionally-nil image to place in the UIImageView before the ad request
- completes.
- @param completedBlock A block to execute after the image request completes.
- @deprecated
- @available Namo 2.0 and later.
- */
-- (void)loadAdImageIntoImageView:(UIImageView *)imageView
-                placeholderImage:(UIImage *)placeholder
-                  completedBlock:(NAMO_ImageLoadedBlock)completedBlock __deprecated;
 
 /**
  Loads the Advertiser icon into the given UIImageView.
@@ -201,10 +183,37 @@ typedef void(^NAMO_ImageLoadedBlock)(UIImageView *imageView, NSError *error);
  @param imageView The image view into which to load the image.
  @param placeholder An optionally-nil image to place in the UIImageView before the ad request
  completes.
+ @param animation The animation to perform on the image when it loads.
  @param completedBlock A block to execute after the image request completes.
  @available Namo 2.0 and later.
  */
 - (void)loadAdvertiserIconIntoImageView:(UIImageView *)imageView
                        placeholderImage:(UIImage *)placeholder
+                              animation:(NAMOImageAnimation)animation
                          completedBlock:(NAMO_ImageLoadedBlock)completedBlock;
+
+/**
+ Loads the image view with a transparent-background image of the star-rating for the ad, if
+ available.
+
+ If no star rating is available (if, for example, the ad is not for an app) then a transparent
+ image will be loaded.
+
+ @param imageView The image view in which to show the stars.
+ @available Namo 3.0 and later.
+*/
+- (void)loadStarsIntoImageView:(UIImageView *)imageView;
+
+/**
+ Loads the image view with a transparent-background image of the star-rating for the ad, if available. If no star rating
+ is available (if, for example, the ad is not for an app) then a transparent image will be loaded.
+
+ @param imageView The image view in which to show the stars.
+ @param fullColor The color the full stars should be.
+ @param emptyColor The color the empty stars should be.
+ @available Namo 3.0 and later.
+*/
+- (void)loadStarsIntoImageView:(UIImageView *)imageView
+                     fullColor:(UIColor *)fullColor
+                    emptyColor:(UIColor *)emptyColor;
 @end

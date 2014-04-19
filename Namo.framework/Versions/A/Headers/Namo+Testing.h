@@ -32,4 +32,11 @@
 
 // Debugging for setting a campaign ID filter
 + (void)setDebugCampaignId:(NSInteger)campaignId;
+
+// Debugging - should set the star value on ads without it.
++ (void)setShouldShowStars:(BOOL)showStars;
+
+// Debugging for setting a star rating for all ads.
++ (void)setStarRating:(CGFloat)starRating;
+
 @end
