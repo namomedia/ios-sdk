@@ -10,6 +10,10 @@ See our [Quickstart Guide](http://docs.namomedia.com/quickstart) to get started.
 Change Log
 ========
 
+**Version 3.0.1 - May 1, 2014**
+Bugfix Release
+* Smoother UI behavior when changing the ad unit assigned to a table view or collection view.
+
 **Version 3.0.0 - April 18, 2014**
 
 Major release with updated API. See our 
