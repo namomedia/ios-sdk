@@ -201,11 +201,11 @@
  You must replace all calls to `[tableView scrollToRowAtIndexPath: scrollPosition: animated:]`
  with this method for a `UITableView` bound to an ad placer.
 
- @parameters originalIndexPath An index path that identifies a row in the table view by its row index and
+ @param originalIndexPath An index path that identifies a row in the table view by its row index and
   its section index.
- @scrollPosition A constant that identifies a relative position in the receiving table view (top, middle, bottom)
+ @param scrollPosition A constant that identifies a relative position in the receiving table view (top, middle, bottom)
   for row when scrolling concludes. See “Table View Scroll Position” for descriptions of valid constants.
- @animated YES if you want to animate the change in position, NO if it should be immediate.
+ @param animated YES if you want to animate the change in position, NO if it should be immediate.
  @available Namo 3.0 and later.
 */
 - (void)namo_scrollToRowAtIndexPath:(NSIndexPath *)originalIndexPath

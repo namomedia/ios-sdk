@@ -11,7 +11,7 @@
  with text describing the the ad information. This version has a black background and shows a
  "download app" button for install ads:
 
- <img style="border:2px dotted black" alt="Preview" src="../docs/Images/sample5.png">
+ <img style="border:2px dotted black" alt="Preview" src="http://docs.namomedia.com/images/ad-format-sample-5.png">
 
  @available Namo 1.0 and later.
  */

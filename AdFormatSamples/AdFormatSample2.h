@@ -11,7 +11,7 @@
  suitable to display in streams that have have image rich content and only a small amount of text,
  if any. For example:
 
- <img style="border:2px dotted black" alt="Preview" src="../docs/Images/sample2.png">
+ <img style="border:2px dotted black" alt="Preview" src="http://docs.namomedia.com/images/ad-format-sample-2.png">
 
  You can use this format as a template to build your own Ad Format. See the
  <a href="https://github.com/namomedia/ios-sdk/tree/master/AdFormatSamples" target="_blank">
