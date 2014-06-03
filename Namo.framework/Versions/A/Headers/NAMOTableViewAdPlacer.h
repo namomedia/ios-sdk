@@ -37,8 +37,23 @@
  @param tableView The table view into which to insert ads.
  @return The new table view ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
-+ (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView;
++ (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView __deprecated;
+
+/**
+ Creates and returns an ad placer that will insert ads into a table view.
+
+ If your UITableView object contains multiple sections, the placer will insert ads into just the
+ first section.
+
+ @param tableView The table view into which to insert ads.
+ @param viewController The view controller that is controller the table view.
+ @return The new table view ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
+                               viewController:(UIViewController *)viewController;
 
 /**
  Creates and returns an ad placer that will insert ads into a table view.
@@ -51,9 +66,27 @@
  the Namo Media Dashboard.
  @return The new table view ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
   */
 + (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
-                                     adUnitId:(NSString *)adUnitId;
+                                     adUnitId:(NSString *)adUnitId __deprecated;
+
+/**
+ Creates and returns an ad placer that will insert ads into a table view.
+
+ If your UITableView object contains multiple sections, the placer will insert ads into just the
+ first section.
+
+ @param tableView The table view into which to insert ads.
+ @param adUnitId The id of the ad unit this placer inserts ads into. The id can be found in
+ the Namo Media Dashboard.
+ @param viewController The view controller that is controller the table view.
+ @return The new table view ad placer.
+ @available Namo 3.1 and later.
+  */
++ (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
+                                     adUnitId:(NSString *)adUnitId
+                               viewController:(UIViewController *)viewController;
 
 /**
  Creates and returns an ad placer that will insert ads into a specified section of a table view.
@@ -62,9 +95,23 @@
  @param section The section into which to insert ads.
  @return The new table view ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
 + (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
-                                      section:(NSUInteger)section;
+                                      section:(NSUInteger)section __deprecated;
+
+/**
+ Creates and returns an ad placer that will insert ads into a specified section of a table view.
+
+ @param tableView The table view into which to insert ads.
+ @param section The section into which to insert ads.
+ @param viewController The view controller that is controller the table view.
+ @return The new table view ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
+                                      section:(NSUInteger)section
+                               viewController:(UIViewController *)viewController;
 
 /**
  Creates and returns an ad placer that will insert ads into a specified section of a table view.
@@ -75,10 +122,36 @@
  the Namo Media Dashboard.
  @return The new table view ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
 + (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
                                       section:(NSUInteger)section
-                                     adUnitId:(NSString *)adUnitId;
+                                     adUnitId:(NSString *)adUnitId __deprecated;
+
+/**
+ Creates and returns an ad placer that will insert ads into a specified section of a table view.
+
+ @param tableView The table view into which to insert ads.
+ @param section The section into which to insert ads.
+ @param adUnitId The id of the ad unit this placer inserts ads into. The id can be found in
+ the Namo Media Dashboard.
+ @param viewController The view controller that is controller the table view.
+ @return The new table view ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOTableViewAdPlacer *)placerForTableView:(UITableView *)tableView
+                                      section:(NSUInteger)section
+                                     adUnitId:(NSString *)adUnitId
+                               viewController:(UIViewController *)viewController;
+
+/**
+ The UIViewController for the UICollectionView. All apps should set this property. This controller is used
+ to present other UIViewControllers when ads are clicked (for example, the StoreKit SKProductViewController is presented
+ by this object.)
+
+ @available Namo 3.1 and later.
+*/
+@property(nonatomic, weak) UIViewController *viewController;
 
 /// @name Registering an Ad Format
 

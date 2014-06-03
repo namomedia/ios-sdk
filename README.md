@@ -10,6 +10,10 @@ See our [Quickstart Guide](http://docs.namomedia.com/quickstart) to get started.
 Change Log
 ========
 
+**Version 3.1.0 - June 3, 2014**
+* Allow specifying a view controller to use for presenting ads in a modal window
+* Fix a bug that could prevent ads from dissappearing when changing to an ad unit ID with no targeted ads
+
 **Version 3.0.1 - May 1, 2014**
 Bugfix Release
 * Smoother UI behavior when changing the ad unit assigned to a table view or collection view.

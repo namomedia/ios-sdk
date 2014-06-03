@@ -42,8 +42,24 @@
  @param collectionView The collection view into which to insert Ads.
  @return The new collection view Ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
-+ (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView;
++ (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView __deprecated;
+
+/**
+ Creates and returns an Ad placer that will insert Ads into a collection view.
+
+ If your UICollectionView object contains multiple sections, the placer will insert Ads into just
+ the first section.
+
+ @param collectionView The collection view into which to insert Ads.
+ @param viewController The view controller that is controller the collectionview.
+ @return The new collection view Ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
+                                         viewController:(UIViewController *)viewController;
+
 
 /**
  Creates and returns an Ad placer that will insert Ads into a collection view.
@@ -59,9 +75,30 @@
  found in the Namo Media Dashboard.
  @return The new collection view Ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
 + (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
-                                               adUnitId:(NSString *)adUnitId;
+                                               adUnitId:(NSString *)adUnitId __deprecated;
+
+/**
+ Creates and returns an Ad placer that will insert Ads into a collection view.
+
+ If your UICollectionView object contains multiple sections, the placer will insert Ads into just
+ the first section.
+
+ If your app uses app sections to provide more granular ad targeting and reporting, you should use
+ this method to create your ad placer.
+
+ @param collectionView The collection view into which to insert Ads.
+ @param adUnitId The id of the ad unit this placer inserts ads into. The id can be
+ found in the Namo Media Dashboard.
+ @param viewController The view controller that is controller the collectionview.
+ @return The new collection view Ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
+                                               adUnitId:(NSString *)adUnitId
+                                         viewController:(UIViewController *)viewController;
 
 /**
  Creates and returns an Ad placer that will insert Ads into a specified section of a collection
@@ -71,10 +108,29 @@
  @param section The section into which to insert Ads.
  @return The new collection view Ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
 + (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
-                                                section:(NSUInteger)section;
+                                                section:(NSUInteger)section __deprecated;
 
+/**
+ Creates and returns an Ad placer that will insert Ads into a collection view.
+
+ If your UICollectionView object contains multiple sections, the placer will insert Ads into just
+ the first section.
+
+ If your app uses app sections to provide more granular ad targeting and reporting, you should use
+ this method to create your ad placer.
+
+ @param collectionView The collection view into which to insert Ads.
+ @param section The section into which to insert Ads.
+ @param viewController The view controller that is controller the collectionview.
+ @return The new collection view Ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
+                                              section:(NSUInteger)section
+                                         viewController:(UIViewController *)viewController;
 /**
  Creates and returns an Ad placer that will insert Ads into a specified section of a collection
  view.
@@ -88,10 +144,40 @@
   Namo Media Dashboard.
  @return The new collection view Ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
  */
 + (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
                                                 section:(NSUInteger)section
-                                               adUnitId:(NSString *)adUnitId;
+                                               adUnitId:(NSString *)adUnitId __deprecated;
+
+/**
+ Creates and returns an Ad placer that will insert Ads into a specified section of a collection
+ view.
+
+ If your app uses app sections to provide more granular ad targeting and reporting, you should use
+ this method to create your ad placer.
+
+ @param collectionView The collection view into which to insert Ads.
+ @param section The section into which to insert Ads.
+ @param adUnitId The id of the ad unit this placer inserts ads into. The id can be found in the
+  Namo Media Dashboard.
+ @param viewController The view controller that is controller the collectionview.
+ @return The new collection view Ad placer.
+ @available Namo 3.1 and later.
+ */
++ (NAMOCollectionViewAdPlacer *)placerForCollectionView:(UICollectionView *)collectionView
+                                                section:(NSUInteger)section
+                                               adUnitId:(NSString *)adUnitId
+                                         viewController:(UIViewController *)viewController;
+
+/**
+ The UIViewController for the UICollectionView. All apps should set this property. This controller is used
+ to present other UIViewControllers when ads are clicked (for example, the StoreKit SKProductViewController is presented
+ by this object.)
+
+ @available Namo 3.1 and later.
+*/
+@property(nonatomic, weak) UIViewController *viewController;
 
 /// @name Registering an Ad Format
 

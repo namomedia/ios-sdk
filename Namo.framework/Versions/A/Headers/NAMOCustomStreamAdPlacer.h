@@ -43,8 +43,18 @@
 
  @return The new Ad placer.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
 */
-+ (NAMOCustomStreamAdPlacer *)placer;
++ (NAMOCustomStreamAdPlacer *)placer __deprecated;
+
+/**
+ Creates and returns a new ad placer.
+
+ @param viewController The view controller that is controlling the view this ad placer is inserting ads into.
+ @return The new Ad placer.
+ @available Namo 3.1 and later.
+*/
++ (NAMOCustomStreamAdPlacer *)placerForViewController:(UIViewController *)viewController;
 
 /**
  Creates and returns a new ad placer for the specified ad unit. If your app uses ad units to
@@ -53,8 +63,31 @@
  @param adUnitId The id of the ad unit this placer inserts ads into. The id can be found
  in the Namo Media Dashboard.
  @available Namo 3.0 and later.
+ @deprecated Namo 3.1
 */
-+ (NAMOCustomStreamAdPlacer *)placerForAdUnitId:(NSString *)adUnitId;
++ (NAMOCustomStreamAdPlacer *)placerForAdUnitId:(NSString *)adUnitId __deprecated;
+
+/**
+ Creates and returns a new ad placer for the specified ad unit. If your app uses ad units to
+ provide more granular ad targeting and reporting, you should use this method to create your placer.
+
+ @param adUnitId The id of the ad unit this placer inserts ads into. The id can be found
+ in the Namo Media Dashboard.
+ @param viewController The view controller that is controlling the view this ad placer is inserting ads into.
+ @available Namo 3.1 and later.
+*/
++ (NAMOCustomStreamAdPlacer *)placerForAdUnitId:(NSString *)adUnitId
+                                 viewController:(UIViewController *)viewController;
+
+/**
+ The UIViewController for the UICollectionView. All apps should set this property. This controller is used
+ to present other UIViewControllers when ads are clicked (for example, the StoreKit SKProductViewController is presented
+ by this object.)
+
+ @available Namo 3.1 and later.
+ @deprecated Namo 3.1
+*/
+@property(nonatomic, weak) UIViewController *viewController;
 
 /// @name Registering an Ad Format
 

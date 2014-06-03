@@ -14,6 +14,18 @@
 */
 @interface NAMOAdView : UIView
 
+/// @name Setting up the ad view.
+
+/**
+ The View Controller that will present the modal view controller created when an ad is clicked. 
+ 
+ This should usually be the view controller for the view that contains the NAMOAdView. 
+ You should always set this property.
+
+ @available Namo 3.1 and later.
+*/
+@property(nonatomic, weak) UIViewController *viewController;
+
 
 /// @name Registering an ad format
 
